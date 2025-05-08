@@ -6,10 +6,10 @@ namespace FoodSystem
     [Serializable]
     public struct IngredientRequirement
     {
-        [SerializeField] private Ingredient _ingredient;
+        [SerializeField] private Ingredient ingredient;
 
         [SerializeField] private int amount;
 
-        public Ingredient IngredientData => _ingredient;
+        public Ingredient Ingredient => ingredient;
     }
 }

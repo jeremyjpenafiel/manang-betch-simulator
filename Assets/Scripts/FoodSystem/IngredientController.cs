@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace FoodSystem
@@ -26,20 +27,28 @@ namespace FoodSystem
 
         private void ConnectIngredientModel()
         {
-            foreach (Ingredient ingredient in _ingredientModel.Ingredients)
+            for (int i = 0; i < _ingredientModel.Ingredients.Count; i++)
             {
-                ingredient.OnQuantityChanged += _ingredientView.UpdateIngredientQuantity;
+                Ingredient ingredient = _ingredientModel.Ingredients[i];
+                IngredientText ingredientText = _ingredientView.ingredientNames[i];
+                ingredient.OnQuantityChanged += (quantity) =>
+                {
+                    ingredientText.UpdateIngredientQuantity($"{ingredient.IngredientName}: {quantity}");
+                };
             }
         }
 
         private void ConnectIngredientView()
         {
-           _ingredientView._addIngredientButton.RegisterListener(OnAddButtonPressed);
+            foreach (IngredientButton button in _ingredientView.addIngredientButtons)
+            {
+                button.RegisterListener(OnAddButtonPressed);
+            }
+
         }
 
         private void OnAddButtonPressed(int index)
         {
-            Debug.Log($"Add button pressed for index: {index}");
             if (_ingredientModel.Ingredients[index] != null)
             {
                 _ingredientModel.Ingredients[index].Quantity++;
@@ -55,13 +64,10 @@ namespace FoodSystem
                 return new IngredientController(_ingredientModel, ingredientView, _foodItemModel);
             }
             
-            public Builder WithIngredients(List<IngredientData> ingredientData)
+            public Builder WithIngredients(List<Ingredient> ingredients)
             {
-                foreach (IngredientData data in ingredientData)
+                foreach (Ingredient ingredient in ingredients)
                 {
-                    Debug.Log($"Adding ingredient data: {data.Name}");
-                    Ingredient ingredient = new Ingredient(data);
-                    Debug.Log($"Adding ingredient: {ingredient.IngredientData.Name}");
                     _ingredientModel.AddIngredient(ingredient);
                 }
 

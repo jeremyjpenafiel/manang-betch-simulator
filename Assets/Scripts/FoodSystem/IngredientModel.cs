@@ -9,7 +9,7 @@ namespace FoodSystem
   
     public void AddIngredient(Ingredient ingredient)
     {
-      Debug.Log($"Adding ingredient in model: {ingredient.IngredientData.Name}");
+      Debug.Log($"Adding ingredient in model: {ingredient.IngredientName}");
       Ingredients.Add(ingredient);
     }
   }

@@ -7,13 +7,13 @@ using UnityEngine;
 public class IngredientSystem : MonoBehaviour
 {
     [SerializeField] IngredientView ingredientView;
-    [SerializeField] List<IngredientData> ingredientDataList;
+    [SerializeField] List<Ingredient> ingredientDataList;
     IngredientController ingredientController;
 
     private void Awake()
     {
         Debug.Log(ingredientDataList.Count);
-        Debug.Log(ingredientDataList[0].Name);
+        Debug.Log(ingredientDataList[0].IngredientName);
         Debug.Log(ingredientDataList[0]);
         
         ingredientController = new IngredientController.Builder()

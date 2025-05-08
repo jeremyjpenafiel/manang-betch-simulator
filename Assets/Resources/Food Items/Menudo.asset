@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Menudo
   m_EditorClassIdentifier: 
   requiredIngredients:
-  - ingredient: {fileID: 0}
-    amount: 0
-  - ingredient: {fileID: 0}
-    amount: 0
-  - ingredient: {fileID: 0}
-    amount: 0
+  - ingredient: {fileID: 11400000, guid: 7b86a2d82e415304fb6b55746ab12c90, type: 2}
+    amount: 12
+  - ingredient: {fileID: 11400000, guid: f423647e6d9d8bd459c03a60504ca363, type: 2}
+    amount: 2
+  - ingredient: {fileID: 11400000, guid: 039bded6db6c64c4e938eb093ef735a0, type: 2}
+    amount: 1
