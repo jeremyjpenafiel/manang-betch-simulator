@@ -16,7 +16,7 @@ namespace FoodSystem
             float totalCost = 0;
             foreach (IngredientRequirement ingredientRequirement in requiredIngredients)
             {
-               totalCost += ingredientRequirement.IngredientData.IngredientData.Price;
+               totalCost += ingredientRequirement.Ingredient.Price;
             }
 
             return totalCost;

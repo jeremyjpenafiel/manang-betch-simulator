@@ -1,26 +1,21 @@
-using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace FoodSystem
 {
     public class IngredientView : MonoBehaviour
     {
-        public IngredientButton _addIngredientButton;
-        public IngredientButton _removeIngredientButton;
-        [SerializeField] private TextMeshProUGUI _ingredientQuantity;
+        [SerializeField] public List<IngredientText> ingredientNames;
+        [SerializeField] public List<IngredientButton> addIngredientButtons;
 
-
-        public void UpdateIngredientQuantity(int quantity)
-        {
-            _ingredientQuantity.text = quantity.ToString();
-        }
 
         private void Awake()
         {
-            _addIngredientButton.Initialize(0);
-            // _removeIngredientButton.Initialize(1);
+            for(int i =0; i < ingredientNames.Count; i++)
+            {
+                addIngredientButtons[i].Initialize(i);
+            }
         }
     }
 }
