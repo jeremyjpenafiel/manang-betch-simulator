@@ -9,14 +9,12 @@ namespace FoodSystem
         private readonly IngredientModel _ingredientModel;
         private readonly IngredientView _ingredientView;
         private readonly FoodItemModel _foodItemModel;
-        // private readonly FoodItemView _foodItemView;
         
         IngredientController(IngredientModel ingredientModel, IngredientView ingredientView, FoodItemModel foodItemModel)
         {
             _ingredientModel = ingredientModel;
             _ingredientView = ingredientView;
             _foodItemModel = foodItemModel;
-            // _foodItemView = foodItemView;
 
             ConnectIngredientModel();
             ConnectIngredientView();
@@ -28,7 +26,7 @@ namespace FoodSystem
         {
             for (int i = 0; i < _foodItemModel.FoodItems.Count; i++)
             {
-                FoodItemData foodItem = _foodItemModel.FoodItems[i];
+                FoodItem foodItem = _foodItemModel.FoodItems[i];
                 IngredientText ingredientText = _ingredientView.foodItemNames[i];
                 foodItem.OnQuantityChanged += (quantity) =>
                 {
@@ -47,13 +45,12 @@ namespace FoodSystem
                 {
                     ingredientText.UpdateText($"{ingredient.IngredientName}: {quantity}");
                 };
-                // ingredient.OnQuantityChanged 
             }
 
             for (int j = 0; j < _foodItemModel.FoodItems.Count; j++)
             {
                 IngredientButton button = _ingredientView.addFoodItemButton[j];
-                FoodItemData foodItem = _foodItemModel.FoodItems[j];
+                FoodItem foodItem = _foodItemModel.FoodItems[j];
                 foodItem.Initialize();
                 foodItem.OnPurchasableChanged += button.ChangeInteractable;
             }
@@ -108,9 +105,9 @@ namespace FoodSystem
                 return this;
             }
             
-            public Builder WithFoodItems(List<FoodItemData> foodItems)
+            public Builder WithFoodItems(List<FoodItem> foodItems)
             {
-                foreach (FoodItemData foodItem in foodItems)
+                foreach (FoodItem foodItem in foodItems)
                 {
                     _foodItemModel.AddFoodItem(foodItem);
                 }

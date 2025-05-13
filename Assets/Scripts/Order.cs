@@ -3,11 +3,11 @@ using FoodSystem;
 
 public class Order
 {
-   public List<FoodItemData> FoodItems { get; }
+   public List<FoodItem> FoodItems { get; }
 
    public float TotalPrice { get; private set; }
 
-   public Order(List<FoodItemData> foodItems)
+   public Order(List<FoodItem> foodItems)
    {
       FoodItems = foodItems;
       CalculateTotalPrice();
