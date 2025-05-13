@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
-using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace FoodSystem
 {
@@ -22,7 +20,21 @@ namespace FoodSystem
 
             ConnectIngredientModel();
             ConnectIngredientView();
+            ConnectFoodItemModel();
 
+        }
+
+        private void ConnectFoodItemModel()
+        {
+            for (int i = 0; i < _foodItemModel.FoodItems.Count; i++)
+            {
+                FoodItemData foodItem = _foodItemModel.FoodItems[i];
+                IngredientText ingredientText = _ingredientView.foodItemNames[i];
+                foodItem.OnQuantityChanged += (quantity) =>
+                {
+                    ingredientText.UpdateText($"{foodItem.FoodItemName}: {quantity}");
+                };
+            }
         }
 
         private void ConnectIngredientModel()
@@ -33,8 +45,17 @@ namespace FoodSystem
                 IngredientText ingredientText = _ingredientView.ingredientNames[i];
                 ingredient.OnQuantityChanged += (quantity) =>
                 {
-                    ingredientText.UpdateIngredientQuantity($"{ingredient.IngredientName}: {quantity}");
+                    ingredientText.UpdateText($"{ingredient.IngredientName}: {quantity}");
                 };
+                // ingredient.OnQuantityChanged 
+            }
+
+            for (int j = 0; j < _foodItemModel.FoodItems.Count; j++)
+            {
+                IngredientButton button = _ingredientView.addFoodItemButton[j];
+                FoodItemData foodItem = _foodItemModel.FoodItems[j];
+                foodItem.Initialize();
+                foodItem.OnPurchasableChanged += button.ChangeInteractable;
             }
         }
 
@@ -42,16 +63,30 @@ namespace FoodSystem
         {
             foreach (IngredientButton button in _ingredientView.addIngredientButtons)
             {
-                button.RegisterListener(OnAddButtonPressed);
+                button.RegisterListener(OnIngredientBought);
+            }
+
+            foreach (IngredientButton button in _ingredientView.addFoodItemButton)
+            {
+                button.RegisterListener(OnFoodItemBought);
             }
 
         }
-
-        private void OnAddButtonPressed(int index)
+        
+        // buttonIndex is the index of the food item in the list
+        private void OnFoodItemBought(int buttonIndex)
         {
-            if (_ingredientModel.Ingredients[index] != null)
+            _foodItemModel.FoodItems[buttonIndex].Quantity++;
+            _foodItemModel.FoodItems[buttonIndex].Purchase();
+            
+        }
+
+        // buttonIndex is the index of the ingredient in the list
+        private void OnIngredientBought(int buttonIndex)
+        {
+            if (_ingredientModel.Ingredients[buttonIndex] != null)
             {
-                _ingredientModel.Ingredients[index].Quantity++;
+                _ingredientModel.Ingredients[buttonIndex].Quantity++;
             }
         }
 
@@ -70,7 +105,15 @@ namespace FoodSystem
                 {
                     _ingredientModel.AddIngredient(ingredient);
                 }
-
+                return this;
+            }
+            
+            public Builder WithFoodItems(List<FoodItemData> foodItems)
+            {
+                foreach (FoodItemData foodItem in foodItems)
+                {
+                    _foodItemModel.AddFoodItem(foodItem);
+                }
                 return this;
             }
       

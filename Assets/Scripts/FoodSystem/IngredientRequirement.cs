@@ -11,5 +11,6 @@ namespace FoodSystem
         [SerializeField] private int amount;
 
         public Ingredient Ingredient => ingredient;
+        public int Amount => amount;
     }
 }
