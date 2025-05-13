@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FoodSystem
 {
    [CreateAssetMenu(fileName = "FoodItem", menuName = "FoodItem/Create new food item")]
-   public class FoodItemData: ScriptableObject
+   public class FoodItem: ScriptableObject
 
    {
       [SerializeField] private string foodItemName;
@@ -21,7 +21,6 @@ namespace FoodSystem
          {
             Ingredient ingredient = ingredientRequirement.Ingredient;
             ingredient.OnQuantityChanged += CheckIfPurchasable;
-            Debug.Log("ran CheckIfPurchasable");
             
          } 
          CheckIfPurchasable(0);
@@ -33,7 +32,6 @@ namespace FoodSystem
          set
          {
             _isPurchasable = value;
-            Debug.Log($"IsPurchasable: {_isPurchasable}");
             OnPurchasableChanged?.Invoke(value);
          }
       }
