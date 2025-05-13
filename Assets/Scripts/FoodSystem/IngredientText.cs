@@ -12,7 +12,7 @@ public class IngredientText : MonoBehaviour
     {
         _ingredientName = GetComponent<TextMeshProUGUI>();
     }
-    public void UpdateIngredientQuantity(string text)
+    public void UpdateText(string text)
     {
         _ingredientName.text = text;
     }

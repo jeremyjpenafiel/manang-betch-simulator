@@ -5,12 +5,12 @@ namespace FoodSystem
 {
     public class FoodItemModel : MonoBehaviour
     {
-        private readonly List<FoodItem> FoodItems = new List<FoodItem>();
+        public readonly List<FoodItemData> FoodItems = new();
     
     
-        public void AddFoodItem(FoodItem foodItem)
+        public void AddFoodItem(FoodItemData foodItemData)
         {
-            FoodItems.Add(foodItem);
+            FoodItems.Add(foodItemData);
         }
     }
 }

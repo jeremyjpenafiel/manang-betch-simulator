@@ -8,6 +8,8 @@ public class IngredientSystem : MonoBehaviour
 {
     [SerializeField] IngredientView ingredientView;
     [SerializeField] List<Ingredient> ingredientDataList;
+    [SerializeField] List<FoodItemData> foodItems;
+    [SerializeField] List<FoodItemData> foodItemList;
     IngredientController ingredientController;
 
     private void Awake()
@@ -18,6 +20,7 @@ public class IngredientSystem : MonoBehaviour
         
         ingredientController = new IngredientController.Builder()
             .WithIngredients(ingredientDataList)
+            .WithFoodItems(foodItems)
             .Build(ingredientView);
     }
 }

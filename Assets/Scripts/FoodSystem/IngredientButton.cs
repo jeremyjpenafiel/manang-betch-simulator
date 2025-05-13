@@ -4,21 +4,29 @@ using UnityEngine.UI;
 
 public class IngredientButton : MonoBehaviour
 {
-    private int index;
+    private int _index;
+    private Button _button;
     public event Action<int> OnButtonPressed = delegate { };
 
     public void Initialize(int buttonIndex)
     {
-        index = buttonIndex;
+        _index = buttonIndex;
+        _button = GetComponent<Button>();
     }
 
     private void Start()
     {
-        GetComponent<Button>().onClick.AddListener(()=>OnButtonPressed(index));
+        _button.onClick.AddListener(()=>OnButtonPressed(_index));
     }
     
     public void RegisterListener(Action<int> listener)
     {
         OnButtonPressed += listener;
     }
+    
+    public void ChangeInteractable(bool interactable)
+    {
+        _button.interactable = interactable;
+    }
+    
 }
