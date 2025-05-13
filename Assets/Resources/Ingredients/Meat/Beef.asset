@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f666399c276044593200977112e190, type: 3}
   m_Name: Beef
   m_EditorClassIdentifier: 
-  name: New Beef
-  quantity: 10
+  ingredientName: New Beef
+  quantity: 0
   price: 10
