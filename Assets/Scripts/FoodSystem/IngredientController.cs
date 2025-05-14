@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace FoodSystem
@@ -27,11 +29,37 @@ namespace FoodSystem
             for (int i = 0; i < _foodItemModel.FoodItems.Count; i++)
             {
                 FoodItem foodItem = _foodItemModel.FoodItems[i];
-                IngredientText ingredientText = _ingredientView.foodItemNames[i];
-                foodItem.OnQuantityChanged += (quantity) =>
+                try
                 {
-                    ingredientText.UpdateText($"{foodItem.FoodItemName}: {quantity}");
-                };
+                    IngredientText ingredientText = _ingredientView.foodItemNames[i];
+                    foodItem.OnQuantityChanged += (quantity) =>
+                    {
+                        ingredientText.UpdateText($"{foodItem.FoodItemName}: {quantity}");
+                    };
+                }
+                catch (ArgumentOutOfRangeException e)
+                {
+                    Debug.LogError($"IngredientController - ConnectFoodItemModel(): TextMeshProUGUI " +
+                                   $"objects may not match number of food items");
+                }
+          
+            }
+            
+            for (int j = 0; j < _foodItemModel.FoodItems.Count; j++)
+            {
+                FoodItem foodItem = _foodItemModel.FoodItems[j];
+                try
+                {
+                    IngredientButton button = _ingredientView.addFoodItemButton[j];
+                    foodItem.Initialize();
+                    foodItem.OnPurchasableChanged += button.ChangeInteractable;
+                }
+                catch (ArgumentOutOfRangeException e)
+                {
+                    Debug.LogError($"IngredientController - ConnectFoodItemModel(): Button " +
+                                   $"objects may not match number of food items");
+                }
+                    
             }
         }
 
@@ -40,19 +68,21 @@ namespace FoodSystem
             for (int i = 0; i < _ingredientModel.Ingredients.Count; i++)
             {
                 Ingredient ingredient = _ingredientModel.Ingredients[i];
-                IngredientText ingredientText = _ingredientView.ingredientNames[i];
-                ingredient.OnQuantityChanged += (quantity) =>
+                try
                 {
-                    ingredientText.UpdateText($"{ingredient.IngredientName}: {quantity}");
-                };
-            }
-
-            for (int j = 0; j < _foodItemModel.FoodItems.Count; j++)
-            {
-                IngredientButton button = _ingredientView.addFoodItemButton[j];
-                FoodItem foodItem = _foodItemModel.FoodItems[j];
-                foodItem.Initialize();
-                foodItem.OnPurchasableChanged += button.ChangeInteractable;
+                    IngredientText ingredientText = _ingredientView.ingredientNames[i];
+                    ingredient.OnQuantityChanged += (quantity) =>
+                    {
+                        ingredientText.UpdateText($"{ingredient.IngredientName}: {quantity}");
+                    };
+                }
+                catch (ArgumentOutOfRangeException e)
+                {
+                    
+                    Debug.LogError($"IngredientController - ConnectIngredientModel(): TextMeshProUGUI " +
+                                   $"objects may not match number of ingredients");
+                }
+          
             }
         }
 

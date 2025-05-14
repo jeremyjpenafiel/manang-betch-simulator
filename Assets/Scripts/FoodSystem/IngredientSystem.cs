@@ -14,10 +14,6 @@ public class IngredientSystem : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log(ingredientDataList.Count);
-        Debug.Log(ingredientDataList[0].IngredientName);
-        Debug.Log(ingredientDataList[0]);
-        
         ingredientController = new IngredientController.Builder()
             .WithIngredients(ingredientDataList)
             .WithFoodItems(foodItems)
