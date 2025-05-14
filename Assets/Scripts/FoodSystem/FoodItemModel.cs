@@ -1,0 +1,16 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace FoodSystem
+{
+    public class FoodItemModel : MonoBehaviour
+    {
+        public readonly List<FoodItem> FoodItems = new();
+    
+    
+        public void AddFoodItem(FoodItem foodItem)
+        {
+            FoodItems.Add(foodItem);
+        }
+    }
+}
