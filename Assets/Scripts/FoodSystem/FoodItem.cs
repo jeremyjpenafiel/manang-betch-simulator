@@ -11,7 +11,8 @@ namespace FoodSystem
       [SerializeField] private string foodItemName;
       [SerializeField] private List<IngredientRequirement> requiredIngredients;
       [SerializeField] private int quantity;
-
+      [SerializeField] private float userPrice;
+      
       private bool _isPurchasable;
       public event Action<int> OnQuantityChanged;
       public event Action<bool> OnPurchasableChanged;
@@ -60,7 +61,7 @@ namespace FoodSystem
          }
       }
 
-      public float UserPrice { get; set; }
+      public float UserPrice { get => userPrice; set => userPrice = value; }
 
       public float CostPrice
       {

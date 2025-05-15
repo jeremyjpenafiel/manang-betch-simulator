@@ -19,3 +19,4 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 9e91175bf36abf748b117f5342c0ffa0, type: 2}
     amount: 1
   quantity: 0
+  userPrice: 300
