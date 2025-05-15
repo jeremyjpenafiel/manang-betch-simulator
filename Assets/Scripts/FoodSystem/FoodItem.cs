@@ -11,6 +11,7 @@ namespace FoodSystem
       [SerializeField] private string foodItemName;
       [SerializeField] private List<IngredientRequirement> requiredIngredients;
       [SerializeField] private int quantity;
+
       private bool _isPurchasable;
       public event Action<int> OnQuantityChanged;
       public event Action<bool> OnPurchasableChanged;
@@ -58,6 +59,8 @@ namespace FoodSystem
             OnQuantityChanged?.Invoke(quantity);
          }
       }
+
+      public float UserPrice { get; set; }
 
       public float CostPrice
       {
