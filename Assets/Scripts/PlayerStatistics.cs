@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,5 +7,17 @@ using UnityEngine.Serialization;
 [CreateAssetMenu(fileName = "PlayerStatistics", menuName = "ScriptableObjects/PlayerStatistics")]
 public class PlayerStatistics : ScriptableObject
 {
-    public float Money;
+    [SerializeField] private float money;
+
+    public event Action<float> OnMoneyChanged; 
+    public float Money
+    {
+        get => money;
+        set
+        {
+            money = value;
+            OnMoneyChanged?.Invoke(money);
+        }
+    }
 }
+
