@@ -87,6 +87,8 @@ namespace FoodSystem
          }
       }
       
+      public List<IngredientRequirement> RequiredIngredients => requiredIngredients;
+      
       public string FoodItemName => foodItemName;
    }
 }

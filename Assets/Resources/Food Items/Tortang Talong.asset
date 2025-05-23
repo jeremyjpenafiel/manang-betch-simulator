@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45ea2b98e6c7dec489a39b3f1f04dcdc, type: 3}
-  m_Name: Menudo
+  m_Name: Tortang Talong
   m_EditorClassIdentifier: 
-  foodItemName: Menudo
+  foodItemName: Tortang Talong
   requiredIngredients:
-  - ingredient: {fileID: 11400000, guid: 7b86a2d82e415304fb6b55746ab12c90, type: 2}
+  - ingredient: {fileID: 11400000, guid: 039bded6db6c64c4e938eb093ef735a0, type: 2}
     amount: 3
   - ingredient: {fileID: 11400000, guid: 9e91175bf36abf748b117f5342c0ffa0, type: 2}
+    amount: 1
+  - ingredient: {fileID: 11400000, guid: 8ed9025f75a611f4985d2669e746363b, type: 2}
     amount: 1
   quantity: 0
