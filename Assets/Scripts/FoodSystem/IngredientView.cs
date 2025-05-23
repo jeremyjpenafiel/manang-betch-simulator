@@ -65,6 +65,11 @@ namespace FoodSystem
                 ingredientQuantity.font = font;
                 ingredientQuantity.UpdateFontAsset();
                 ingredientQuantity.transform.localPosition = new Vector3(ingredientQuantityXCoordinate, (i+1)*ingredientTextYOffset, 0);
+                
+                ingredientRequirement.Ingredient.OnQuantityChanged += (quantity) =>
+                {
+                    ingredientQuantity.text = $"{quantity}/{ingredientRequirement.Amount}";
+                };
             }
             
             

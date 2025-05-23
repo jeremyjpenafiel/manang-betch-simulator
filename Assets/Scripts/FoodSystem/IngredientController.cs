@@ -36,15 +36,13 @@ namespace FoodSystem
             for (int i = 0; i < _foodItemModel.FoodItems.Count; i++)
             {
                 FoodItem foodItem = _foodItemModel.FoodItems[i];
+                foodItem.Initialize();
                 try
                 {
                     IngredientText ingredientText = _ingredientView.recipeTextGroups[i].recipeName;
                     ingredientText.Initialize();
                     ingredientText.UpdateText(foodItem.FoodItemName);
-                    foodItem.OnQuantityChanged += (quantity) =>
-                    {
-                        ingredientText.UpdateText(quantity.ToString());
-                    };
+     
                 }
                 catch (ArgumentOutOfRangeException e)
                 {
@@ -56,6 +54,7 @@ namespace FoodSystem
                 {
                     IngredientButton button = _ingredientView.recipeTextGroups[i].cookButton;
                     foodItem.OnPurchasableChanged += button.ChangeInteractable;
+                    button.ChangeInteractable(foodItem.IsPurchasable);
                 }
                 catch (ArgumentOutOfRangeException e)
                 {

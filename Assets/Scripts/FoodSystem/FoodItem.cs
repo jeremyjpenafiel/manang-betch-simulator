@@ -21,15 +21,14 @@ namespace FoodSystem
          {
             Ingredient ingredient = ingredientRequirement.Ingredient;
             ingredient.OnQuantityChanged += CheckIfPurchasable;
-            
          } 
          CheckIfPurchasable(0);
       }
       
-      private bool IsPurchasable
+      public bool IsPurchasable
       {
          get => _isPurchasable;
-         set
+         private set
          {
             _isPurchasable = value;
             OnPurchasableChanged?.Invoke(value);
