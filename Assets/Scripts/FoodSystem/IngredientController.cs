@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace FoodSystem
 {
@@ -11,12 +9,19 @@ namespace FoodSystem
         private readonly IngredientModel _ingredientModel;
         private readonly IngredientView _ingredientView;
         private readonly FoodItemModel _foodItemModel;
+        private readonly PlayerStatistics _playerStatistics;
         
-        IngredientController(IngredientModel ingredientModel, IngredientView ingredientView, FoodItemModel foodItemModel)
+        
+        IngredientController(IngredientModel ingredientModel, 
+            IngredientView ingredientView, 
+            FoodItemModel foodItemModel,
+            PlayerStatistics playerStatistics)
+        
         {
             _ingredientModel = ingredientModel;
             _ingredientView = ingredientView;
             _foodItemModel = foodItemModel;
+            _playerStatistics = playerStatistics;
 
             ConnectIngredientModel();
             ConnectIngredientView();
@@ -34,7 +39,7 @@ namespace FoodSystem
                     IngredientText ingredientText = _ingredientView.foodItemNames[i];
                     foodItem.OnQuantityChanged += (quantity) =>
                     {
-                        ingredientText.UpdateText($"{foodItem.FoodItemName}: {quantity}");
+                        ingredientText.UpdateText(quantity.ToString());
                     };
                 }
                 catch (ArgumentOutOfRangeException e)
@@ -42,7 +47,6 @@ namespace FoodSystem
                     Debug.LogError($"IngredientController - ConnectFoodItemModel(): TextMeshProUGUI " +
                                    $"objects may not match number of food items");
                 }
-          
             }
             
             for (int j = 0; j < _foodItemModel.FoodItems.Count; j++)
@@ -59,7 +63,6 @@ namespace FoodSystem
                     Debug.LogError($"IngredientController - ConnectFoodItemModel(): Button " +
                                    $"objects may not match number of food items");
                 }
-                    
             }
         }
 
@@ -70,16 +73,24 @@ namespace FoodSystem
                 Ingredient ingredient = _ingredientModel.Ingredients[i];
                 try
                 {
-                    IngredientText ingredientText = _ingredientView.ingredientNames[i];
+                    IngredientTextGroup ingredientTextGroup = _ingredientView.ingredients[i];
+                    ingredientTextGroup.Initialize();
+                    ingredientTextGroup.InitializeButton(_playerStatistics.Money >= ingredient.Price);
+                    ingredientTextGroup.UpdateTexts(ingredient);
                     ingredient.OnQuantityChanged += (quantity) =>
                     {
-                        ingredientText.UpdateText($"{ingredient.IngredientName}: {quantity}");
+                        ingredientTextGroup.ingredientQuantity.UpdateText(quantity.ToString());
+                    };
+                    _playerStatistics.OnMoneyChanged += () =>
+                    {
+                        ingredientTextGroup.addIngredientButton.ChangeInteractable(
+                            _playerStatistics.Money >= ingredient.Price);
                     };
                 }
                 catch (ArgumentOutOfRangeException e)
                 {
                     
-                    Debug.LogError($"IngredientController - ConnectIngredientModel(): TextMeshProUGUI " +
+                    Debug.LogError($"IngredientController - ConnectIngredientModel(): IngredientTextGroup " +
                                    $"objects may not match number of ingredients");
                 }
           
@@ -88,9 +99,9 @@ namespace FoodSystem
 
         private void ConnectIngredientView()
         {
-            foreach (IngredientButton button in _ingredientView.addIngredientButtons)
+            foreach (IngredientTextGroup ingredientTextGroup in _ingredientView.ingredients)
             {
-                button.RegisterListener(OnIngredientBought);
+                ingredientTextGroup.addIngredientButton.RegisterListener(OnIngredientBought);
             }
 
             foreach (IngredientButton button in _ingredientView.addFoodItemButton)
@@ -114,6 +125,8 @@ namespace FoodSystem
             if (_ingredientModel.Ingredients[buttonIndex] != null)
             {
                 _ingredientModel.Ingredients[buttonIndex].Quantity++;
+                _playerStatistics.Money -= _ingredientModel.Ingredients[buttonIndex].Price;
+                
             }
         }
 
@@ -121,9 +134,10 @@ namespace FoodSystem
         {
             private readonly IngredientModel _ingredientModel = new();
             private readonly FoodItemModel _foodItemModel = new();
-            public IngredientController Build(IngredientView ingredientView)
+            public IngredientController Build(IngredientView ingredientView, PlayerStatistics playerStatistics)
+ 
             {
-                return new IngredientController(_ingredientModel, ingredientView, _foodItemModel);
+                return new IngredientController(_ingredientModel, ingredientView, _foodItemModel, playerStatistics);
             }
             
             public Builder WithIngredients(List<Ingredient> ingredients)

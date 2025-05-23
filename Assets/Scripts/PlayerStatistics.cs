@@ -9,14 +9,14 @@ public class PlayerStatistics : ScriptableObject
 {
     [SerializeField] private float money;
 
-    public event Action<float> OnMoneyChanged; 
+    public event Action OnMoneyChanged; 
     public float Money
     {
         get => money;
         set
         {
             money = value;
-            OnMoneyChanged?.Invoke(money);
+            OnMoneyChanged?.Invoke();
         }
     }
 }

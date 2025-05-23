@@ -16,11 +16,11 @@ public class MoneyText: MonoBehaviour
 
     public void Initialize()
     {
-        UpdateMoneyText(playerStatistics.Money);
+        UpdateMoneyText();
     }
 
-    private void UpdateMoneyText(float money)
+    private void UpdateMoneyText()
     {
-        moneyText.text = "Php" + money.ToString("F2");
+        moneyText.text = "Php" + playerStatistics.Money.ToString("F2");
     }
 }

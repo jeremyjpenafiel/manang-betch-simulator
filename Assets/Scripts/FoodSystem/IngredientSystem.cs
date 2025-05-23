@@ -7,16 +7,25 @@ using UnityEngine;
 public class IngredientSystem : MonoBehaviour
 {
     [SerializeField] IngredientView ingredientView;
-    [SerializeField] List<Ingredient> ingredientDataList;
+    [Header("Protein")]
+    [SerializeField] List<Ingredient> proteinList;
+    [Header("Fruits and Vegetables")]
+    [SerializeField] List<Ingredient> fruitsAndVegetables;
+    [Header("Condiments and Seasonings")]
+    [SerializeField] List<Ingredient> condimentsAndSeasonings;
+    
     [SerializeField] List<FoodItem> foodItems;
     [SerializeField] List<FoodItem> foodItemList;
+    [SerializeField] PlayerStatistics playerStatistics;
     IngredientController ingredientController;
 
     private void Awake()
     {
         ingredientController = new IngredientController.Builder()
-            .WithIngredients(ingredientDataList)
+            .WithIngredients(proteinList)
+            .WithIngredients(fruitsAndVegetables)
+            .WithIngredients(condimentsAndSeasonings)
             .WithFoodItems(foodItems)
-            .Build(ingredientView);
+            .Build(ingredientView, playerStatistics);
     }
 }
