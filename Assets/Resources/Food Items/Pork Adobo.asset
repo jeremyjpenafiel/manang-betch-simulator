@@ -16,10 +16,6 @@ MonoBehaviour:
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 5cee6917d95dc2c4e85b689a35f576da, type: 2}
     amount: 3
-  - ingredient: {fileID: 11400000, guid: 4493702d617894c43b573144ead3e0e7, type: 2}
-    amount: 3
-  - ingredient: {fileID: 11400000, guid: 13fb539f6082f734eb0b724ce2e7b790, type: 2}
-    amount: 3
   - ingredient: {fileID: 11400000, guid: ece43cf7cb7e8e74f93b11f6afa235f8, type: 2}
     amount: 3
   - ingredient: {fileID: 11400000, guid: f423647e6d9d8bd459c03a60504ca363, type: 2}
@@ -30,4 +26,8 @@ MonoBehaviour:
     amount: 3
   - ingredient: {fileID: 11400000, guid: 9814b7175ce0bb24a9c8384163574b86, type: 2}
     amount: 0
+  - ingredient: {fileID: 11400000, guid: 4493702d617894c43b573144ead3e0e7, type: 2}
+    amount: 3
+  - ingredient: {fileID: 11400000, guid: 13fb539f6082f734eb0b724ce2e7b790, type: 2}
+    amount: 3
   quantity: 0

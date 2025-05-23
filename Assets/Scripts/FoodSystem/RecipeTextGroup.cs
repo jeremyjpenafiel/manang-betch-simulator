@@ -6,9 +6,12 @@ namespace FoodSystem
     {
         [SerializeField] public IngredientText recipeName;
         [SerializeField] public IngredientButton cookButton;
-        
-        
-        
+
+
+        public void Initialize()
+        {
+            recipeName.Initialize();
+        }
         
     }
 }

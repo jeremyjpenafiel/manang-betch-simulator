@@ -12,5 +12,13 @@ namespace FoodSystem
         {
             FoodItems.Add(foodItem);
         }
+
+        public void Initialize()
+        {
+            foreach (FoodItem foodItem in FoodItems)
+            {
+                foodItem.Initialize();
+            }
+        }
     }
 }

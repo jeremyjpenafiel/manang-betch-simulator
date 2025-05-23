@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks.Triggers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,7 +11,7 @@ namespace FoodSystem
         [SerializeField] TMP_FontAsset font;
         [SerializeField] int ingredientTextYOffset = -65;
         [SerializeField] int ingredientTextXCoordinate = 200;
-        [SerializeField] int ingredientQuantityXCoordinate = 100;
+        [SerializeField] int ingredientQuantityXCoordinate = 0;
         
         [FormerlySerializedAs("ingredients")]
         [Header("Ingredients")]
@@ -26,11 +27,13 @@ namespace FoodSystem
             for(int i =0; i < ingredientsTextGroups.Count; i++)
             {
                 ingredientsTextGroups[i].addIngredientButton.Initialize(i);
+                ingredientsTextGroups[i].Initialize();
             }
             
             for(int i =0; i < recipeTextGroups.Count; i++)
             {
                 recipeTextGroups[i].cookButton.Initialize(i);
+                recipeTextGroups[i].Initialize();
             }
         }
 
@@ -48,21 +51,26 @@ namespace FoodSystem
                 // ingredient names
                 TextMeshProUGUI ingredientName = new GameObject().AddComponent<TextMeshProUGUI>();
                 ingredientName.transform.SetParent(recipeNameTransform);
+                
                             
-                Instantiate(ingredientName);
                 
                 ingredientName.text = ingredientRequirement.Ingredient.IngredientName;
                 ingredientName.font = font;
+                ingredientName.fontSize = 50;
+                ingredientName.fontStyle = FontStyles.Bold;
+                ingredientName.enableWordWrapping = false;
                 ingredientName.UpdateFontAsset();
                 ingredientName.transform.localPosition = new Vector3(ingredientTextXCoordinate, (i+1)*ingredientTextYOffset, 0);
                 
                 //ingredient quantities
                 TextMeshProUGUI ingredientQuantity = new GameObject().AddComponent<TextMeshProUGUI>();
                 ingredientQuantity.transform.SetParent(recipeNameTransform);
-                Instantiate(ingredientQuantity);
                 
                 ingredientQuantity.text = $"{ingredientRequirement.Ingredient.Quantity}/{ingredientRequirement.Amount}";
                 ingredientQuantity.font = font;
+                ingredientQuantity.fontSize = 50;
+                ingredientQuantity.fontStyle = FontStyles.Bold;
+                ingredientQuantity.enableWordWrapping = false;
                 ingredientQuantity.UpdateFontAsset();
                 ingredientQuantity.transform.localPosition = new Vector3(ingredientQuantityXCoordinate, (i+1)*ingredientTextYOffset, 0);
                 
