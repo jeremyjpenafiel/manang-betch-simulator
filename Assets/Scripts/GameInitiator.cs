@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameInitiator : MonoBehaviour
 {
-    [SerializeField] private new Camera camera;
+    [SerializeField] private GameObject camera;
     [SerializeField] private Light mainDirectionalLight;
     [SerializeField] private EventSystem mainEventSystem;
     [SerializeField] private Canvas loadingCanvas;
