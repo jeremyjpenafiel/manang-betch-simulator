@@ -11,6 +11,7 @@ public class GameInitiator : MonoBehaviour
     [SerializeField] private EventSystem mainEventSystem;
     [SerializeField] private Canvas loadingCanvas;
     [SerializeField] private MoneyText moneyText;
+    [SerializeField] private GameObject player;
     
     // [SerializeField] private IngredientSystem ingredientSystem;
     private async void Start()
@@ -29,6 +30,7 @@ public class GameInitiator : MonoBehaviour
         // ingredientSystem = Instantiate(ingredientSystem);
         loadingCanvas = Instantiate(loadingCanvas);
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
+        player = Instantiate(player);
         
     }
 

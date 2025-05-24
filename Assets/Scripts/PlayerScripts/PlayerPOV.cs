@@ -16,7 +16,12 @@ public class PlayerPOV : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        
+        //find orientation object under Player object
+        if (orientation == null)
+        {
+            orientation = GameObject.Find("Orientation").transform;
+        }
+
     }
 
     void Update()
