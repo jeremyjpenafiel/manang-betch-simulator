@@ -10,6 +10,7 @@ public class GameInitiator : MonoBehaviour
     [SerializeField] private Light mainDirectionalLight;
     [SerializeField] private EventSystem mainEventSystem;
     [SerializeField] private Canvas loadingCanvas;
+    [SerializeField] private MoneyText moneyText;
     
     // [SerializeField] private IngredientSystem ingredientSystem;
     private async void Start()
@@ -21,6 +22,8 @@ public class GameInitiator : MonoBehaviour
     private void BindObjects()
     {
         camera = Instantiate(camera);
+        // moneyText = camera.GetComponentInChildren<MoneyText>();
+        // moneyText.Initialize();
         mainDirectionalLight = Instantiate(mainDirectionalLight);
         mainEventSystem = Instantiate(mainEventSystem);
         // ingredientSystem = Instantiate(ingredientSystem);

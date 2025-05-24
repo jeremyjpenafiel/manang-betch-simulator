@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f666399c276044593200977112e190, type: 3}
   m_Name: Chicken
   m_EditorClassIdentifier: 
-  name: Chicken
-  quantity: 0
-  price: 0
+  ingredientName: Chicken
+  quantity: 10
+  price: 10

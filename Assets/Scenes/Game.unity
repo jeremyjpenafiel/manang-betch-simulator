@@ -156,7 +156,6 @@ MonoBehaviour:
   mainDirectionalLight: {fileID: 7013272498692066545, guid: b7519e43a9d52f546afa214141ef405d, type: 3}
   mainEventSystem: {fileID: 1344353825160686575, guid: 9a1c16dfe7152414abd8da130bf6fd69, type: 3}
   loadingCanvas: {fileID: 2225804304058305412, guid: 8d64a65ef9c11304f97f1a4907911648, type: 3}
-  ingredientSystem: {fileID: 3965582904656837071, guid: 37170edb349772c42b52d2113dfadf46, type: 3}
 --- !u!4 &1274995140
 Transform:
   m_ObjectHideFlags: 0
