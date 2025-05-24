@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerPOV : MonoBehaviour
 {
-    [SerializeField] private float upwardLookLimit = 90f;
-    [SerializeField] private float downwardLookLimit = -90f;
+    [SerializeField] private float downwardLookLimit = 30f;
+    [SerializeField] private float upwardLookLimit = -90;
     [SerializeField] private float sensX;
     [SerializeField] private float sensY;
 
@@ -16,7 +16,12 @@ public class PlayerPOV : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        
+        //find orientation object under Player object
+        if (orientation == null)
+        {
+            orientation = GameObject.Find("Orientation").transform;
+        }
+
     }
 
     void Update()
@@ -26,7 +31,7 @@ public class PlayerPOV : MonoBehaviour
 
         yRotation += mouseX;
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, downwardLookLimit, upwardLookLimit);
+        xRotation = Mathf.Clamp(xRotation, upwardLookLimit, downwardLookLimit);
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);

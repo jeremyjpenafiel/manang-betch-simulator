@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,10 +152,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77c6f1b5cd9679418a18b605ee426d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 5772432529906363697, guid: 3eca653007868294fb8120b1db8fc48b, type: 3}
+  camera: {fileID: 8743524729495584481, guid: 30d46fb51bb6e85469c6acc9fc0a2e9d, type: 3}
   mainDirectionalLight: {fileID: 7013272498692066545, guid: b7519e43a9d52f546afa214141ef405d, type: 3}
-  mainEventSystem: {fileID: 1344353825160686575, guid: 9a1c16dfe7152414abd8da130bf6fd69, type: 3}
+  mainEventSystem: {fileID: 8280403417749070734, guid: 9eac8c7f5b5bd0e48bd07dc3d3040099, type: 3}
   loadingCanvas: {fileID: 2225804304058305412, guid: 8d64a65ef9c11304f97f1a4907911648, type: 3}
+  moneyText: {fileID: 0}
+  player: {fileID: 1119046504374650959, guid: ffe50aed3a5e0874bb070e1b51e66592, type: 3}
 --- !u!4 &1274995140
 Transform:
   m_ObjectHideFlags: 0
