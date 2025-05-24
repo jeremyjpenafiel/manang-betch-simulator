@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FoodSystem
 {
-    public class FoodItemModel : MonoBehaviour
+    public class FoodItemModel
     {
         public readonly List<FoodItem> FoodItems = new();
     
@@ -11,6 +11,14 @@ namespace FoodSystem
         public void AddFoodItem(FoodItem foodItem)
         {
             FoodItems.Add(foodItem);
+        }
+
+        public void Initialize()
+        {
+            foreach (FoodItem foodItem in FoodItems)
+            {
+                foodItem.Initialize();
+            }
         }
     }
 }

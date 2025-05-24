@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Eggplant
   m_EditorClassIdentifier: 
   ingredientName: Eggplant
-  quantity: 0
-  price: 0
+  quantity: 123
+  price: 123

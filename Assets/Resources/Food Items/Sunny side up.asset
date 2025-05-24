@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ea2b98e6c7dec489a39b3f1f04dcdc, type: 3}
+  m_Name: Sunny side up
+  m_EditorClassIdentifier: 
+  foodItemName: Sunny Side Up
+  requiredIngredients:
+  - ingredient: {fileID: 11400000, guid: 8ed9025f75a611f4985d2669e746363b, type: 2}
+    amount: 1
+  - ingredient: {fileID: 11400000, guid: 039bded6db6c64c4e938eb093ef735a0, type: 2}
+    amount: 1
+  - ingredient: {fileID: 11400000, guid: 9814b7175ce0bb24a9c8384163574b86, type: 2}
+    amount: 1
+  quantity: 0
