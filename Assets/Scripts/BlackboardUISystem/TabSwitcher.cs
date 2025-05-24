@@ -5,14 +5,46 @@ namespace BlackboardUISystem
 {
     public class TabSwitcher: MonoBehaviour
     {
+        
         [SerializeField] private GameObject ingredientTab;
         [SerializeField] private GameObject recipeTab;
         
-        
+        [Header("Ingredient Category Pages")]
         [SerializeField] private GameObject proteinTab;
         [SerializeField] private GameObject vegetableTab;
         [SerializeField] private GameObject condimentTab;
+
+        [Header("Recipe Pages")] 
+        [SerializeField] private GameObject recipeFirstPage;
+        [SerializeField] private GameObject recipeSecondPage;
+        [SerializeField] private GameObject recipeThirdPage;
+
+        public void OpenBlackboardd()
+        {
+            SwitchToIngredientTab();
+            SwitchToRecipeFirstPage();
+        }
         
+        
+        public void SwitchToRecipeFirstPage()
+        {
+            recipeFirstPage.SetActive(true);
+            recipeSecondPage.SetActive(false);
+            recipeThirdPage.SetActive(false);
+        }
+        
+        public void SwitchToRecipeSecondPage()
+        {
+            recipeFirstPage.SetActive(false);
+            recipeSecondPage.SetActive(true);
+            recipeThirdPage.SetActive(false);
+        }
+        public void SwitchToRecipeThirdPage()
+        {
+            recipeFirstPage.SetActive(false);
+            recipeSecondPage.SetActive(false);
+            recipeThirdPage.SetActive(true);
+        }
         
         public void SwitchToCondimentTab()
         {

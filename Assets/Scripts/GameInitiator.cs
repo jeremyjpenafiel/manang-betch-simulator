@@ -22,8 +22,8 @@ public class GameInitiator : MonoBehaviour
     private void BindObjects()
     {
         camera = Instantiate(camera);
-        moneyText = camera.GetComponentInChildren<MoneyText>();
-        moneyText.Initialize();
+        // moneyText = camera.GetComponentInChildren<MoneyText>();
+        // moneyText.Initialize();
         mainDirectionalLight = Instantiate(mainDirectionalLight);
         mainEventSystem = Instantiate(mainEventSystem);
         // ingredientSystem = Instantiate(ingredientSystem);

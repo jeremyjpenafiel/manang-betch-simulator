@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FoodSystem
 {
-    public class FoodItemModel : MonoBehaviour
+    public class FoodItemModel
     {
         public readonly List<FoodItem> FoodItems = new();
     
