@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float groundDrag;
+    [SerializeField] private float moveSpeed = 150f;
+    [SerializeField] private float groundDrag = 25f;
 
     [Header("Ground Check")]
-    [SerializeField] private float playerHeight;
+    [SerializeField] private float playerHeight = 75f;
     private LayerMask whatIsGround;
     private bool grounded;
     [SerializeField] public Transform orientation;
@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
+
         UserInput();
         SpeedControl();
 
@@ -41,6 +42,9 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
+
+        Debug.Log("Grounded: " + grounded);
+
     }
 
     private void FixedUpdate()
