@@ -12,6 +12,7 @@ public class GameInitiator : MonoBehaviour
     [SerializeField] private Canvas loadingCanvas;
     [SerializeField] private MoneyText moneyText;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject cubPrefab;
     
     // [SerializeField] private IngredientSystem ingredientSystem;
     private async void Start()
@@ -22,15 +23,18 @@ public class GameInitiator : MonoBehaviour
 
     private void BindObjects()
     {
-        camera = Instantiate(camera);
+        // camera = Instantiate(camera, Vector3.zero, Quaternion.identity);
+        // camera = Instantiate(camera);
         // moneyText = camera.GetComponentInChildren<MoneyText>();
         // moneyText.Initialize();
-        mainDirectionalLight = Instantiate(mainDirectionalLight);
-        mainEventSystem = Instantiate(mainEventSystem);
+        mainDirectionalLight = Instantiate(mainDirectionalLight, Vector3.zero, Quaternion.identity);
+        mainEventSystem = Instantiate(mainEventSystem, Vector3.zero, Quaternion.identity);
         // ingredientSystem = Instantiate(ingredientSystem);
         loadingCanvas = Instantiate(loadingCanvas);
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
-        player = Instantiate(player);
+        // SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
+        cubPrefab = Instantiate(cubPrefab, Vector3.zero, Quaternion.identity);
+        // player at -9757, 15426, 2851
+        player = Instantiate(player, new Vector3(-9190, 1033, 2221), Quaternion.identity);
         
     }
 

@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 2382791873759149860}
   - component: {fileID: 1988925912338305048}
   - component: {fileID: 8304996609293776889}
-  - component: {fileID: -6194960548082637910}
-  - component: {fileID: 2123596878946652583}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -77,45 +75,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc19d7c61080404187cdcfbb6b98e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1000
-  groundDrag: 0
-  playerHeight: 200
+  moveSpeed: 150
+  groundDrag: 25
+  playerHeight: 200000
   orientation: {fileID: 5901047180579659434}
---- !u!114 &-6194960548082637910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1119046504374650959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!114 &2123596878946652583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1119046504374650959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 044a8f80ba0259b4a9a83a49d0de8b86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!1 &3003959674613203309
 GameObject:
   m_ObjectHideFlags: 0
