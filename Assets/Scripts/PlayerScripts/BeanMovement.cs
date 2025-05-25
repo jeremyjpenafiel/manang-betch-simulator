@@ -6,28 +6,26 @@ using UnityEngine;
  
 public class Movement : MonoBehaviour
 {
-    [SerializeField] Transform playerCamera;
-    [SerializeField][Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
-    [SerializeField] bool cursorLock = true;
-    [SerializeField] float mouseSensitivity = 3.5f;
-    [SerializeField] float Speed = 6.0f;
-    [SerializeField][Range(0.0f, 0.5f)] float moveSmoothTime = 0.3f;
-    [SerializeField] float gravity = -30f;
-    [SerializeField] Transform groundCheck;
-    [SerializeField] LayerMask ground;  
+    [SerializeField] private Transform playerCamera;
+    [SerializeField][Range(0.0f, 0.5f)] private float mouseSmoothTime = 0.03f;
+    [SerializeField] private bool cursorLock = true;
+    [SerializeField] private float mouseSensitivity = 3.5f;
+    [SerializeField] private float Speed = 6.0f;
+    [SerializeField][Range(0.0f, 0.5f)] private float moveSmoothTime = 0.3f;
+    [SerializeField] private float gravity = -30f;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask ground;  
+    private float velocityY;
+    private bool isGrounded;
  
-    public float jumpHeight = 6f;
-    float velocityY;
-    bool isGrounded;
- 
-    float cameraCap;
-    Vector2 currentMouseDelta;
-    Vector2 currentMouseDeltaVelocity;
+    private float cameraCap;
+    private Vector2 currentMouseDelta;
+    private Vector2 currentMouseDeltaVelocity;
     
-    CharacterController controller;
-    Vector2 currentDir;
-    Vector2 currentDirVelocity;
-    Vector3 velocity;
+    private CharacterController controller;
+    private Vector2 currentDir;
+    private Vector2 currentDirVelocity;
+    private Vector3 velocity;
  
     void Start()
     {
@@ -64,7 +62,6 @@ public class Movement : MonoBehaviour
     void UpdateMove()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, ground);
- 
         Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         targetDir.Normalize();
  
@@ -76,14 +73,9 @@ public class Movement : MonoBehaviour
  
         controller.Move(velocity * Time.deltaTime);
  
-        if (isGrounded && Input.GetButtonDown("Jump"))
-        {
-            velocityY = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
- 
-        if(isGrounded! && controller.velocity.y < -1f)
-        {
-            velocityY = -8f;
-        }
+        // if(isGrounded! && controller.velocity.y < -1f)
+        // {
+        //     velocityY = -200f;
+        // }
     }
 }
