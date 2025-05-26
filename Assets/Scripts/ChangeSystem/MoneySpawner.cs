@@ -18,9 +18,14 @@ namespace ChangeSystem
             // Instantiate the money prefab at the spawn point
             if (money != null)
             {
+                CashRegisterMoney cashRegisterMoney = money.GetComponent<CashRegisterMoney>();
+                Destroy(cashRegisterMoney);
                 Debug.Log("Money prefab found, instantiating...");
                 Debug.Log(money.name);
-                _moneyStack.Push(Instantiate(money, transform.position, Quaternion.identity));
+                var obj = Instantiate(money, transform.position, Quaternion.Euler(0,0,0));
+                Rigidbody rb  = obj.AddComponent<Rigidbody>();
+                rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+                _moneyStack.Push(obj);
                 
             }
             else

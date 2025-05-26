@@ -14,7 +14,7 @@ namespace ChangeSystem
             Debug.Log("asdasd");
             if (Input.GetMouseButtonDown(0))
             {
-                OnMoneyAdded?.Invoke(moneyPrefab);
+                OnMoneyAdded?.Invoke(gameObject);
             }
             else if (Input.GetMouseButtonDown(1))
             {
