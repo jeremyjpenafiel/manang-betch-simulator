@@ -10,9 +10,4 @@ public class SpawnPoint : MonoBehaviour
         spawner = spawnerRef;
         index = spawnIndex;
     }
-
-    private void OnMouseDown()
-    {
-        spawner.TryPlaceHeldDish(index);
-    }
 }
