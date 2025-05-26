@@ -1,43 +1,44 @@
 using UnityEngine;
 
-public class DishClickHandler : MonoBehaviour
+public class DishBehavior : MonoBehaviour
 {
-    private Transform handTransform;
+    private bool isHeld = false;
 
-    public void SetPlayer(GameObject player)
+    public void SetHeld(bool held)
     {
-        // Find the "Hand" object in the player prefab (by name or tag or assigned manually)
-        handTransform = player.transform.Find("Hand");
-
-        if (handTransform == null)
-        {
-            Debug.LogError("Hand transform not found on player!");
-        }
+        isHeld = held;
     }
 
-    void Update()
+    private void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0) && handTransform != null)
+        if (isHeld) return;
+
+        GameObject bean = GameObject.Find("Bean(Clone)");
+        if (bean == null) return;
+
+        Transform hand = bean.transform.Find("Hand");
+        if (hand == null) return;
+
+        // Clear previous slot
+        DishSpawner spawner = FindObjectOfType<DishSpawner>();
+        if (spawner != null)
+            spawner.ClearDishFromSpawn(gameObject);
+
+        transform.SetParent(hand);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+        isHeld = true;
+
+        Collider col = GetComponent<Collider>();
+        if (col) col.enabled = false;
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                GameObject clickedObject = hit.collider.gameObject;
-
-                if (clickedObject.CompareTag("Dish"))
-                {
-                    clickedObject.transform.SetParent(handTransform);
-                    clickedObject.transform.localPosition = Vector3.zero;
-                    clickedObject.transform.localRotation = Quaternion.identity;
-
-                    // Optional: disable physics so it doesn't fall
-                    if (clickedObject.TryGetComponent<Rigidbody>(out var rb))
-                    {
-                        rb.isKinematic = true;
-                    }
-                }
-            }
+            rb.isKinematic = true;
+            rb.useGravity = false;
         }
+
+        Debug.Log($"{gameObject.name} picked up and attached to hand.");
     }
 }
