@@ -10,19 +10,23 @@ namespace FoodSystem
         private readonly IngredientView _ingredientView;
         private readonly FoodItemModel _foodItemModel;
         private readonly PlayerStatistics _playerStatistics;
+        private readonly DishSpawner _dishSpawner;
         
         
-        IngredientController(IngredientModel ingredientModel, 
-            IngredientView ingredientView, 
+        IngredientController(IngredientModel ingredientModel,
+            IngredientView ingredientView,
             FoodItemModel foodItemModel,
-            PlayerStatistics playerStatistics)
-        
+            PlayerStatistics playerStatistics,
+            DishSpawner dishSpawner)
+
         {
             _ingredientModel = ingredientModel;
             _ingredientView = ingredientView;
             _foodItemModel = foodItemModel;
             _playerStatistics = playerStatistics;
-            
+            _dishSpawner = dishSpawner;
+
+
             InitializeModels();
 
             ConnectIngredientModel();
@@ -121,13 +125,24 @@ namespace FoodSystem
             }
 
         }
-        
+
         // buttonIndex is the index of the food item in the list
         private void OnFoodItemBought(int buttonIndex)
         {
-            _foodItemModel.FoodItems[buttonIndex].Quantity++;
-            _foodItemModel.FoodItems[buttonIndex].Purchase();
-            
+            // _foodItemModel.FoodItems[buttonIndex].Quantity++;
+            // _foodItemModel.FoodItems[buttonIndex].Purchase();
+
+            // // instantiate the food item prefab
+            // GameObject foodItemPrefab = _foodItemModel.FoodItems[buttonIndex].foodPrefab;
+            // GameObject.Instantiate(foodItemPrefab);
+
+            var foodItem = _foodItemModel.FoodItems[buttonIndex];
+
+            if (_dishSpawner.TrySpawnDish(foodItem.foodPrefab))
+            {
+                foodItem.Quantity++;
+                foodItem.Purchase();
+            }
         }
 
         // buttonIndex is the index of the ingredient in the list
@@ -145,10 +160,10 @@ namespace FoodSystem
         {
             private readonly IngredientModel _ingredientModel = new();
             private readonly FoodItemModel _foodItemModel = new();
-            public IngredientController Build(IngredientView ingredientView, PlayerStatistics playerStatistics)
+            public IngredientController Build(IngredientView ingredientView, PlayerStatistics playerStatistics, DishSpawner dishSpawner)
  
             {
-                return new IngredientController(_ingredientModel, ingredientView, _foodItemModel, playerStatistics);
+                return new IngredientController(_ingredientModel, ingredientView, _foodItemModel, playerStatistics, dishSpawner);
             }
             
             public Builder WithIngredients(List<Ingredient> ingredients)

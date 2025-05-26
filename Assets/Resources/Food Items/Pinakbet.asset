@@ -29,3 +29,5 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 671dc41b564ec854b99ca73e50156325, type: 2}
     amount: 1
   quantity: 0
+  UserPrice: 20
+  foodPrefab: {fileID: 3785759144971018571, guid: fd8af456d9207e045b1953a5a35fe2f0, type: 3}

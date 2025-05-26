@@ -252,9 +252,7 @@ MonoBehaviour:
   mouseSmoothTime: 0.03
   cursorLock: 1
   mouseSensitivity: 3.5
-
-  Speed: 5000
-
+  Speed: 2500
   moveSmoothTime: 0.3
   gravity: -98
   groundCheck: {fileID: 3149788492787194015}
