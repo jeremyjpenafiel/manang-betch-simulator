@@ -64,8 +64,14 @@ public class Movement : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, ground);
         Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         targetDir.Normalize();
- 
+
         currentDir = Vector2.SmoothDamp(currentDir, targetDir, ref currentDirVelocity, moveSmoothTime);
+
+        if (targetDir == Vector2.zero && currentDir.magnitude < 0.01f)
+        {
+            currentDir = Vector2.zero;
+            currentDirVelocity = Vector2.zero;
+        }
  
         velocityY += gravity * 2f * Time.deltaTime;
  

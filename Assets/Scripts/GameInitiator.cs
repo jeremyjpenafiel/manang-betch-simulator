@@ -31,8 +31,8 @@ public class GameInitiator : MonoBehaviour
         mainEventSystem = Instantiate(mainEventSystem, Vector3.zero, Quaternion.identity);
         // ingredientSystem = Instantiate(ingredientSystem);
         loadingCanvas = Instantiate(loadingCanvas);
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
-        // cubPrefab = Instantiate(cubPrefab, Vector3.zero, Quaternion.identity);
+        // SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
+        cubPrefab = Instantiate(cubPrefab, Vector3.zero, Quaternion.identity);
         // player at -9757, 15426, 2851
         player = Instantiate(player, new Vector3(-9190, 1033, 2221), Quaternion.identity);
         
