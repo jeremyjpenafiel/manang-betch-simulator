@@ -7,6 +7,7 @@ namespace ChangeSystem
     {
         private Transform _moneySpawnPoint;
         private readonly Stack<GameObject> _moneyStack = new();
+        private float currentChangeValue = 0f;
         
         public void OnMoneyAdded(GameObject money)
         {
@@ -19,7 +20,7 @@ namespace ChangeSystem
             if (money != null)
             {
                 CashRegisterMoney cashRegisterMoney = money.GetComponent<CashRegisterMoney>();
-                Destroy(cashRegisterMoney);
+                //Destroy(cashRegisterMoney);
                 Debug.Log("Money prefab found, instantiating...");
                 Debug.Log(money.name);
                 var obj = Instantiate(money, transform.position, Quaternion.Euler(0,0,0));
@@ -34,11 +35,14 @@ namespace ChangeSystem
             }
         }
         
-        public void OnMoneyRemoved(GameObject money)
+        public void OnMoneyRemoved()
         {
             if (_moneyStack.TryPop(out GameObject top))
             {
+                CashRegisterMoney cashRegisterMoney = top.GetComponent<CashRegisterMoney>();
+                currentChangeValue -= top.value;
                 Destroy(top);
+            
             }
             else
             {

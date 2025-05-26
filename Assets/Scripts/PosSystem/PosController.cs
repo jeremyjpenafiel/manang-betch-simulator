@@ -62,6 +62,7 @@ namespace PosSystem
                     if (index == 0)
                     {
                         _posView.OpenCashRegister();
+                        
                     }
                     else if (index == 1)
                     {

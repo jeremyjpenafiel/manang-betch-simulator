@@ -16,20 +16,20 @@ namespace ChangeSystem
             {
                 OnMoneyAdded?.Invoke(gameObject);
             }
-            else if (Input.GetMouseButtonDown(1))
-            {
-                Debug.Log("Right click detected");
-                OnMoneyRemoved?.Invoke(gameObject);
-            }
+            // else if (Input.GetMouseButtonDown(1))
+            // {
+            //     Debug.Log("Right click detected");
+            //     OnMoneyRemoved?.Invoke(gameObject);
+            // }
         }
 
         public void RegisterAddMoneyListener(Action<GameObject> listener)
         {
             OnMoneyAdded += listener;
         }
-        public void RegisterRemoveMoneyListener(Action<GameObject> listener)
-        {
-            OnMoneyRemoved += listener;
-        }
+        // public void RegisterRemoveMoneyListener(Action<GameObject> listener)
+        // {
+        //     OnMoneyRemoved += listener;
+        // }
     }
 }
