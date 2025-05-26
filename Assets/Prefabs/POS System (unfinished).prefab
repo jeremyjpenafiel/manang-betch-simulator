@@ -470,7 +470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00072911795, y: 300.00052}
+  m_AnchoredPosition: {x: -0.00072911795, y: 0}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!23 &4578420684664715132
@@ -577,7 +577,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 16
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -732,8 +732,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4768525116203211811}
   m_HandleRect: {fileID: 2612009884398995498}
   m_Direction: 0
-  m_Value: 2.142857
-  m_Size: 0.999999
+  m_Value: 1
+  m_Size: 0.99999905
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -936,6 +936,7 @@ MonoBehaviour:
   foodItemSlots:
   - {fileID: 9098144463171998750}
   - {fileID: 6142148576070096576}
+  playerStatistics: {fileID: 11400000, guid: a0e03bdde5b72994ca239cc8a682fc0b, type: 2}
 --- !u!1 &8220492779672955938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,16 +1192,16 @@ MonoBehaviour:
   m_Content: {fileID: 5520383105864176059}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
-  m_Elasticity: 0.1
+  m_MovementType: 1
+  m_Elasticity: 1.5
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 25
   m_Viewport: {fileID: 3965323641669988216}
   m_HorizontalScrollbar: {fileID: 6113498955301521083}
   m_VerticalScrollbar: {fileID: 3519524661771838497}
   m_HorizontalScrollbarVisibility: 2
-  m_VerticalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 1
   m_HorizontalScrollbarSpacing: 0
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
@@ -1389,7 +1390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4286464801279214548, guid: bdffd6d7ee9938b4d8cef4d8b786945a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4651062490247522080, guid: bdffd6d7ee9938b4d8cef4d8b786945a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1440,10 +1441,10 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 411475688123827939, guid: bdffd6d7ee9938b4d8cef4d8b786945a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1448744215375416704}
+      addedObject: {fileID: 6125195352584356559}
     - targetCorrespondingSourceObject: {fileID: 411475688123827939, guid: bdffd6d7ee9938b4d8cef4d8b786945a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6125195352584356559}
+      addedObject: {fileID: 1448744215375416704}
     - targetCorrespondingSourceObject: {fileID: 3474322234871830894, guid: bdffd6d7ee9938b4d8cef4d8b786945a, type: 3}
       insertIndex: 0
       addedObject: {fileID: 4673353236401335510}
@@ -1750,8 +1751,10 @@ MonoBehaviour:
   - {fileID: 8796122876077697224}
   paymentButtons: {fileID: 8102677690765476388}
   priceText: {fileID: 2576902115306023809}
+  totalPriceText: {fileID: 6894315584882316976}
   cashRegisterOpen: {fileID: 3457987002339943036}
   gcashPaymentReceipt: {fileID: 5609207956701175607}
+  resetButton: {fileID: 4237766910281470723}
 --- !u!1 &5341556849955006883 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6818639477218084875, guid: bdffd6d7ee9938b4d8cef4d8b786945a, type: 3}
@@ -1823,6 +1826,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19b2faed79b1447ab86e27f656c0226f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6894315584882316976 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5416755725144487704, guid: bdffd6d7ee9938b4d8cef4d8b786945a, type: 3}
+  m_PrefabInstance: {fileID: 1477648920180253096}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6943351583326377824 stripped

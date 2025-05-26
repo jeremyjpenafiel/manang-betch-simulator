@@ -10,8 +10,11 @@ namespace PosSystem
         [SerializeField] public List<PosButton> transactionButtons;
         [SerializeField] public PosButton paymentButtons;
         [SerializeField] private TextMeshProUGUI priceText;
+        [SerializeField] private TextMeshProUGUI totalPriceText;
         [SerializeField] private GameObject cashRegisterOpen;
         [SerializeField] private GameObject gcashPaymentReceipt;
+        [SerializeField] public PosButton resetButton;
+
 
 
         private void Awake()
@@ -28,11 +31,27 @@ namespace PosSystem
             {
                 transactionButtons[i].Initialize(i);
             }
+
+            resetButton.Initialize(0);
         }
+
 
         public void UpdatePriceText(string text)
         {
             priceText.text += $"{text}\n";
+        }
+
+        public void ClearPriceText()
+        {
+            priceText.text = "";
+            totalPriceText.text = "";
+        }
+
+        public void UpdateTotalPriceText(float text)
+        {
+
+            Debug.Log($"UpdateTotalPriceText: {text}");
+            totalPriceText.text = text.ToString("F2");
         }
 
         public void OpenCashRegister()
