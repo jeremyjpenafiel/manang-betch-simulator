@@ -1,6 +1,7 @@
 using System;
 using Order;
 using Sirenix.OdinInspector;
+using Unity.Collections;
 using UnityEngine;
 
 namespace NPCSystem
@@ -9,8 +10,15 @@ namespace NPCSystem
     {
         [Required, SerializeField] private QueueManager queueManager;
         [Required, SerializeField] private NpcSpawner npcSpawner;
-        [Required, SerializeField] private OrderSystem orderSystem;
+        [Sirenix.OdinInspector.ReadOnly, SerializeField] private OrderSystem orderSystem;
 
+
+        public void SetOrderSystem(OrderSystem system)
+        {
+            orderSystem = system;
+        }
+        
+        
         private void ConnectManagerToSpawner()
         {
             orderSystem.Initialize();

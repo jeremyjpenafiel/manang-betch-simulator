@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using NPCSystem;
 using Order;
 using Sirenix.OdinInspector;
+using Testing;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -19,12 +20,15 @@ public class GameInitiator : MonoBehaviour
     [Required, SerializeField] private NpcSystem npcSystem;
     [Required, SerializeField] private OrderCreator orderCreator;
     [Required, SerializeField] private GameManager gameManager;
+    [Required, SerializeField] private OrderChecker orderChecker;
+    [Required, SerializeField] private OrderSystem orderSystem;
+    [SerializeField] private GameObject testUtils;
     
-    // [SerializeField] private IngredientSystem ingredientSystem;
     private async void Start()
     {
         BindObjects();
         // await LoadScene();
+        Initialize();
     }
 
     private void BindObjects()
@@ -33,11 +37,20 @@ public class GameInitiator : MonoBehaviour
         mainDirectionalLight = Instantiate(mainDirectionalLight, Vector3.zero, Quaternion.identity);
         mainEventSystem = Instantiate(mainEventSystem, Vector3.zero, Quaternion.identity);
         loadingCanvas = Instantiate(loadingCanvas);
+        orderCreator = Instantiate(orderCreator);
+        orderChecker = Instantiate(orderChecker);
+        orderSystem = Instantiate(orderSystem);
         cubPrefab = Instantiate(cubPrefab, Vector3.zero, Quaternion.identity);
         player = Instantiate(player, new Vector3(-9190, 1033, 2221), Quaternion.identity);
         gameManager = Instantiate(gameManager, Vector3.zero, Quaternion.identity);
         npcSystem = Instantiate(npcSystem);
-        orderCreator = Instantiate(orderCreator);
+        testUtils = Instantiate(testUtils);
+    }
+
+    private void Initialize()
+    {
+        npcSystem.SetOrderSystem(orderSystem);
+        orderChecker.SetOrderSystem(orderSystem);
     }
 
     // private async UniTask LoadScene()

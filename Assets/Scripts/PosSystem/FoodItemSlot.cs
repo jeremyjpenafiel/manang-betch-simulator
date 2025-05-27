@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class FoodItemSlot : MonoBehaviour
 {
-   [CanBeNull] public FoodItem foodItem;
+   [CanBeNull] private FoodItem foodItem;
    public string FoodItemName => foodItem != null ? foodItem.FoodItemName : "No Food Item";
-   public void SetFoodItem(FoodItem item)
-   {
-      foodItem = item;
-   }
+
 
    public event Action OnFoodItemChanged;
    public FoodItem FoodItem

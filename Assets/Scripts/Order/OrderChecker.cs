@@ -6,26 +6,38 @@ namespace Order
 {
     public class OrderChecker: MonoBehaviour
     {
-        private static OrderChecker _instance;
-        public static Order Order;
-        
-        public static bool CheckOrder(FoodItem meal, FoodItem rice)
+        public static OrderChecker Instance;
+        [SerializeField] private OrderSystem _orderSystem;
+
+        public void SetOrderSystem(OrderSystem system)
         {
-            if (Order.meal == meal && Order.rice == rice)
+            _orderSystem = system;
+        }
+        
+        public  bool CheckOrder(FoodItem meal, FoodItem rice)
+        {
+            if (_orderSystem.CurrentOrder == null)
+            {
+                Debug.LogWarning("orderSystem order is null");
+                return false;
+            }
+            var order = (Order)_orderSystem.CurrentOrder;
+            if (order.meal == meal && order.rice == rice)
             {
                 Debug.Log("Order is correct.");
                 return true;
             }
-
+                
             Debug.Log("Order is incorrect.");
             return false;
+
         }
 
         private void Awake()
         {
-            if (_instance == null)
+            if (Instance == null)
             {
-                _instance = this;
+                Instance = this;
                 DontDestroyOnLoad(gameObject);
             }
             else
