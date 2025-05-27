@@ -7,19 +7,20 @@ TagManager:
   - Dish
   - PlayerHand
   - NPC
-
+  - Table
+  - FoodDisplay
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - 
   - 
   - 
   - 
-  - whatIsGround
+  - 
   - 
   - 
   - 
