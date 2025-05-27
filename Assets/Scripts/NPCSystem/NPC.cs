@@ -3,16 +3,20 @@ using System.Collections;
 using Cysharp.Threading.Tasks;
 using Pathfinding;
 using UnityEngine;
+using Order;
+using TMPro;
 
 namespace NPCSystem
 {
     public class Npc : Entity
     {
-        public Transaction CurrentTransaction { get; private set; }
+        // public Transaction CurrentTransaction { get; private set; }
         private AIDestinationSetter _aiDestinationSetter;
         private IAstarAI _ai;
         public Transform targetBeforeExit;
         public Transform exitTransform;
+        public Order.Order order;
+        public TextMeshProUGUI orderText;
 
         public void OnEnable()
         {
@@ -80,10 +84,10 @@ namespace NPCSystem
             
         }
 
-        public void StartTransaction(Order order)
-        {
-            string mop = "Mop"; // Replace with actual mop logic
-            CurrentTransaction = new Transaction(order, mop);
-        }
+        // public void StartTransaction(Order order)
+        // {
+        //     string mop = "Mop"; // Replace with actual mop logic
+        //     CurrentTransaction = new Transaction(order, mop);
+        // }
     }
 }

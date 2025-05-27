@@ -9,6 +9,18 @@ namespace NPCSystem
 {
     public class NpcSpawner : MonoBehaviour
     {
+        [Button]
+        private void PauseSpawn()
+        {
+            isPaused = true;
+        }
+
+        [Button]
+        private void ResumeSpawn()
+        {
+            isPaused = false;
+        }
+        
         [Required]
         [SerializeField] private QueueSlot queueStartPosition;
         
@@ -16,19 +28,21 @@ namespace NPCSystem
         [SerializeField] private Npc npcPrefab;
         [SerializeField] private float spawnFrequency = 100f;
 
+        public bool isPaused = true;
+
 
         public void Spawn()
         {
             var npc = Instantiate(npcPrefab, transform.position, Quaternion.identity);
             npc.SetDestination(queueStartPosition.transform);
         }
-        
+ 
 
         public async UniTaskVoid DoSpawn()
         {
             while (true)
             {
-                if (queueStartPosition.IsOccupied)
+                if (queueStartPosition.IsOccupied || isPaused)
                 {
                     await UniTask.Yield(); // Wait for the next frame
                     continue;
