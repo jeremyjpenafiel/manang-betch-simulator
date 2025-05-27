@@ -29,18 +29,19 @@ namespace Order
 
         public void UpdatePossibleMeals()
         {
+            Debug.Log("UPDATEE");
             possibleMeals.Clear();
             foreach (var slot in foodItemSlots)
             {
-                if (slot.FoodItem == null) return;
+                if (slot.FoodItem == null) continue;
                 possibleMeals.Add(slot.FoodItem);
             }
         }
 
         public Order CreateOrder()
         {
-            FoodItem randomFoodItem = possibleMeals[Random.Range(0, possibleMeals.Count)];
-            return new Order(randomFoodItem, _rice);
+            // FoodItem randomFoodItem = possibleMeals[Random.Range(0, possibleMeals.Count)];
+            return new Order(_rice, _rice);
         }
         
         public void SetRice(FoodItem riceItem)

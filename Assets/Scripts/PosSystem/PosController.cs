@@ -38,6 +38,7 @@ namespace PosSystem
 
                    foodItemSlot.OnFoodItemChanged += () =>
                    {
+                       
                        OrderCreator.instance.UpdatePossibleMeals();
                    };
                }
