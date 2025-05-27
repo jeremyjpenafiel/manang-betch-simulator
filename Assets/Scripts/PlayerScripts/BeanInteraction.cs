@@ -4,6 +4,7 @@ using FoodSystem;
 public class BeanInteraction : MonoBehaviour
 {
     private GameObject heldDish = null;
+    private GameObject heldTray = null;
     [SerializeField] private Transform hand;
 
     private void Update()
@@ -15,135 +16,159 @@ public class BeanInteraction : MonoBehaviour
             {
                 GameObject clicked = hit.collider.gameObject;
 
-                // PICK UP
-                if (heldDish == null && clicked.CompareTag("Dish"))
+                if (heldDish == null && heldTray == null)
+                {
+                    if (clicked.CompareTag("Dish"))
                     {
-                    Transform originalParent = clicked.transform.parent;
+                        TryPickUpDish(clicked);
+                    }
+                    else if (clicked.CompareTag("TrayPlate"))
+                    {
+                        TryPickUpTray();
+                    }
+                }
+                else if (heldDish != null)
+                {
+                    if (clicked.CompareTag("Table"))
+                    {
+                        TryPlaceDishOnTable(clicked);
+                    }
+                    else if (clicked.CompareTag("FoodDisplay"))
+                    {
+                        TryPlaceDishInFoodDisplay(clicked);
+                    }
+                }
+            }
+        }
+    }
 
-                    heldDish = clicked;
-                    heldDish.transform.SetParent(hand);
-                    heldDish.transform.localPosition = Vector3.zero;
-                    heldDish.transform.localRotation = Quaternion.identity;
+    private void TryPickUpDish(GameObject dish)
+    {
+        Transform originalParent = dish.transform.parent;
+
+        heldDish = dish;
+        heldDish.transform.SetParent(hand);
+        heldDish.transform.localPosition = Vector3.zero;
+        heldDish.transform.localRotation = Quaternion.identity;
+
+        Collider col = heldDish.GetComponent<Collider>();
+        if (col) col.enabled = false;
+
+        // From DishSpawner
+        DishSpawner spawner = originalParent.GetComponentInParent<DishSpawner>();
+        if (spawner != null)
+        {
+            spawner.ClearSpawnedDish(heldDish.transform);
+            Debug.Log($"{heldDish.name} picked up from spawn table.");
+            return;
+        }
+
+        // From FoodDisplay
+        GlassFoodDisplay display = originalParent.GetComponentInParent<GlassFoodDisplay>();
+        if (display != null)
+        {
+            Debug.Log($"{heldDish.name} picked up from food display.");
+            FoodItemSlot foodItemSlot = originalParent.GetComponent<FoodItemSlot>();
+            if (foodItemSlot != null)
+            {
+                foodItemSlot.SetFoodItem(null);
+                Debug.Log("Cleared food item from display slot.");
+            }
+        }
+    }
+
+    private void TryPickUpTray()
+    {
+        if (heldTray == null)
+        {
+            // instantiate the tray from the scene to the hand
+            // GameObject trayPrefab = Resources.Load<GameObject>("Tray_Plate");
+            heldTray.transform.localPosition = Vector3.zero;
+            heldTray.transform.localRotation = Quaternion.identity;
+
+            Collider col = heldTray.GetComponent<Collider>();
+            if (col) col.enabled = false;
+
+            Debug.Log("Picked up a tray.");
+        }
+        else
+        {
+            Debug.LogWarning("Already holding a tray.");
+        }
+    }
+
+    private void TryPlaceDishOnTable(GameObject table)
+    {
+        DishSpawner spawner = table.GetComponent<DishSpawner>() ?? table.GetComponentInParent<DishSpawner>();
+        if (spawner != null)
+        {
+            foreach (Transform spawnPoint in spawner.spawnPoints)
+            {
+                if (spawnPoint.childCount == 0)
+                {
+                    heldDish.transform.SetParent(spawnPoint);
+                    heldDish.transform.position = spawnPoint.position;
+                    heldDish.transform.rotation = spawnPoint.rotation;
 
                     Collider col = heldDish.GetComponent<Collider>();
-                    if (col) col.enabled = false;
+                    if (col) col.enabled = true;
 
-                    // Clear from DishSpawner (spawn table)
-                    DishSpawner spawner = originalParent.GetComponentInParent<DishSpawner>();
-                    if (spawner != null)
-                    {
-                        spawner.ClearSpawnedDish(heldDish.transform);
-                        Debug.Log($"{heldDish.name} picked up from spawn table.");
-                    }
-                    else
-                    {
-                        // Clear from GlassFoodDisplay (food display)
-                        GlassFoodDisplay display = originalParent.GetComponentInParent<GlassFoodDisplay>();
-                        if (display != null)
-                        {
-                            Debug.Log($"{heldDish.name} picked up from food display.");
-
-                            // Clear FoodItemSlot's reference
-                            FoodItemSlot foodItemSlot = originalParent.GetComponent<FoodItemSlot>();
-                            if (foodItemSlot != null)
-                            {
-                                foodItemSlot.SetFoodItem(null);
-                                Debug.Log("Cleared food item from display slot.");
-                            }
-                        }
-                    }
+                    spawner.SetDishAt(spawner.spawnPoints.IndexOf(spawnPoint), heldDish);
+                    Debug.Log($"{heldDish.name} placed on table.");
+                    heldDish = null;
+                    return;
                 }
-
-                // PLACE BACK ON TABLE
-                else if (heldDish != null && clicked.CompareTag("Table"))
-                {
-                    DishSpawner spawner = clicked.GetComponent<DishSpawner>();
-                    if (spawner == null)
-                        spawner = clicked.GetComponentInParent<DishSpawner>();
-
-                    if (spawner != null)
-                    {
-                        foreach (Transform spawnPoint in spawner.spawnPoints)
-                        {
-                            if (spawnPoint.childCount == 0)
-                            {
-                                heldDish.transform.SetParent(spawnPoint);
-                                heldDish.transform.position = spawnPoint.position;
-                                heldDish.transform.rotation = spawnPoint.rotation;
-
-                                Collider col = heldDish.GetComponent<Collider>();
-                                if (col) col.enabled = true;
-
-                                spawner.SetDishAt(spawner.spawnPoints.IndexOf(spawnPoint), heldDish);
-
-                                Debug.Log($"{heldDish.name} placed on table.");
-                                heldDish = null;
-                                return;
-                            }
-                        }
-
-                        Debug.Log("No free spawn point on the table.");
-                    }
-                }
-
-                // PUT DISH IN FOOD DISPLAY
-                else if (heldDish != null && clicked.CompareTag("FoodDisplay"))
-                {
-                    GlassFoodDisplay display = clicked.GetComponent<GlassFoodDisplay>();
-                    if (display == null)
-                    {
-                        display = clicked.GetComponentInParent<GlassFoodDisplay>();
-                    }
-
-                    if (display != null)
-                    {
-                        Transform emptySlot = display.GetFirstEmptySlot();
-                        if (emptySlot != null)
-                        {
-                            heldDish.transform.SetParent(emptySlot);
-                            heldDish.transform.position = emptySlot.position;
-                            heldDish.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
-
-                            DishReference reference = heldDish.GetComponent<DishReference>();
-                            if (reference != null && reference.foodItem != null)
-                            {
-                                FoodItem foodItem = reference.foodItem;
-                                FoodItemSlot foodItemSlot = emptySlot.GetComponent<FoodItemSlot>();
-                                if (foodItemSlot != null)
-                                {
-                                    foodItemSlot.SetFoodItem(foodItem);
-                                    Debug.Log($"{foodItem.FoodItemName} added to slot.");
-                                }
-                                else
-                                {
-                                    Debug.LogWarning("No FoodItemSlot component found on the empty slot.");
-                                }
-                            }
-                            else
-                            {
-                                Debug.LogWarning("No FoodItemReference or food item found on dish.");
-                            }
-
-                            Collider col = heldDish.GetComponent<Collider>();
-                            if (col) col.enabled = true;
-
-                            Debug.Log($"{heldDish.name} placed in food display.");
-                            heldDish = null;
-                        }
-                        else
-                        {
-                            Debug.Log("No empty slot in food display.");
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning("No GlassFoodDisplay found.");
-                    }
-                }
-
-
-
             }
+
+            Debug.Log("No free spawn point on the table.");
+        }
+    }
+
+    private void TryPlaceDishInFoodDisplay(GameObject displayObject)
+    {
+        GlassFoodDisplay display = displayObject.GetComponent<GlassFoodDisplay>() ?? displayObject.GetComponentInParent<GlassFoodDisplay>();
+        if (display != null)
+        {
+            Transform emptySlot = display.GetFirstEmptySlot();
+            if (emptySlot != null)
+            {
+                heldDish.transform.SetParent(emptySlot);
+                heldDish.transform.position = emptySlot.position;
+                heldDish.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+
+                DishReference reference = heldDish.GetComponent<DishReference>();
+                if (reference != null && reference.foodItem != null)
+                {
+                    FoodItemSlot foodItemSlot = emptySlot.GetComponent<FoodItemSlot>();
+                    if (foodItemSlot != null)
+                    {
+                        foodItemSlot.SetFoodItem(reference.foodItem);
+                        Debug.Log($"{reference.foodItem.FoodItemName} added to slot.");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No FoodItemSlot component found on the empty slot.");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("No DishReference or food item found on dish.");
+                }
+
+                Collider col = heldDish.GetComponent<Collider>();
+                if (col) col.enabled = true;
+
+                Debug.Log($"{heldDish.name} placed in food display.");
+                heldDish = null;
+            }
+            else
+            {
+                Debug.Log("No empty slot in food display.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No GlassFoodDisplay found.");
         }
     }
 }
