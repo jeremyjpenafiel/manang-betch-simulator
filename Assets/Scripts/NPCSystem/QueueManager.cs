@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,7 +10,9 @@ namespace NPCSystem
     {
         [SerializeField] private List<QueueSlot> queue;
         private readonly Queue<Npc> _npcQueue = new ();
+        [Required]
         [SerializeField] private Transform exitPosition;
+        [Required]
         [SerializeField] private Transform targetPositionBeforeExit;
 
         public void Initialize()
