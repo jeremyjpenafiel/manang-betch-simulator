@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace NPCSystem
@@ -7,12 +8,12 @@ namespace NPCSystem
     {
         [SerializeField] private QueueManager queueManager;
         [SerializeField] private NpcSpawner npcSpawner;
-        
+
         private void ConnectManagerToSpawner()
         {
             queueManager.Initialize();
             // queueManager.OnFirstNpcLeft += npcSpawner.Spawn
-            StartCoroutine(npcSpawner.DoSpawn());
+            npcSpawner.DoSpawn().Forget();
         }
 
         public void Start()

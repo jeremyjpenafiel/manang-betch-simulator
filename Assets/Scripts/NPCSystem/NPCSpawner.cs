@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -22,13 +23,19 @@ namespace NPCSystem
             npc.SetDestination(queueStartPosition.transform);
         }
         
-        public IEnumerator DoSpawn()
+
+        public async UniTaskVoid DoSpawn()
         {
             while (true)
             {
-                if (queueStartPosition.IsOccupied) yield return null;
+                if (queueStartPosition.IsOccupied)
+                {
+                    await UniTask.Yield(); // Wait for the next frame
+                    continue;
+                }
+
                 Spawn();
-                yield return new WaitForSeconds(spawnFrequency);
+                await UniTask.Delay(TimeSpan.FromSeconds(spawnFrequency)); // Wait for the spawn frequency
             }
         }
         
