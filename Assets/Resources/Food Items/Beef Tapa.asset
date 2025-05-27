@@ -15,13 +15,13 @@ MonoBehaviour:
   foodItemName: Beef Tapa
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 7b86a2d82e415304fb6b55746ab12c90, type: 2}
-    amount: 1
+    amount: 3
   - ingredient: {fileID: 11400000, guid: 039bded6db6c64c4e938eb093ef735a0, type: 2}
     amount: 1
   - ingredient: {fileID: 11400000, guid: f423647e6d9d8bd459c03a60504ca363, type: 2}
-    amount: 1
+    amount: 2
   - ingredient: {fileID: 11400000, guid: 48da02deefa910140aad43c399f53907, type: 2}
-    amount: 1
-  quantity: 1
+    amount: 2
+  quantity: 13
   UserPrice: 55
   foodPrefab: {fileID: 2602471839555010871, guid: 7a852a2be06de0b4ca749533ecf99bb0, type: 3}

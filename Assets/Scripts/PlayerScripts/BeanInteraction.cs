@@ -46,7 +46,7 @@ public class BeanInteraction : MonoBehaviour
                 }
                 else if (heldTray != null && clicked.CompareTag("RiceCooker"))
                 {
-                    TryServeRiceToTray(clicked);
+                    // TryServeRiceToTray(clicked);
                 }
 
             }
@@ -205,36 +205,36 @@ public class BeanInteraction : MonoBehaviour
         }
     }
 
-    private void TryServeRiceToTray(GameObject riceCookerObject)
-    {
-        if (heldTray == null)
-        {
-            Debug.Log("You need to pick up a tray first.");
-            return;
-        }
+    // private void TryServeRiceToTray(GameObject riceCookerObject)
+    // {
+    //     if (heldTray == null)
+    //     {
+    //         Debug.Log("You need to pick up a tray first.");
+    //         return;
+    //     }
 
-        TrayLayout layout = heldTray.GetComponent<TrayLayout>();
-        if (layout != null && layout.HasAvailableSlot())
-        {
-            DishReference dishRef = riceCookerObject.GetComponent<DishReference>();
-            if (dishRef != null && dishRef.foodItem != null && dishRef.foodItem.foodPrefab != null)
-            {
-                GameObject riceServing = Instantiate(dishRef.foodItem.foodPrefab);
-                if (layout.TryPlaceOnTray(riceServing))
-                {
-                    Debug.Log($"Served rice portion: {dishRef.foodItem.FoodItemName}");
-                }
-                else
-                {
-                    Destroy(riceServing);
-                    Debug.Log("Tray is full. Could not place rice.");
-                }
-            }
-            else
-            {
-                Debug.LogWarning("Rice cooker missing DishReference or foodPrefab.");
-            }
-        }
-    }
+    //     TrayLayout layout = heldTray.GetComponent<TrayLayout>();
+    //     if (layout != null && layout.HasAvailableSlot())
+    //     {
+    //         DishReference dishRef = riceCookerObject.GetComponent<DishReference>();
+    //         if (dishRef != null && dishRef.foodItem != null && dishRef.foodItem.foodPrefab != null)
+    //         {
+    //             GameObject riceServing = Instantiate(dishRef.foodItem.foodPrefab);
+    //             if (layout.TryPlaceOnTray(riceServing))
+    //             {
+    //                 Debug.Log($"Served rice portion: {dishRef.foodItem.FoodItemName}");
+    //             }
+    //             else
+    //             {
+    //                 Destroy(riceServing);
+    //                 Debug.Log("Tray is full. Could not place rice.");
+    //             }
+    //         }
+    //         else
+    //         {
+    //             Debug.LogWarning("Rice cooker missing DishReference or foodPrefab.");
+    //         }
+    //     }
+    // }
 
 }

@@ -25,22 +25,6 @@ public class TrayLayout : MonoBehaviour
         return false;
     }
 
-    public bool TryPlaceRiceOnTray(GameObject serving)
-    {
-        if (!isRiceOnTray)
-        {
-            Transform slot = riceTransform;
-            serving.transform.SetParent(slot);
-            serving.transform.localPosition = Vector3.zero;
-            serving.transform.localRotation = Quaternion.identity;
-            isRiceOnTray = true;
-            return true;
-        }
-
-        Debug.Log("No available slots on the tray.");
-        return false;
-    }
-
     public void ResetTray()
     {
         currentSlotIndex = 0;

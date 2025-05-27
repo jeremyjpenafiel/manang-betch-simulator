@@ -25,13 +25,13 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 8ed9025f75a611f4985d2669e746363b, type: 2}
     amount: 1
   - ingredient: {fileID: 11400000, guid: 9814b7175ce0bb24a9c8384163574b86, type: 2}
-    amount: 1
+    amount: 3
   - ingredient: {fileID: 11400000, guid: 039bded6db6c64c4e938eb093ef735a0, type: 2}
-    amount: 1
+    amount: 2
   - ingredient: {fileID: 11400000, guid: 4493702d617894c43b573144ead3e0e7, type: 2}
-    amount: 1
+    amount: 3
   - ingredient: {fileID: 11400000, guid: 671dc41b564ec854b99ca73e50156325, type: 2}
-    amount: 1
+    amount: 5
   quantity: 0
   UserPrice: 100
   foodPrefab: {fileID: 6170415285920548154, guid: b6680ef8b274330448963fb61faf7c4b, type: 3}

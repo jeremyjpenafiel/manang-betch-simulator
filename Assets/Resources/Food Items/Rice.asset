@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Rice
   m_EditorClassIdentifier: 
   foodItemName: Rice
-  requiredIngredients: []
-  quantity: 0
-  UserPrice: 0
-  foodPrefab: {fileID: 0}
+  requiredIngredients:
+  - ingredient: {fileID: 11400000, guid: ab2e1ecfd700e4e448e7d1a6498087b9, type: 2}
+    amount: 1
+  quantity: 5
+  UserPrice: 15
+  foodPrefab: {fileID: 4278609053550379013, guid: cb0e97a46f0ed84489b7f9e2c5a634b4, type: 3}

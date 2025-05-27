@@ -15,9 +15,9 @@ MonoBehaviour:
   foodItemName: Scrambled Egg
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 8ed9025f75a611f4985d2669e746363b, type: 2}
-    amount: 3
+    amount: 2
   - ingredient: {fileID: 11400000, guid: 039bded6db6c64c4e938eb093ef735a0, type: 2}
-    amount: 3
+    amount: 1
   - ingredient: {fileID: 11400000, guid: 9814b7175ce0bb24a9c8384163574b86, type: 2}
     amount: 3
   quantity: 1
