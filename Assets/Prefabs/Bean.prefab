@@ -139,6 +139,8 @@ GameObject:
   - component: {fileID: 3471583019401940633}
   - component: {fileID: 9064697398879169362}
   - component: {fileID: -7082678410467764046}
+  - component: {fileID: 1610854503026791236}
+  - component: {fileID: -6293865804303074549}
   m_Layer: 0
   m_Name: Bean
   m_TagString: Player
@@ -324,6 +326,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 504192942324699075}
   trayPrefab: {fileID: 3063150564648793120, guid: 874504b0e6c54e0468cfeb633946d69d, type: 3}
+--- !u!114 &1610854503026791236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331400888908106792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb61598619d648c7ab045277519cddec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tray: {fileID: 0}
+  beanInteraction: {fileID: 0}
+--- !u!114 &-6293865804303074549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331400888908106792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baecd755b54746028c935640345870c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dish: {fileID: 0}
+  Rice: {fileID: 0}
 --- !u!1 &7367036520060756068
 GameObject:
   m_ObjectHideFlags: 0
