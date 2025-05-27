@@ -1,5 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
+using NPCSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,8 @@ public class GameInitiator : MonoBehaviour
     [SerializeField] private MoneyText moneyText;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject cubPrefab;
+    [SerializeField] private NpcSpawner _npcSpawner;
+    [SerializeField] private GameObject queuePoint;
     
     // [SerializeField] private IngredientSystem ingredientSystem;
     private async void Start()
@@ -31,11 +34,14 @@ public class GameInitiator : MonoBehaviour
         mainEventSystem = Instantiate(mainEventSystem, Vector3.zero, Quaternion.identity);
         // ingredientSystem = Instantiate(ingredientSystem);
         loadingCanvas = Instantiate(loadingCanvas);
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
-        // cubPrefab = Instantiate(cubPrefab, Vector3.zero, Quaternion.identity);
+        // SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
+        cubPrefab = Instantiate(cubPrefab, Vector3.zero, Quaternion.identity);
         // player at -9757, 15426, 2851
         player = Instantiate(player, new Vector3(-9190, 1033, 2221), Quaternion.identity);
-        
+        _npcSpawner = Instantiate(_npcSpawner, new Vector3(2091,85.017395f,-10304), Quaternion.identity);
+        Instantiate(queuePoint, queuePoint.transform.position, Quaternion.identity);
+
+
     }
 
     // private async UniTask LoadScene()
