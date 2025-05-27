@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace NPCSystem
@@ -24,6 +24,7 @@ namespace NPCSystem
 
         private void NpcAddToQueue(Npc npc)
         {
+            Debug.Log("NPC entered the queue slot");
             _npcQueue.Enqueue(npc);
             npc.targetBeforeExit = targetPositionBeforeExit;
             npc.exitTransform = exitPosition;
@@ -33,19 +34,17 @@ namespace NPCSystem
 
             if (queueIndex == 0)
             {
-                onFirstNpc = () =>
+                onFirstNpc =  () =>
                 {
-                    Debug.Log("First NPC in the queue reached the slot");
-                    StartCoroutine(npc.Wait(5));
+                    npc.Wait(5).Forget();
                 };
-
+            
             }
             npc.SetDestination(queue[queueIndex].transform, onFirstNpc);
         }
 
         private void RemoveNpcFromQueue()
         {
-            Debug.Log("NPC left the queue slot");
             if (_npcQueue.Count == 0) return;
             Npc npc = _npcQueue.Dequeue();
             RepositionNpcs();

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using Pathfinding;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ namespace NPCSystem
             _ai = GetComponent<IAstarAI>();
         }
         
-        public void SetDestination(Transform target, Action onDestinationReached = null)
+        public async void SetDestination(Transform target, Action onDestinationReached = null)
         {
             Debug.LogWarning("Going to destination " + target.name);
             try
@@ -29,7 +30,7 @@ namespace NPCSystem
 
                 if (onDestinationReached != null)
                 {
-                    StartCoroutine(CheckDestinationReached(onDestinationReached));
+                    await CheckDestinationReached(onDestinationReached);
                 }
             }
             catch (NullReferenceException e)
@@ -40,21 +41,21 @@ namespace NPCSystem
             }
         }
 
-        private IEnumerator CheckDestinationReached(Action onDestinationReached)
+        private async UniTask CheckDestinationReached(Action onDestinationReached)
         {
             if (_ai == null)
             {
-                yield break;
+                return;
             }
 
             Debug.Log("Checking");
             Debug.Log(_ai.reachedDestination);
 
             // Wait until the destination is reached
-            yield return new WaitForSeconds(0.1f);
+            await UniTask.Delay(1);
             while (!_ai.reachedDestination)
             {
-                yield return null;
+                await UniTask.Yield();
             }
 
             // Add a small delay to ensure stability
@@ -81,9 +82,9 @@ namespace NPCSystem
 
         }
 
-        public IEnumerator Wait(float seconds)  
+        public async UniTask Wait(float seconds)
         {
-            yield return new WaitForSeconds(seconds);
+            await UniTask.WaitForSeconds(seconds);
             Exit();
             
         }
