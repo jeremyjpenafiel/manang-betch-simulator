@@ -135,11 +135,13 @@ GameObject:
   - component: {fileID: 1266769792335194876}
   - component: {fileID: 7389562385550791721}
   - component: {fileID: 4481850054977643921}
-  - component: {fileID: 9064697398879169362}
+  - component: {fileID: 6428040406809615875}
   - component: {fileID: 3471583019401940633}
+  - component: {fileID: 9064697398879169362}
+  - component: {fileID: -7082678410467764046}
   m_Layer: 0
   m_Name: Bean
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,29 +238,29 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9064697398879169362
-MonoBehaviour:
+--- !u!136 &6428040406809615875
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4331400888908106792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7c6506500f1ef248a17f6d8d52645ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 1691350452900540501}
-  mouseSmoothTime: 0.03
-  cursorLock: 1
-  mouseSensitivity: 3.5
-  Speed: 3000
-  moveSmoothTime: 0.3
-  gravity: -30
-  groundCheck: {fileID: 3149788492787194015}
-  ground:
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.61
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &3471583019401940633
 CharacterController:
   m_ObjectHideFlags: 0
@@ -285,6 +287,43 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9064697398879169362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331400888908106792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c6506500f1ef248a17f6d8d52645ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 1691350452900540501}
+  mouseSmoothTime: 0.03
+  cursorLock: 1
+  mouseSensitivity: 3.5
+  Speed: 2500
+  moveSmoothTime: 0.3
+  gravity: -98
+  groundCheck: {fileID: 3149788492787194015}
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &-7082678410467764046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331400888908106792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4acd0509dc7764c8eba9e565b96ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 504192942324699075}
+  trayPrefab: {fileID: 3063150564648793120, guid: 874504b0e6c54e0468cfeb633946d69d, type: 3}
 --- !u!1 &7367036520060756068
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +586,7 @@ GameObject:
   - component: {fileID: 504192942324699075}
   m_Layer: 0
   m_Name: Hand
-  m_TagString: Untagged
+  m_TagString: PlayerHand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -24,7 +24,30 @@ namespace PosSystem
 
         private void ConnectModel()
         {
-           
+           for (int i = 0; i < _posModel.FoodItemSlots.Count; i++)
+           {
+               Debug.Log("for loop");
+               FoodItemSlot foodItemSlot = _posModel.FoodItemSlots[i];
+               try
+               {
+                   PosButton mealButton = _posView.mealButtons[i];
+                   foodItemSlot.OnFoodItemChanged += () =>
+                   { 
+                       mealButton.RegisterListener(() => { 
+                           if (foodItemSlot.foodItem == null) return; 
+                           _posView.UpdatePriceText(foodItemSlot.FoodItemName + foodItemSlot.foodItem.UserPrice); }); 
+                   };
+
+                  
+               }
+               catch (ArgumentOutOfRangeException e)
+               {
+                   Debug.LogError($"PosController - ConnectView(): Button" +
+                                  $"objects may not match number of food item slots");
+                   Debug.LogError(e);
+               }
+
+           }
         }
 
         private void ConnectView()
@@ -45,11 +68,13 @@ namespace PosSystem
                         totalPrice += foodItemSlot.foodItem.UserPrice;
                         _posView.UpdateTotalPriceText(totalPrice);
                     });
+
                 }
                 catch (ArgumentOutOfRangeException e)
                 {
                     Debug.LogError($"PosController - ConnectView(): Button" +
                                     $"objects may not match number of food item slots");
+                    Debug.LogError(e);
                 }
 
             }

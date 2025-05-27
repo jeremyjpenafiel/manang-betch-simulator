@@ -3,19 +3,25 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Dish
+  - PlayerHand
+  - NPC
+  - Table
+  - FoodDisplay
+  - TrayPlate
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - 
   - 
   - 
   - 
-  - whatIsGround
+  - 
   - 
   - 
   - 

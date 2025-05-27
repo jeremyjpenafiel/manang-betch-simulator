@@ -1,43 +1,38 @@
 using UnityEngine;
 
-public class DishClickHandler : MonoBehaviour
+public class DishBehavior : MonoBehaviour
 {
-    private Transform handTransform;
+    private bool isHeld = false;
 
-    public void SetPlayer(GameObject player)
+    private void OnMouseDown()
     {
-        // Find the "Hand" object in the player prefab (by name or tag or assigned manually)
-        handTransform = player.transform.Find("Hand");
+        if (isHeld) return; // Prevent multiple pick-ups
 
-        if (handTransform == null)
+        // Find the Bean GameObject (you can tag it "Player" if needed)
+        GameObject bean = GameObject.FindWithTag("Player");
+        if (bean == null)
         {
-            Debug.LogError("Hand transform not found on player!");
+            Debug.LogWarning("Bean not found.");
+            return;
         }
-    }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0) && handTransform != null)
+        // Find the hand transform
+        Transform hand = bean.transform.Find("Hand");
+        if (hand == null)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                GameObject clickedObject = hit.collider.gameObject;
-
-                if (clickedObject.CompareTag("Dish"))
-                {
-                    clickedObject.transform.SetParent(handTransform);
-                    clickedObject.transform.localPosition = Vector3.zero;
-                    clickedObject.transform.localRotation = Quaternion.identity;
-
-                    // Optional: disable physics so it doesn't fall
-                    if (clickedObject.TryGetComponent<Rigidbody>(out var rb))
-                    {
-                        rb.isKinematic = true;
-                    }
-                }
-            }
+            Debug.LogWarning("Hand transform not found in Bean.");
+            return;
         }
+
+        // Attach this dish to the hand
+        transform.SetParent(hand);
+        transform.localPosition = Vector3.zero; // offset
+        transform.localRotation = Quaternion.identity;
+        isHeld = true;
+
+        Collider col = GetComponent<Collider>();
+        if (col) col.enabled = false;
+
+        Debug.Log($"{gameObject.name} picked up and attached to hand.");
     }
 }
