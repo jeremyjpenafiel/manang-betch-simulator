@@ -45,6 +45,7 @@ namespace PosSystem
                 {
                     Debug.LogError($"PosController - ConnectView(): Button" +
                                     $"objects may not match number of food item slots");
+                    Debug.LogError(e);
                 }
 
             }
