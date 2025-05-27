@@ -68,13 +68,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeatOverload
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c411d56641202df48bf2843688ffb00c, type: 3}
+      propertyPath: m_TagString
+      value: Dish
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c411d56641202df48bf2843688ffb00c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4535956344566817120}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c411d56641202df48bf2843688ffb00c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4294554559725561501}
@@ -84,18 +85,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c411d56641202df48bf2843688ffb00c, type: 3}
   m_PrefabInstance: {fileID: 6440378172480583787}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4535956344566817120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6170415285920548154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d06c4b3c492cf746a212b052d927fd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &4294554559725561501
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -68,13 +68,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChickenAdoboReal
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00aa8b8d99b04a64485b3ad9b4a8074e, type: 3}
+      propertyPath: m_TagString
+      value: Dish
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 00aa8b8d99b04a64485b3ad9b4a8074e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3061203899675308927}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 00aa8b8d99b04a64485b3ad9b4a8074e, type: 3}
       insertIndex: -1
       addedObject: {fileID: -8387402358392051821}
@@ -84,18 +85,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 00aa8b8d99b04a64485b3ad9b4a8074e, type: 3}
   m_PrefabInstance: {fileID: 9173161827081100064}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3061203899675308927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8326302238433257073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d06c4b3c492cf746a212b052d927fd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &-8387402358392051821
 BoxCollider:
   m_ObjectHideFlags: 0
