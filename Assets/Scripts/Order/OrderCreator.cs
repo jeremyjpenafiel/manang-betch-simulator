@@ -12,7 +12,10 @@ namespace Order
         [SerializeField] private List<FoodItem> possibleMeals;
         [SerializeField] private FoodItem _rice;
 
-        public static OrderCreator instance; 
+        public static OrderCreator instance;
+
+
+        public List<FoodItem> AvailableMealsOnDisplay => possibleMeals;
 
         private void Awake()
         {
@@ -48,11 +51,6 @@ namespace Order
             FoodItem randomFoodItem = possibleMeals[Random.Range(0, possibleMeals.Count)];
             return new Order(randomFoodItem, _rice);
         }
-        
-        public void SetRice(FoodItem riceItem)
-        {
-            _rice = riceItem;
-        }
-     
+
     }
 }
