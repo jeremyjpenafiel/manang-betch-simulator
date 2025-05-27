@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Order;
 using UnityEngine;
 
 namespace PosSystem
@@ -35,7 +36,11 @@ namespace PosSystem
                            _posView.UpdatePriceText(foodItemSlot.FoodItemName + foodItemSlot.foodItem.UserPrice); }); 
                    };
 
-                  
+                   foodItemSlot.OnFoodItemChanged += () =>
+                   {
+                       
+                       OrderCreator.instance.UpdatePossibleMeals();
+                   };
                }
                catch (ArgumentOutOfRangeException e)
                {
