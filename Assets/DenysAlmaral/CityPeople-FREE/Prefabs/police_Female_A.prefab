@@ -1199,6 +1199,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetBeforeExit: {fileID: 0}
   exitTransform: {fileID: 0}
+  order:
+    meal: {fileID: 0}
+    rice: {fileID: 0}
+  orderText: {fileID: 7901176341587535508}
 --- !u!114 &2247000283144092301
 MonoBehaviour:
   m_ObjectHideFlags: 0

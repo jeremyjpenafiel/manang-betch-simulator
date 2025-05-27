@@ -1,18 +1,25 @@
 using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Order;
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace NPCSystem
 {
     public class NpcSystem: MonoBehaviour
     {
-        [SerializeField] private QueueManager queueManager;
-        [SerializeField] private NpcSpawner npcSpawner;
+        [Required, SerializeField] private QueueManager queueManager;
+        [Required, SerializeField] private NpcSpawner npcSpawner;
+        [Required, SerializeField] private OrderSystem orderSystem;
 
         private void ConnectManagerToSpawner()
         {
+            orderSystem.Initialize();
             queueManager.Initialize();
-            // queueManager.OnFirstNpcLeft += npcSpawner.Spawn
+            queueManager.RegisterNPCEnterListener(orderSystem.OnNewCustomer);
+            queueManager.RegisterNPCExitListener(orderSystem.ResetOrder);
             npcSpawner.DoSpawn().Forget();
         }
 
