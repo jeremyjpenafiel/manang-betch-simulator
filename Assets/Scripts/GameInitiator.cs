@@ -17,6 +17,7 @@ public class GameInitiator : MonoBehaviour
     [SerializeField] private GameObject cubPrefab;
     [SerializeField] private NpcSpawner _npcSpawner;
     [SerializeField] private GameObject queuePoint;
+    [SerializeField] private GameObject gameManager;
     
     // [SerializeField] private IngredientSystem ingredientSystem;
     private async void Start()
@@ -41,6 +42,7 @@ public class GameInitiator : MonoBehaviour
         player = Instantiate(player, new Vector3(-9190, 1033, 2221), Quaternion.identity);
         // _npcSpawner = Instantiate(_npcSpawner, new Vector3(2091,85.017395f,-10304), Quaternion.identity);
         // Instantiate(queuePoint, queuePoint.transform.position, Quaternion.identity);
+        gameManager = Instantiate(gameManager, Vector3.zero, Quaternion.identity);
 
 
     }
