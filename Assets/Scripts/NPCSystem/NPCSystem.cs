@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 using Order;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
 
 namespace NPCSystem
