@@ -323,6 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 504192942324699075}
+  trayPrefab: {fileID: 3063150564648793120, guid: 874504b0e6c54e0468cfeb633946d69d, type: 3}
 --- !u!1 &7367036520060756068
 GameObject:
   m_ObjectHideFlags: 0
