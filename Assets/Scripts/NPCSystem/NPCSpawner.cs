@@ -8,7 +8,6 @@ namespace NPCSystem
 {
     public class NpcSpawner : MonoBehaviour
     {
-        private readonly Queue<Npc> _npcQueue = new ();
         [Required]
         [SerializeField] private QueueSlot queueStartPosition;
         
@@ -20,7 +19,6 @@ namespace NPCSystem
         public void Spawn()
         {
             var npc = Instantiate(npcPrefab, transform.position, Quaternion.identity);
-            _npcQueue.Enqueue(npc);
             npc.SetDestination(queueStartPosition.transform);
         }
         
