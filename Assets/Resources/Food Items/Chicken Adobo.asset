@@ -32,4 +32,4 @@ MonoBehaviour:
     amount: 0
   quantity: 3
   UserPrice: 60
-  foodPrefab: {fileID: 7081702836316291601, guid: 412373315b5ecda4aa2de2efb412694a, type: 3}
+  foodPrefab: {fileID: 8326302238433257073, guid: 20d68083b9591444f971b3ef86d72c97, type: 3}
