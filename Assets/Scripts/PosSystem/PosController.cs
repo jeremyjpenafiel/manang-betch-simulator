@@ -8,12 +8,15 @@ namespace PosSystem
     {
         private readonly PosModel _posModel;
         private readonly PosView _posView;
+        private PlayerStatistics _playerStatistics;
+        private float totalPrice;
         
-        public PosController(PosModel posModel, PosView posView)
+        public PosController(PosModel posModel, PosView posView, PlayerStatistics playerStatistics)
         {
             _posModel = posModel;
             _posView = posView;
             Debug.Log("constructor");
+            _playerStatistics = playerStatistics;
 
             ConnectModel();
             ConnectView();
@@ -38,7 +41,9 @@ namespace PosSystem
                     mealButton.RegisterListener(() =>
                     {
                         if (foodItemSlot.foodItem == null) return;
-                        _posView.UpdatePriceText(foodItemSlot.FoodItemName + foodItemSlot.foodItem.UserPrice);
+                        _posView.UpdatePriceText(foodItemSlot.FoodItemName + "  -   " + foodItemSlot.foodItem.UserPrice);
+                        totalPrice += foodItemSlot.foodItem.UserPrice;
+                        _posView.UpdateTotalPriceText(totalPrice);
                     });
                 }
                 catch (ArgumentOutOfRangeException e)
@@ -58,14 +63,26 @@ namespace PosSystem
                     if (index == 0)
                     {
                         _posView.OpenCashRegister();
+                        
                     }
                     else if (index == 1)
                     {
                         // Call a different method for transactionButton(1)
                         _posView.ShowGcashPaymentReceipt();
+                        _playerStatistics.Money += totalPrice;
+                        _posView.ClearPriceText();
+                        totalPrice = 0;
+                        _posView.UpdateTotalPriceText(totalPrice);
                     }
                 });
             }
+
+            _posView.resetButton.RegisterListener(() =>
+            {
+                _posView.ClearPriceText();
+                totalPrice = 0;
+                _posView.UpdateTotalPriceText(totalPrice);
+            });
 
         }
         
@@ -74,9 +91,9 @@ namespace PosSystem
         {
             private readonly PosModel _posModel = new();
 
-            public PosController Build(PosView posView)
+            public PosController Build(PosView posView, PlayerStatistics playerStatistics)
             {
-                return new PosController(_posModel, posView);
+                return new PosController(_posModel, posView, playerStatistics);
             }
             
             public Builder WithFoodItemSlots(List<FoodItemSlot> foodItemSlots)
