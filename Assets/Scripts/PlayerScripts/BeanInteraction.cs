@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using FoodSystem;
 
@@ -8,6 +9,9 @@ public class BeanInteraction : MonoBehaviour
     [SerializeField] private Transform hand;
     [SerializeField] private GameObject trayPrefab;
 
+
+    public event Action<FoodItem> OnFoodAddToTray;
+    
     private void Update()
     {
         if (Input.GetMouseButtonDown(0)) // Left-click
@@ -82,7 +86,7 @@ public class BeanInteraction : MonoBehaviour
             FoodItemSlot foodItemSlot = originalParent.GetComponent<FoodItemSlot>();
             if (foodItemSlot != null)
             {
-                foodItemSlot.SetFoodItem(null);
+                foodItemSlot.FoodItem = null;
                 Debug.Log("Cleared food item from display slot.");
             }
         }
@@ -140,69 +144,69 @@ public class BeanInteraction : MonoBehaviour
     private void TryPlaceDishInFoodDisplay(GameObject displayObject)
     {
         GlassFoodDisplay display = displayObject.GetComponent<GlassFoodDisplay>() ?? displayObject.GetComponentInParent<GlassFoodDisplay>();
-        if (display != null)
+        if (display == null)
         {
-            Transform emptySlot = display.GetFirstEmptySlot();
-            if (emptySlot != null)
-            {
-                heldDish.transform.SetParent(emptySlot);
-                heldDish.transform.position = emptySlot.position;
-                heldDish.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            Debug.LogWarning("No GlassFoodDisplay found.");
+            return;
+        }
 
-                DishReference reference = heldDish.GetComponent<DishReference>();
-                if (reference != null && reference.foodItem != null)
-                {
-                    FoodItemSlot foodItemSlot = emptySlot.GetComponent<FoodItemSlot>();
-                    if (foodItemSlot != null)
-                    {
-                        foodItemSlot.SetFoodItem(reference.foodItem);
-                        Debug.Log($"{reference.foodItem.FoodItemName} added to slot.");
-                    }
-                    else
-                    {
-                        Debug.LogWarning("No FoodItemSlot component found on the empty slot.");
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning("No DishReference or food item found on dish.");
-                }
+        Transform emptySlot = display.GetFirstEmptySlot();
+        if (emptySlot == null)
+        {
+            Debug.Log("No empty slot in food display.");
+            return;
+        }
 
-                Collider col = heldDish.GetComponent<Collider>();
-                if (col) col.enabled = true;
+        heldDish.transform.SetParent(emptySlot);
+        heldDish.transform.position = emptySlot.position;
+        heldDish.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
 
-                Debug.Log($"{heldDish.name} placed in food display.");
-                heldDish = null;
-            }
-            else
-            {
-                Debug.Log("No empty slot in food display.");
-            }
+        DishReference reference = heldDish.GetComponent<DishReference>();
+        if (reference == null || reference.foodItem == null)
+        {
+            Debug.LogWarning("No DishReference or food item found on dish.");
+            return;
+        }
+
+        FoodItemSlot foodItemSlot = emptySlot.GetComponent<FoodItemSlot>();
+        
+        if (foodItemSlot != null)
+        {
+            foodItemSlot.FoodItem = reference.foodItem;
+            Debug.Log($"{reference.foodItem.FoodItemName} added to slot.");
         }
         else
         {
-            Debug.LogWarning("No GlassFoodDisplay found.");
+            Debug.LogWarning("No FoodItemSlot component found on the empty slot.");
         }
+
+        Collider col = heldDish.GetComponent<Collider>();
+        if (col) col.enabled = true;
+
+        Debug.Log($"{heldDish.name} placed in food display.");
+        heldDish = null;
     }
 
     private void TryServeDishToTray(GameObject dishObject)
     {
         TrayLayout layout = heldTray.GetComponent<TrayLayout>();
-        if (layout != null && layout.HasAvailableSlot())
-        {
-            DishBehavior dish = dishObject.GetComponent<DishBehavior>();
-            if (dish != null && dish.TryServe(out GameObject serving))
-            {
-                if (layout.TryPlaceOnTray(serving))
-                {
-                    Debug.Log($"Served 1 portion from {dish.name}. Remaining: {dish.GetRemainingQuantity()}");
-                }
-            }
-        }
-        else
+        if (layout == null || !layout.HasAvailableSlot())
         {
             Debug.Log("Tray is full. Cannot take more servings.");
+            return;
         }
+
+        DishBehavior dish = dishObject.GetComponent<DishBehavior>();
+        if (dish == null || !dish.TryServe(out GameObject serving)) return;
+
+        if (!layout.TryPlaceOnTray(serving)) return;
+
+        Debug.Log($"Served 1 portion from {dish.name}. Remaining: {dish.GetRemainingQuantity()}");
+
+        FoodItem item = dishObject.GetComponent<DishReference>().foodItem;
+        if (item) OnFoodAddToTray?.Invoke(item);
+
+
     }
 
     // private void TryServeRiceToTray(GameObject riceCookerObject)

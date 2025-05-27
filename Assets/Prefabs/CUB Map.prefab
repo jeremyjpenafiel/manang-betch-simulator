@@ -526,7 +526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 0}
 --- !u!1 &202982229696089166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2672,7 +2671,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 0}
 --- !u!1 &889140016078093189
 GameObject:
   m_ObjectHideFlags: 0
@@ -4660,7 +4658,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 0}
 --- !u!1 &1717728409994225998
 GameObject:
   m_ObjectHideFlags: 0
@@ -5254,7 +5251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 0}
 --- !u!1 &1828883816181924544
 GameObject:
   m_ObjectHideFlags: 0
@@ -5299,7 +5295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 0}
 --- !u!1 &1882190939141939685
 GameObject:
   m_ObjectHideFlags: 0
@@ -5627,7 +5622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 11400000, guid: c3cfe0fc1b0c8224caee161669954fb0, type: 2}
 --- !u!1 &1974993693663891829
 GameObject:
   m_ObjectHideFlags: 0
@@ -9527,7 +9521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 0}
 --- !u!1 &3701299315061507184
 GameObject:
   m_ObjectHideFlags: 0
@@ -13390,7 +13383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 0}
 --- !u!1 &4519813356486291053
 GameObject:
   m_ObjectHideFlags: 0
@@ -15031,7 +15023,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 0}
 --- !u!1 &5295868761506529512
 GameObject:
   m_ObjectHideFlags: 0
@@ -21655,7 +21646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 0}
 --- !u!1 &7773736218093177436
 GameObject:
   m_ObjectHideFlags: 0
@@ -22413,7 +22403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 0}
 --- !u!1 &8083859958516546125
 GameObject:
   m_ObjectHideFlags: 0
@@ -26382,7 +26371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8e8bfd5b975a08245adcc872aad447a5, type: 3}
       propertyPath: m_TagString
-      value: RiceCooker
+      value: Dish
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26394,6 +26383,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e8bfd5b975a08245adcc872aad447a5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7321806273645602901}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e8bfd5b975a08245adcc872aad447a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7886725640861133398}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e8bfd5b975a08245adcc872aad447a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4294160826035627110}
   m_SourcePrefab: {fileID: 100100000, guid: 8e8bfd5b975a08245adcc872aad447a5, type: 3}
 --- !u!1 &439341345178716146 stripped
 GameObject:
@@ -26421,6 +26416,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 321.93164, y: 259.52972, z: 288.91504}
   m_Center: {x: -50.780273, y: 126.575714, z: -29.256836}
+--- !u!114 &7886725640861133398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439341345178716146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f074e75d458564ca0d58db688288b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodItem: {fileID: 11400000, guid: c3cfe0fc1b0c8224caee161669954fb0, type: 2}
+--- !u!114 &4294160826035627110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439341345178716146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d06c4b3c492cf746a212b052d927fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dishQuantity: 10
+  servingPrefab: {fileID: 4278609053550379013, guid: cb0e97a46f0ed84489b7f9e2c5a634b4, type: 3}
+  _ingredient: {fileID: 11400000, guid: ab2e1ecfd700e4e448e7d1a6498087b9, type: 2}
 --- !u!4 &960122195239329096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8e8bfd5b975a08245adcc872aad447a5, type: 3}
@@ -26803,6 +26826,10 @@ PrefabInstance:
     - target: {fileID: 6113498955301521083, guid: fb3be4efc1f4e664d871f00b19f54aba, type: 3}
       propertyPath: m_Value
       value: 2.0357144
+      objectReference: {fileID: 0}
+    - target: {fileID: 6125572560472077755, guid: fb3be4efc1f4e664d871f00b19f54aba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6202477786702384458, guid: fb3be4efc1f4e664d871f00b19f54aba, type: 3}
       propertyPath: m_AnchorMax.y

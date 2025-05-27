@@ -51,5 +51,15 @@ namespace NPCSystem
                 npc.SetDestination(queue[i].transform);
             }
         }
+
+        public void RegisterNPCEnterListener(Action<Npc> listener)
+        {
+            queue[0].OnNpcEntered += listener;
+        }
+        
+        public void RegisterNPCExitListener(Action listener)
+        {
+            queue[0].OnNpcExited += listener;
+        }
     }
 }
