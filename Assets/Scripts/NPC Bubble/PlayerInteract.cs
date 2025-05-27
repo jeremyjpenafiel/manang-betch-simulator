@@ -6,8 +6,6 @@ public class PlayerInteract : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.LogError("entered");
-        Debug.Log(other.name);
         if (other.CompareTag("NPC"))
         {
             currentNPC = other.GetComponent<NPCInteractable>();
