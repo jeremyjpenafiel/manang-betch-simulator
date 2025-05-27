@@ -8,7 +8,6 @@ namespace Order
     public class OrderSystem: MonoBehaviour
     {
         [SerializeField] List<FoodItem> possibleMeals;
-        [SerializeField] FoodItem rice;
         public Order? CurrentOrder { get; set; }
 
         public void Initialize()

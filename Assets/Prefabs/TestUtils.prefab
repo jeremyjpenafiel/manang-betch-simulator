@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8171382103678374567
+--- !u!1 &8903013981318560251
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6679197557736216782}
-  - component: {fileID: 3458924494159958989}
+  - component: {fileID: 7948102256209314589}
+  - component: {fileID: 3904250241337934391}
   m_Layer: 0
-  m_Name: NPCSpawner
+  m_Name: TestUtils
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6679197557736216782
+--- !u!4 &7948102256209314589
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171382103678374567}
+  m_GameObject: {fileID: 8903013981318560251}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1675.1, y: 5463.8, z: 0}
+  m_LocalPosition: {x: -7688.0293, y: -775.9844, z: -6955.756}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3458924494159958989
+--- !u!114 &3904250241337934391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171382103678374567}
+  m_GameObject: {fileID: 8903013981318560251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a03f3ab7c1d340f886560f244b500d8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d56c0f80d34abf47a4cd36bee32ad6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  queueStartPosition: {fileID: 0}
-  npcPrefab: {fileID: 7272450290688228540, guid: f0ac6fb9ada49f24683e3eca20786103, type: 3}
-  spawnFrequency: 3
-  isPaused: 1
+  playerStatistics: {fileID: 11400000, guid: a0e03bdde5b72994ca239cc8a682fc0b, type: 2}

@@ -1,5 +1,6 @@
 using System;
 using FoodSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Testing
@@ -7,7 +8,9 @@ namespace Testing
     public class TestUtils : MonoBehaviour
     {
         [SerializeField] private PlayerStatistics playerStatistics;
-
+        
+        
+        [Button("ResetIngredientsQuantities")]
         public void ResetIngredientsQuantities()
         {
             var ingredients = Resources.LoadAll<Ingredient>("Ingredients");
@@ -17,7 +20,8 @@ namespace Testing
                 Debug.Log($"Resetting quantity of {ingredient.IngredientName} to {ingredient.Quantity}");
             }
         }
-    
+        
+        [Button("SetIngredientQuantities")]
         public void SetIngredientQuantities(int quantity)
         {
             var ingredients = Resources.LoadAll<Ingredient>("Ingredients");
@@ -27,6 +31,7 @@ namespace Testing
             }
         }
     
+        [Button("SetPlayerMoney")]
         public void SetPlayerMoney(int money)
         {
             try

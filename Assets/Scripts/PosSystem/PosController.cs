@@ -14,7 +14,6 @@ namespace PosSystem
         {
             _posModel = posModel;
             _posView = posView;
-            Debug.Log("constructor");
 
             ConnectModel();
             ConnectView();
@@ -22,51 +21,48 @@ namespace PosSystem
 
         private void ConnectModel()
         {
-           for (int i = 0; i < _posModel.FoodItemSlots.Count; i++)
-           {
-               Debug.Log("for loop");
-               FoodItemSlot foodItemSlot = _posModel.FoodItemSlots[i];
-               try
-               {
-                   PosButton mealButton = _posView.mealButtons[i];
-                   foodItemSlot.OnFoodItemChanged += () =>
-                   { 
-                       mealButton.RegisterListener(() => { 
-                           if (foodItemSlot.foodItem == null) return; 
-                           _posView.UpdatePriceText(foodItemSlot.FoodItemName + foodItemSlot.foodItem.UserPrice); }); 
-                   };
+            OrderCreator.instance.SetFoodItemslots(_posModel.FoodItemSlots); 
+            for (int i = 0; i < _posModel.FoodItemSlots.Count; i++)
+            {
+                FoodItemSlot foodItemSlot = _posModel.FoodItemSlots[i];
+                try
+                {
+                    PosButton mealButton = _posView.mealButtons[i];
+                    foodItemSlot.OnFoodItemChanged += () =>
+                    { 
+                        mealButton.RegisterListener(() => { 
+                            if (foodItemSlot.FoodItem == null) return; 
+                            _posView.UpdatePriceText(foodItemSlot.FoodItemName + foodItemSlot.FoodItem.UserPrice); }); 
+                    };
 
-                   foodItemSlot.OnFoodItemChanged += () =>
-                   {
-                       
-                       OrderCreator.instance.UpdatePossibleMeals();
-                   };
-               }
-               catch (ArgumentOutOfRangeException e)
-               {
-                   Debug.LogError($"PosController - ConnectView(): Button" +
-                                  $"objects may not match number of food item slots");
-                   Debug.LogError(e);
-               }
+                    foodItemSlot.OnFoodItemChanged += () =>
+                    {
+                        OrderCreator.instance.UpdatePossibleMeals();
+                    };
+                }
+                catch (ArgumentOutOfRangeException e)
+                {
+                    Debug.LogError($"PosController - ConnectView(): Button" +
+                                   $"objects may not match number of food item slots");
+                    Debug.LogError(e);
+                }
 
-           }
+            }
         }
 
         private void ConnectView()
         {
-            Debug.Log("Connect view before loop");
 
             for (int i = 0; i < _posModel.FoodItemSlots.Count; i++)
             {
-                Debug.Log("for loop");
                 FoodItemSlot foodItemSlot = _posModel.FoodItemSlots[i];
                 try
                 {
                     PosButton mealButton = _posView.mealButtons[i];
                     mealButton.RegisterListener(() =>
                     {
-                        if (foodItemSlot.foodItem == null) return;
-                        _posView.UpdatePriceText(foodItemSlot.FoodItemName + foodItemSlot.foodItem.UserPrice);
+                        if (foodItemSlot.FoodItem == null) return;
+                        _posView.UpdatePriceText(foodItemSlot.FoodItemName + foodItemSlot.FoodItem.UserPrice);
                         
                     });
 
