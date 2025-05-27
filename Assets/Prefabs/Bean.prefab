@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 3471583019401940633}
   - component: {fileID: 6428040406809615875}
   - component: {fileID: 8263848985558288528}
+  - component: {fileID: -1329942392727459008}
   m_Layer: 0
   m_Name: Bean
   m_TagString: Player
@@ -260,7 +261,7 @@ MonoBehaviour:
   groundCheck: {fileID: 3149788492787194015}
   ground:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
 --- !u!143 &3471583019401940633
 CharacterController:
   m_ObjectHideFlags: 0
@@ -322,6 +323,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779d794ec5ba85942ba927f3a9254824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1329942392727459008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331400888908106792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4acd0509dc7764c8eba9e565b96ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 504192942324699075}
 --- !u!1 &7367036520060756068
 GameObject:
   m_ObjectHideFlags: 0
