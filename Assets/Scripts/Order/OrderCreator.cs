@@ -27,6 +27,11 @@ namespace Order
             }
         }
 
+        public void SetFoodItemslots(List<FoodItemSlot> slots)
+        {
+            foodItemSlots = slots;
+        }
+        
         public void UpdatePossibleMeals()
         {
             Debug.Log("UPDATEE");
@@ -40,8 +45,8 @@ namespace Order
 
         public Order CreateOrder()
         {
-            // FoodItem randomFoodItem = possibleMeals[Random.Range(0, possibleMeals.Count)];
-            return new Order(_rice, _rice);
+            FoodItem randomFoodItem = possibleMeals[Random.Range(0, possibleMeals.Count)];
+            return new Order(randomFoodItem, _rice);
         }
         
         public void SetRice(FoodItem riceItem)

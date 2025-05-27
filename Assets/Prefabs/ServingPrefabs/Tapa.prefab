@@ -50,10 +50,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dc0c7ba268951fb4d964709f12c53cf1, type: 3}
       propertyPath: m_Name
-      value: Tapa 1
+      value: Tapa
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dc0c7ba268951fb4d964709f12c53cf1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 645229519807528540}
   m_SourcePrefab: {fileID: 100100000, guid: dc0c7ba268951fb4d964709f12c53cf1, type: 3}
+--- !u!1 &2145444656992746812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dc0c7ba268951fb4d964709f12c53cf1, type: 3}
+  m_PrefabInstance: {fileID: 1227036686702264429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &645229519807528540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145444656992746812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a94ada813be4918bb219a374eeb3fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FoodType: 0

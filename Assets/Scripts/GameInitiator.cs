@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using NPCSystem;
 using Order;
 using Sirenix.OdinInspector;
+using Testing;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -18,7 +19,7 @@ public class GameInitiator : MonoBehaviour
     [Required, SerializeField] private GameObject cubPrefab;
     [Required, SerializeField] private NpcSystem npcSystem;
     [Required, SerializeField] private OrderCreator orderCreator;
-    
+    [SerializeField] private TestUtils testUtils;
     
     // [SerializeField] private IngredientSystem ingredientSystem;
     private async void Start()
@@ -33,10 +34,11 @@ public class GameInitiator : MonoBehaviour
         mainDirectionalLight = Instantiate(mainDirectionalLight, Vector3.zero, Quaternion.identity);
         mainEventSystem = Instantiate(mainEventSystem, Vector3.zero, Quaternion.identity);
         loadingCanvas = Instantiate(loadingCanvas);
+        orderCreator = Instantiate(orderCreator);
         cubPrefab = Instantiate(cubPrefab, Vector3.zero, Quaternion.identity);
         player = Instantiate(player, new Vector3(-9190, 1033, 2221), Quaternion.identity);
         npcSystem = Instantiate(npcSystem);
-        orderCreator = Instantiate(orderCreator);
+        testUtils = Instantiate(testUtils);
     }
 
     // private async UniTask LoadScene()

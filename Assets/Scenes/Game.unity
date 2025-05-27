@@ -160,6 +160,7 @@ MonoBehaviour:
   cubPrefab: {fileID: 7963930501786521491, guid: e1476446f3be1fd42befc4ba48ba0990, type: 3}
   npcSystem: {fileID: 3258318669642453353, guid: c923bb76578aede47992b915bae1848f, type: 3}
   orderCreator: {fileID: 1914901889351352209, guid: 386a3a1880f8e254d86892ca7177075d, type: 3}
+  testUtils: {fileID: 3904250241337934391, guid: b4eaea4825f7e2640a054561f5b22eae, type: 3}
 --- !u!4 &1274995140
 Transform:
   m_ObjectHideFlags: 0
