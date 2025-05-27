@@ -21,6 +21,8 @@ public class BubbleFollowPlayer : MonoBehaviour
         if (direction.sqrMagnitude > 0.001f)
         {
             Quaternion rotation = Quaternion.LookRotation(direction);
+            // Rotate 180 degrees on the Y axis
+            rotation *= Quaternion.Euler(0, 180f, 0);
             transform.rotation = rotation;
         }
     }

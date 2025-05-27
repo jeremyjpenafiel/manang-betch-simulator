@@ -1,9 +1,34 @@
 fileFormatVersion: 2
-guid: a1b08b53d0a7a854fb881ef9bd925843
+guid: 371a10d1386ef844c963ab05ef2f5adf
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrontColor
+    second: {fileID: 2100000, guid: f58ab57d9fc2ec94881332c0843e15cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_0128_White
+    second: {fileID: 2100000, guid: 4fcb89270bae8f644bab464d68cc6ccd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_0131_Silver
+    second: {fileID: 2100000, guid: f4a8a5086aa89f248b94b972ca66ba8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_0133_Gray
+    second: {fileID: 2100000, guid: 1382a7140cfbd194bafd76316589d0f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: white_ilu
+    second: {fileID: 2100000, guid: a97ca850a5ed4bd43898e50bce537f31, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
