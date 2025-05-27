@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Dish
   - PlayerHand
+  - NPC
+
   layers:
   - Default
   - TransparentFX
