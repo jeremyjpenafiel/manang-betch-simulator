@@ -4,40 +4,34 @@ public class DishBehavior : MonoBehaviour
 {
     private bool isHeld = false;
 
-    public void SetHeld(bool held)
-    {
-        isHeld = held;
-    }
-
     private void OnMouseDown()
     {
-        if (isHeld) return;
+        if (isHeld) return; // Prevent multiple pick-ups
 
-        GameObject bean = GameObject.Find("Bean(Clone)");
-        if (bean == null) return;
+        // Find the Bean GameObject (you can tag it "Player" if needed)
+        GameObject bean = GameObject.FindWithTag("Player");
+        if (bean == null)
+        {
+            Debug.LogWarning("Bean not found.");
+            return;
+        }
 
+        // Find the hand transform
         Transform hand = bean.transform.Find("Hand");
-        if (hand == null) return;
+        if (hand == null)
+        {
+            Debug.LogWarning("Hand transform not found in Bean.");
+            return;
+        }
 
-        // Clear previous slot
-        DishSpawner spawner = FindObjectOfType<DishSpawner>();
-        if (spawner != null)
-            spawner.ClearDishFromSpawn(gameObject);
-
+        // Attach this dish to the hand
         transform.SetParent(hand);
-        transform.localPosition = Vector3.zero;
+        transform.localPosition = Vector3.zero; // offset
         transform.localRotation = Quaternion.identity;
         isHeld = true;
 
         Collider col = GetComponent<Collider>();
         if (col) col.enabled = false;
-
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb)
-        {
-            rb.isKinematic = true;
-            rb.useGravity = false;
-        }
 
         Debug.Log($"{gameObject.name} picked up and attached to hand.");
     }
