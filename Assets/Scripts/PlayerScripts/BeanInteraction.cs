@@ -6,6 +6,7 @@ public class BeanInteraction : MonoBehaviour
     private GameObject heldDish = null;
     private GameObject heldTray = null;
     [SerializeField] private Transform hand;
+    [SerializeField] private GameObject trayPrefab;
 
     private void Update()
     {
@@ -24,6 +25,7 @@ public class BeanInteraction : MonoBehaviour
                     }
                     else if (clicked.CompareTag("TrayPlate"))
                     {
+                        // TryPickUpTray(clicked);
                         TryPickUpTray();
                     }
                 }
@@ -38,6 +40,15 @@ public class BeanInteraction : MonoBehaviour
                         TryPlaceDishInFoodDisplay(clicked);
                     }
                 }
+                else if (heldTray != null && (clicked.CompareTag("Dish")))
+                {
+                    TryServeDishToTray(clicked);
+                }
+                else if (heldTray != null && clicked.CompareTag("RiceCooker"))
+                {
+                    // TryServeRiceToTray(clicked);
+                }
+
             }
         }
     }
@@ -81,10 +92,11 @@ public class BeanInteraction : MonoBehaviour
     {
         if (heldTray == null)
         {
-            // instantiate the tray from the scene to the hand
-            // GameObject trayPrefab = Resources.Load<GameObject>("Tray_Plate");
+            heldTray = Instantiate(trayPrefab);
+
+            heldTray.transform.SetParent(hand);
             heldTray.transform.localPosition = Vector3.zero;
-            heldTray.transform.localRotation = Quaternion.identity;
+            heldTray.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
 
             Collider col = heldTray.GetComponent<Collider>();
             if (col) col.enabled = false;
@@ -96,6 +108,7 @@ public class BeanInteraction : MonoBehaviour
             Debug.LogWarning("Already holding a tray.");
         }
     }
+
 
     private void TryPlaceDishOnTable(GameObject table)
     {
@@ -171,4 +184,57 @@ public class BeanInteraction : MonoBehaviour
             Debug.LogWarning("No GlassFoodDisplay found.");
         }
     }
+
+    private void TryServeDishToTray(GameObject dishObject)
+    {
+        TrayLayout layout = heldTray.GetComponent<TrayLayout>();
+        if (layout != null && layout.HasAvailableSlot())
+        {
+            DishBehavior dish = dishObject.GetComponent<DishBehavior>();
+            if (dish != null && dish.TryServe(out GameObject serving))
+            {
+                if (layout.TryPlaceOnTray(serving))
+                {
+                    Debug.Log($"Served 1 portion from {dish.name}. Remaining: {dish.GetRemainingQuantity()}");
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("Tray is full. Cannot take more servings.");
+        }
+    }
+
+    // private void TryServeRiceToTray(GameObject riceCookerObject)
+    // {
+    //     if (heldTray == null)
+    //     {
+    //         Debug.Log("You need to pick up a tray first.");
+    //         return;
+    //     }
+
+    //     TrayLayout layout = heldTray.GetComponent<TrayLayout>();
+    //     if (layout != null && layout.HasAvailableSlot())
+    //     {
+    //         DishReference dishRef = riceCookerObject.GetComponent<DishReference>();
+    //         if (dishRef != null && dishRef.foodItem != null && dishRef.foodItem.foodPrefab != null)
+    //         {
+    //             GameObject riceServing = Instantiate(dishRef.foodItem.foodPrefab);
+    //             if (layout.TryPlaceOnTray(riceServing))
+    //             {
+    //                 Debug.Log($"Served rice portion: {dishRef.foodItem.FoodItemName}");
+    //             }
+    //             else
+    //             {
+    //                 Destroy(riceServing);
+    //                 Debug.Log("Tray is full. Could not place rice.");
+    //             }
+    //         }
+    //         else
+    //         {
+    //             Debug.LogWarning("Rice cooker missing DishReference or foodPrefab.");
+    //         }
+    //     }
+    // }
+
 }

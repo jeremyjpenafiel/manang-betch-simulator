@@ -15,7 +15,7 @@ MonoBehaviour:
   foodItemName: Pinakbet
   requiredIngredients:
   - ingredient: {fileID: 11400000, guid: 5cee6917d95dc2c4e85b689a35f576da, type: 2}
-    amount: 1
+    amount: 2
   - ingredient: {fileID: 11400000, guid: 43d4f67b6fd0cd144a3a4076bbe8200b, type: 2}
     amount: 1
   - ingredient: {fileID: 11400000, guid: 9e91175bf36abf748b117f5342c0ffa0, type: 2}
@@ -23,11 +23,11 @@ MonoBehaviour:
   - ingredient: {fileID: 11400000, guid: 183d6f5a978b2ed4889f37db207a2d2a, type: 2}
     amount: 1
   - ingredient: {fileID: 11400000, guid: 48da02deefa910140aad43c399f53907, type: 2}
-    amount: 1
+    amount: 2
   - ingredient: {fileID: 11400000, guid: f423647e6d9d8bd459c03a60504ca363, type: 2}
-    amount: 1
+    amount: 2
   - ingredient: {fileID: 11400000, guid: 671dc41b564ec854b99ca73e50156325, type: 2}
-    amount: 1
+    amount: 2
   quantity: 0
   UserPrice: 20
   foodPrefab: {fileID: 2136015420073257259, guid: c4883506170730641ade38388dcdbdd4, type: 3}
