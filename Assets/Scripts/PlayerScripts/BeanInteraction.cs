@@ -59,7 +59,7 @@ public class BeanInteraction : MonoBehaviour
                                 Collider col = heldDish.GetComponent<Collider>();
                                 if (col) col.enabled = true;
 
-                                // Update dish reference in spawner (optional)
+                                // Update dish reference in spawner
                                 spawner.SetDishAt(spawner.spawnPoints.IndexOf(spawnPoint), heldDish);
 
                                 Debug.Log($"{heldDish.name} placed on table.");
