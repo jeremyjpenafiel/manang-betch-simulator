@@ -61,7 +61,9 @@ namespace PosSystem
                 {
                     if (index == 0)
                     {
+                        _posView.OpenChangeSystemSreen();
                         _posView.OpenCashRegister();
+                        _playerStatistics.Money += totalPrice;
                         
                     }
                     else if (index == 1)

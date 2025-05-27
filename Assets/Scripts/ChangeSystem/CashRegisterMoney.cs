@@ -5,7 +5,7 @@ namespace ChangeSystem
 {
     public class CashRegisterMoney : MonoBehaviour
     {
-        [SerializeField] private int value;
+        [SerializeField] public float value;
         [SerializeField] private GameObject moneyPrefab;
         public event Action<GameObject> OnMoneyAdded;
         public event Action<GameObject> OnMoneyRemoved;
@@ -31,5 +31,10 @@ namespace ChangeSystem
         // {
         //     OnMoneyRemoved += listener;
         // }
+
+        public GameObject GetMoneyPrefab()
+        {
+            return moneyPrefab;
+        }
     }
 }

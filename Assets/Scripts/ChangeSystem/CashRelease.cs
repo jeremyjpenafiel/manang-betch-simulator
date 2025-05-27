@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace ChangeSystem 
 {
-    public class CashReturn : MonoBehaviour
+    public class CashRelease : MonoBehaviour
     {
         [SerializeField] private int value;
         [SerializeField] private GameObject moneyPrefab;
         public event Action<GameObject> OnMoneyAdded;
-        public event Action OnMoneyRemoved;
-        public void ResetCash()
+        public event Action OnMoneyReleased;
+        public void ReleaseCash()
         {
-            OnMoneyRemoved?.Invoke();
+            OnMoneyReleased?.Invoke();
         }
 
         // public void ReleaseMoney()
@@ -25,9 +25,9 @@ namespace ChangeSystem
 
         }
 
-        public void RegisterRemoveMoneyListener(Action listener)
+        public void RegisterReleaseMoneyListener(Action listener)
         {
-            OnMoneyRemoved += listener;
+            OnMoneyReleased += listener;
         }
     }
 }
