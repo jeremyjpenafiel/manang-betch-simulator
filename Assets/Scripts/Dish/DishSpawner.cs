@@ -34,17 +34,28 @@ public class DishSpawner : MonoBehaviour
         return false;
     }
 
-    public void ClearSpawnedDish(Transform spawnPoint)
+    public void ClearSpawnedDish(Transform dishTransform)
     {
         for (int i = 0; i < spawnPoints.Count; i++)
         {
-            if (spawnPoints[i] == spawnPoint)
+            if (spawnedDishes[i] != null && spawnedDishes[i].transform == dishTransform)
+            {
+                spawnedDishes[i] = null;
+                return;
+            }
+        }
+
+        // Optional fallback if you passed the spawn point
+        for (int i = 0; i < spawnPoints.Count; i++)
+        {
+            if (spawnPoints[i] == dishTransform)
             {
                 spawnedDishes[i] = null;
                 return;
             }
         }
     }
+
 
 
     public void SetDishAt(int index, GameObject dish)

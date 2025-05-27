@@ -16,28 +16,36 @@ public class BeanInteraction : MonoBehaviour
 
                 // PICK UP
                 if (heldDish == null && clicked.CompareTag("Dish"))
-                {
-                    Transform originalParent = clicked.transform.parent; 
-                    heldDish = clicked;
+                    {
+                    Transform originalParent = clicked.transform.parent;
 
-                    // Reparent to hand
+                    heldDish = clicked;
                     heldDish.transform.SetParent(hand);
                     heldDish.transform.localPosition = Vector3.zero;
                     heldDish.transform.localRotation = Quaternion.identity;
 
-                    // Disable collider
                     Collider col = heldDish.GetComponent<Collider>();
                     if (col) col.enabled = false;
 
-                    // Clear spawn reference
+                    // Clear from DishSpawner (spawn table)
                     DishSpawner spawner = originalParent.GetComponentInParent<DishSpawner>();
                     if (spawner != null)
                     {
-                        spawner.ClearSpawnedDish(originalParent); 
+                        spawner.ClearSpawnedDish(heldDish.transform);
+                        Debug.Log($"{heldDish.name} picked up from spawn table.");
                     }
-
-                    Debug.Log($"{heldDish.name} picked up.");
+                    else
+                    {
+                        // Clear from GlassFoodDisplay (food display)
+                        GlassFoodDisplay display = originalParent.GetComponentInParent<GlassFoodDisplay>();
+                        if (display != null)
+                        {
+                            Debug.Log($"{heldDish.name} picked up from food display.");
+                            // Optionally you can implement a ClearDisplaySlot if needed
+                        }
+                    }
                 }
+                
 
                 // PLACE BACK ON TABLE
                 else if (heldDish != null && clicked.CompareTag("Table"))
@@ -59,7 +67,6 @@ public class BeanInteraction : MonoBehaviour
                                 Collider col = heldDish.GetComponent<Collider>();
                                 if (col) col.enabled = true;
 
-                                // Update dish reference in spawner
                                 spawner.SetDishAt(spawner.spawnPoints.IndexOf(spawnPoint), heldDish);
 
                                 Debug.Log($"{heldDish.name} placed on table.");
@@ -71,6 +78,44 @@ public class BeanInteraction : MonoBehaviour
                         Debug.Log("No free spawn point on the table.");
                     }
                 }
+
+                // PUT DISH IN FOOD DISPLAY
+                else if (heldDish != null && clicked.CompareTag("FoodDisplay"))
+                {
+                    GlassFoodDisplay display = clicked.GetComponent<GlassFoodDisplay>();
+                    if (display == null)
+                    {
+                        display = clicked.GetComponentInParent<GlassFoodDisplay>();
+                    }
+
+                    if (display != null)
+                    {
+                        Transform emptySlot = display.GetFirstEmptySlot();
+                        if (emptySlot != null)
+                        {
+                            heldDish.transform.SetParent(emptySlot);
+                            heldDish.transform.position = emptySlot.position;
+                            heldDish.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+
+                            Collider col = heldDish.GetComponent<Collider>();
+                            if (col) col.enabled = true;
+
+                            Debug.Log($"{heldDish.name} placed in food display.");
+                            heldDish = null;
+                        }
+                        else
+                        {
+                            Debug.Log("No empty slot in food display.");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No GlassFoodDisplay found.");
+                    }
+                }
+
+
+
             }
         }
     }
