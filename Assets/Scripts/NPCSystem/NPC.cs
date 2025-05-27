@@ -22,7 +22,6 @@ namespace NPCSystem
         
         public async void SetDestination(Transform target, Action onDestinationReached = null)
         {
-            Debug.LogWarning("Going to destination " + target.name);
             try
             {
                 _aiDestinationSetter.target = target;
@@ -47,10 +46,6 @@ namespace NPCSystem
             {
                 return;
             }
-
-            Debug.Log("Checking");
-            Debug.Log(_ai.reachedDestination);
-
             // Wait until the destination is reached
             await UniTask.Delay(1);
             while (!_ai.reachedDestination)
@@ -58,14 +53,10 @@ namespace NPCSystem
                 await UniTask.Yield();
             }
 
-            // Add a small delay to ensure stability
-
             // Double-check the destination status
-            Debug.Log("Reached destination: " + _ai.reachedDestination);
             if (_ai.reachedDestination)
             {
                 // Invoke the action once the destination is reached
-                Debug.LogWarning("Destination reached");
                 onDestinationReached?.Invoke();
             }
 
