@@ -52,6 +52,7 @@ public class BeanInteraction : MonoBehaviour
                 {
                     // TryServeRiceToTray(clicked);
                 }
+                
 
             }
         }
