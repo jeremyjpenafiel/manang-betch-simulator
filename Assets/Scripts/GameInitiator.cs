@@ -21,9 +21,8 @@ public class GameInitiator : MonoBehaviour
     [Required, SerializeField] private OrderCreator orderCreator;
     [Required, SerializeField] private OrderChecker orderChecker;
     [Required, SerializeField] private OrderSystem orderSystem;
-    [SerializeField] private TestUtils testUtils;
+    [SerializeField] private GameObject testUtils;
     
-    // [SerializeField] private IngredientSystem ingredientSystem;
     private async void Start()
     {
         BindObjects();
