@@ -26,6 +26,6 @@ public class IngredientSystem : MonoBehaviour
             .WithIngredients(fruitsAndVegetables)
             .WithIngredients(condimentsAndSeasonings)
             .WithFoodItems(foodItems)
-            .Build(ingredientView, playerStatistics);
+            .Build(ingredientView, playerStatistics, FindObjectOfType<DishSpawner>());
     }
 }
