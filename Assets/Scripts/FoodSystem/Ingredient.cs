@@ -13,7 +13,6 @@ namespace FoodSystem
         // [SerializeField] private Units unit;
         
         public event Action<int> OnQuantityChanged;
-        public event Action<bool> OnPurchasableChanged;
 
         public Ingredient(string ingredientName, int quantity, float price)
         {
