@@ -7,6 +7,8 @@ TagManager:
   - Dish
   - PlayerHand
   - NPC
+  - Table
+  - FoodDisplay
   layers:
   - Default
   - TransparentFX
