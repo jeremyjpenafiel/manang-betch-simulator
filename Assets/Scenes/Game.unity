@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -160,6 +160,7 @@ MonoBehaviour:
   cubPrefab: {fileID: 7963930501786521491, guid: e1476446f3be1fd42befc4ba48ba0990, type: 3}
   npcSystem: {fileID: 3258318669642453353, guid: c923bb76578aede47992b915bae1848f, type: 3}
   orderCreator: {fileID: 1914901889351352209, guid: 386a3a1880f8e254d86892ca7177075d, type: 3}
+  gameManager: {fileID: 290905912254920979, guid: a8cd012707d8b0741b70f2472d64cef0, type: 3}
 --- !u!4 &1274995140
 Transform:
   m_ObjectHideFlags: 0
