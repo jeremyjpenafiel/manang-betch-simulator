@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
     public void StartPhaseOne()
     {
         Debug.Log("Phase One Started!");
-        timeManager.ResetTimer();
         timeManager.PauseTimer();
         SceneManager.LoadScene("Game");
         // timeManager.SetTimerUI(null); // Assuming you want to hide the timer UI at the start of phase one
@@ -46,7 +45,9 @@ public class GameManager : MonoBehaviour
     public void StartPhaseTwo()
     {
         Debug.Log("Phase Two Started!");
+        timeManager.ResetTimer();
         timeManager.ResumeTimer();
+        //unhide the timer UI if it was hidden
     }
     public void StartPhaseThree()
     {

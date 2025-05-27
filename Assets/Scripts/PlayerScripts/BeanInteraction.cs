@@ -52,8 +52,6 @@ public class BeanInteraction : MonoBehaviour
                 {
                     // TryServeRiceToTray(clicked);
                 }
-
-                if (clicked.CompareTag("PhaseSwitch"))
                 
 
             }

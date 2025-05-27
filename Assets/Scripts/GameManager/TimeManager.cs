@@ -13,7 +13,7 @@ public class TimeManager : MonoBehaviour
     private int startHour = 8;
     private int endHour = 17;
     private float totalSimulatedMinutes = 540f; // From 08:00 to 17:00
-    private bool isTimerRunning;
+    private bool isTimerRunning = true;
 
     public void SetTimerUI(TextMeshProUGUI timer)
     {
