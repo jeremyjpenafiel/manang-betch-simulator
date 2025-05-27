@@ -36,6 +36,7 @@ namespace NPCSystem
             {
                 
                 Debug.LogWarning("AIDestinationSetter component is not attached to the NPC.");
+                Debug.LogError("Error setting destination: " + e.Message);
             }
         }
 

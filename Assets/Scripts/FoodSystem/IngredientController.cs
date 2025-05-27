@@ -55,6 +55,7 @@ namespace FoodSystem
                 {
                     Debug.LogError($"IngredientController - ConnectFoodItemModel(): TextMeshProUGUI " +
                                    $"objects may not match number of food items");
+                    Debug.LogError(e);
                 }
                 
                 try
@@ -67,6 +68,7 @@ namespace FoodSystem
                 {
                     Debug.LogError($"IngredientController - ConnectFoodItemModel(): Button " +
                                    $"objects may not match number of food items");
+                    Debug.LogError(e);
                 }
 
                 try
@@ -107,6 +109,7 @@ namespace FoodSystem
                     
                     Debug.LogError($"IngredientController - ConnectIngredientModel(): IngredientTextGroup " +
                                    $"objects may not match number of ingredients");
+                    Debug.LogError(e);
                 }
           
             }
