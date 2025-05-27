@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26d22584430d9045aedbe8b0e1baba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  servingSlots:
-  - {fileID: 919098304647395668}
+  servingSlots: {fileID: 919098304647395668}
+  riceTransform: {fileID: 5802861181125481826}
 --- !u!1 &7804661471192311718
 GameObject:
   m_ObjectHideFlags: 0

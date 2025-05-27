@@ -40,16 +40,13 @@ public class BeanInteraction : MonoBehaviour
                         TryPlaceDishInFoodDisplay(clicked);
                     }
                 }
-                else if (heldTray != null)
+                else if (heldTray != null && (clicked.CompareTag("Dish")))
                 {
-                    if (clicked.CompareTag("Dish"))
-                    {
-                        TryServeDishToTray(clicked);
-                    }
-                    else if (clicked.CompareTag("RiceCooker"))
-                    {
-                        // TryServeRiceToTray(clicked);
-                    }
+                    TryServeDishToTray(clicked);
+                }
+                else if (heldTray != null && clicked.CompareTag("RiceCooker"))
+                {
+                    TryServeRiceToTray(clicked);
                 }
 
             }
@@ -95,7 +92,6 @@ public class BeanInteraction : MonoBehaviour
     {
         if (heldTray == null)
         {
-            // Clone the tray
             heldTray = Instantiate(trayPrefab);
 
             heldTray.transform.SetParent(hand);
@@ -192,7 +188,7 @@ public class BeanInteraction : MonoBehaviour
     private void TryServeDishToTray(GameObject dishObject)
     {
         TrayLayout layout = heldTray.GetComponent<TrayLayout>();
-        if (layout != null && layout.HasServingSlotAvailable())
+        if (layout != null && layout.HasAvailableSlot())
         {
             DishBehavior dish = dishObject.GetComponent<DishBehavior>();
             if (dish != null && dish.TryServe(out GameObject serving))
@@ -208,27 +204,37 @@ public class BeanInteraction : MonoBehaviour
             Debug.Log("Tray is full. Cannot take more servings.");
         }
     }
-    
-    // private void TryServeRiceToTray(GameObject riceCooker)
-    // {
-    //     TrayLayout layout = heldTray.GetComponent<TrayLayout>();
-    //     if (layout != null && layout.HasRiceSlotAvailable())
-    //     {
-    //         RiceCookerBehavior cooker = riceCooker.GetComponent<RiceCookerBehavior>();
-    //         if (cooker != null && cooker.TryServe(out GameObject riceServing))
-    //         {
-    //             if (layout.TryPlaceRiceOnTray(riceServing))
-    //             {
-    //                 Debug.Log($"Served rice from {riceCooker.name}.");
-    //             }
-    //         }
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("Tray's rice slot is already used.");
-    //     }
-    // }
 
+    private void TryServeRiceToTray(GameObject riceCookerObject)
+    {
+        if (heldTray == null)
+        {
+            Debug.Log("You need to pick up a tray first.");
+            return;
+        }
 
+        TrayLayout layout = heldTray.GetComponent<TrayLayout>();
+        if (layout != null && layout.HasAvailableSlot())
+        {
+            DishReference dishRef = riceCookerObject.GetComponent<DishReference>();
+            if (dishRef != null && dishRef.foodItem != null && dishRef.foodItem.foodPrefab != null)
+            {
+                GameObject riceServing = Instantiate(dishRef.foodItem.foodPrefab);
+                if (layout.TryPlaceOnTray(riceServing))
+                {
+                    Debug.Log($"Served rice portion: {dishRef.foodItem.FoodItemName}");
+                }
+                else
+                {
+                    Destroy(riceServing);
+                    Debug.Log("Tray is full. Could not place rice.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Rice cooker missing DishReference or foodPrefab.");
+            }
+        }
+    }
 
 }

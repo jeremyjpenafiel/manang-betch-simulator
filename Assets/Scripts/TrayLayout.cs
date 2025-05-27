@@ -3,57 +3,50 @@ using System.Collections.Generic;
 
 public class TrayLayout : MonoBehaviour
 {
-    [SerializeField] private List<Transform> servingSlot;
-    [SerializeField] private List<Transform> riceSlot;
-
-    private bool servingUsed = false;
-    private bool riceUsed = false;
+    [SerializeField] private Transform servingSlots;
+    [SerializeField] private Transform riceTransform;
+    private bool isServingonTray = false;
+    private bool isRiceOnTray = false;
+    private int currentSlotIndex = 0;
 
     public bool TryPlaceOnTray(GameObject serving)
     {
-        if (!servingUsed && servingSlot.Count > 0)
+        if (!isServingonTray)
         {
-            Transform slot = servingSlot[0];
+            Transform slot = servingSlots;
             serving.transform.SetParent(slot);
             serving.transform.localPosition = Vector3.zero;
             serving.transform.localRotation = Quaternion.identity;
-            servingUsed = true;
+            isServingonTray = true;
             return true;
         }
 
-        Debug.Log("Serving slot is already used.");
+        Debug.Log("No available slots on the tray.");
         return false;
     }
 
-    public bool TryPlaceRiceOnTray(GameObject rice)
+    public bool TryPlaceRiceOnTray(GameObject serving)
     {
-        if (!riceUsed && riceSlot.Count > 0)
+        if (!isRiceOnTray)
         {
-            Transform slot = riceSlot[0];
-            rice.transform.SetParent(slot);
-            rice.transform.localPosition = Vector3.zero;
-            rice.transform.localRotation = Quaternion.identity;
-            riceUsed = true;
+            Transform slot = riceTransform;
+            serving.transform.SetParent(slot);
+            serving.transform.localPosition = Vector3.zero;
+            serving.transform.localRotation = Quaternion.identity;
+            isRiceOnTray = true;
             return true;
         }
 
-        Debug.Log("Rice slot is already used.");
+        Debug.Log("No available slots on the tray.");
         return false;
-    }
-
-    public bool HasServingSlotAvailable()
-    {
-        return !servingUsed && servingSlot.Count > 0;
-    }
-
-    public bool HasRiceSlotAvailable()
-    {
-        return !riceUsed && riceSlot.Count > 0;
     }
 
     public void ResetTray()
     {
-        servingUsed = false;
-        riceUsed = false;
+        currentSlotIndex = 0;
+    }
+     public bool HasAvailableSlot()
+    {
+        return !isServingonTray;
     }
 }

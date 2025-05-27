@@ -139,3 +139,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dishQuantity: 10
   servingPrefab: {fileID: 5911117075799064619, guid: 82cddc842a4703846818ed6d14e8855e, type: 3}
+  foodItem: {fileID: 11400000, guid: c2c0bddaea51b0540baed9da7d658568, type: 2}
