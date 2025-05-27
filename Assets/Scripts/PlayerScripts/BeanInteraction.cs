@@ -1,4 +1,5 @@
 using UnityEngine;
+using FoodSystem;
 
 public class BeanInteraction : MonoBehaviour
 {
@@ -41,11 +42,17 @@ public class BeanInteraction : MonoBehaviour
                         if (display != null)
                         {
                             Debug.Log($"{heldDish.name} picked up from food display.");
-                            // Optionally you can implement a ClearDisplaySlot if needed
+
+                            // Clear FoodItemSlot's reference
+                            FoodItemSlot foodItemSlot = originalParent.GetComponent<FoodItemSlot>();
+                            if (foodItemSlot != null)
+                            {
+                                foodItemSlot.SetFoodItem(null);
+                                Debug.Log("Cleared food item from display slot.");
+                            }
                         }
                     }
                 }
-                
 
                 // PLACE BACK ON TABLE
                 else if (heldDish != null && clicked.CompareTag("Table"))
@@ -96,6 +103,26 @@ public class BeanInteraction : MonoBehaviour
                             heldDish.transform.SetParent(emptySlot);
                             heldDish.transform.position = emptySlot.position;
                             heldDish.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+
+                            DishReference reference = heldDish.GetComponent<DishReference>();
+                            if (reference != null && reference.foodItem != null)
+                            {
+                                FoodItem foodItem = reference.foodItem;
+                                FoodItemSlot foodItemSlot = emptySlot.GetComponent<FoodItemSlot>();
+                                if (foodItemSlot != null)
+                                {
+                                    foodItemSlot.SetFoodItem(foodItem);
+                                    Debug.Log($"{foodItem.FoodItemName} added to slot.");
+                                }
+                                else
+                                {
+                                    Debug.LogWarning("No FoodItemSlot component found on the empty slot.");
+                                }
+                            }
+                            else
+                            {
+                                Debug.LogWarning("No FoodItemReference or food item found on dish.");
+                            }
 
                             Collider col = heldDish.GetComponent<Collider>();
                             if (col) col.enabled = true;
