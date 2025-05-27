@@ -68,13 +68,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a79f73262a47cfc438cc54f76f3da246, type: 3}
+      propertyPath: m_TagString
+      value: Dish
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a79f73262a47cfc438cc54f76f3da246, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -7490426486929092197}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a79f73262a47cfc438cc54f76f3da246, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8278752932454186506}
@@ -84,18 +85,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a79f73262a47cfc438cc54f76f3da246, type: 3}
   m_PrefabInstance: {fileID: 4349729009522769718}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-7490426486929092197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3502743522499215975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d06c4b3c492cf746a212b052d927fd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &8278752932454186506
 BoxCollider:
   m_ObjectHideFlags: 0

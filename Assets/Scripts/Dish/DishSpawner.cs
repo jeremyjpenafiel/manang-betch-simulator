@@ -3,13 +3,17 @@ using UnityEngine;
 
 public class DishSpawner : MonoBehaviour
 {
-    [SerializeField] private List<Transform> spawnPoints;
+    [SerializeField] public List<Transform> spawnPoints;
     private List<GameObject> spawnedDishes;
 
     private void Awake()
     {
-        // Initialize the spawnedDishes list 
-        spawnedDishes = new List<GameObject>(new GameObject[spawnPoints.Count]);
+        spawnedDishes = new List<GameObject>();
+        // Fill with null for each spawn point to match size
+        for (int i = 0; i < spawnPoints.Count; i++)
+        {
+            spawnedDishes.Add(null);
+        }
     }
 
     public bool TrySpawnDish(GameObject dishPrefab)
@@ -19,15 +23,35 @@ public class DishSpawner : MonoBehaviour
             if (spawnedDishes[i] == null)
             {
                 GameObject dishInstance = Instantiate(dishPrefab, spawnPoints[i].position, Quaternion.identity);
-                spawnedDishes[i] = dishInstance;
-
                 dishInstance.transform.SetParent(spawnPoints[i]);
 
+                spawnedDishes[i] = dishInstance;
                 return true;
             }
         }
 
         Debug.Log("All spawn points are occupied. Cannot spawn new dish.");
         return false;
+    }
+
+    public void ClearSpawnedDish(Transform spawnPoint)
+    {
+        for (int i = 0; i < spawnPoints.Count; i++)
+        {
+            if (spawnPoints[i] == spawnPoint)
+            {
+                spawnedDishes[i] = null;
+                return;
+            }
+        }
+    }
+
+
+    public void SetDishAt(int index, GameObject dish)
+    {
+        if (index >= 0 && index < spawnedDishes.Count)
+        {
+            spawnedDishes[index] = dish;
+        }
     }
 }

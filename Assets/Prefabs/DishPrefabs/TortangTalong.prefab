@@ -68,13 +68,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TortangTalong
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c0a0453d31932d8478162506d725dc8b, type: 3}
+      propertyPath: m_TagString
+      value: Dish
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0a0453d31932d8478162506d725dc8b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7829101264001843324}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0a0453d31932d8478162506d725dc8b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6550500710331401004}
@@ -84,18 +85,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c0a0453d31932d8478162506d725dc8b, type: 3}
   m_PrefabInstance: {fileID: 9199109450728318498}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7829101264001843324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8316077717172034419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d06c4b3c492cf746a212b052d927fd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &6550500710331401004
 BoxCollider:
   m_ObjectHideFlags: 0
