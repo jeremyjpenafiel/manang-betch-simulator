@@ -24,22 +24,15 @@ namespace NPCSystem
 
         private void NpcAddToQueue(Npc npc)
         {
-            Debug.Log("NPC entered the queue slot");
             _npcQueue.Enqueue(npc);
             npc.targetBeforeExit = targetPositionBeforeExit;
             npc.exitTransform = exitPosition;
             
             int queueIndex = _npcQueue.Count - 1;
-            Action onFirstNpc = null;
-
-            if (queueIndex == 0)
-            {
-                onFirstNpc =  () =>
-                {
-                    npc.Wait(5).Forget();
-                };
-            
-            }
+            Action onFirstNpc = () => 
+            { 
+                npc.Wait(5).Forget(); 
+            };
             npc.SetDestination(queue[queueIndex].transform, onFirstNpc);
         }
 
