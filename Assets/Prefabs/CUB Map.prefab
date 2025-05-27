@@ -491,6 +491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3498878238831670860}
+  - component: {fileID: 5988379957219594656}
   m_Layer: 0
   m_Name: FoodDisplaySlotFive
   m_TagString: Untagged
@@ -513,6 +514,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7717966693295531193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5988379957219594656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199406969779541893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &202982229696089166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,6 +2637,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 393502507180413892}
+  - component: {fileID: 4356415457137143235}
   m_Layer: 0
   m_Name: FoodDisplaySlotThree
   m_TagString: Untagged
@@ -2645,6 +2660,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7717966693295531193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4356415457137143235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880053113978518240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &889140016078093189
 GameObject:
   m_ObjectHideFlags: 0
@@ -4597,6 +4625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2553625577075910355}
+  - component: {fileID: 4810560877793051670}
   m_Layer: 0
   m_Name: FoodDisplaySlotEight
   m_TagString: Untagged
@@ -4619,6 +4648,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7717966693295531193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4810560877793051670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706469820215421482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &1717728409994225998
 GameObject:
   m_ObjectHideFlags: 0
@@ -5177,6 +5219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7337294053261922312}
+  - component: {fileID: 2588838143623508257}
   m_Layer: 0
   m_Name: FoodDisplaySlotTwo
   m_TagString: Untagged
@@ -5199,6 +5242,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7717966693295531193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2588838143623508257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828883816181924544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &1882190939141939685
 GameObject:
   m_ObjectHideFlags: 0
@@ -9346,6 +9402,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1498838980435514973}
+  - component: {fileID: 7604167647076866758}
   m_Layer: 0
   m_Name: FoodDisplaySlotOne
   m_TagString: Untagged
@@ -9368,6 +9425,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7717966693295531193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7604167647076866758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676298351370619867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &3701299315061507184
 GameObject:
   m_ObjectHideFlags: 0
@@ -13195,6 +13265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2463957553309643558}
+  - component: {fileID: 1641203411673936732}
   m_Layer: 0
   m_Name: FoodDisplaySlotFour
   m_TagString: Untagged
@@ -13217,6 +13288,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7717966693295531193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1641203411673936732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4514237424245758795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &4519813356486291053
 GameObject:
   m_ObjectHideFlags: 0
@@ -14822,6 +14906,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 103283772978181116}
+  - component: {fileID: 6251251104573688772}
   m_Layer: 0
   m_Name: FoodDisplaySlotSix
   m_TagString: Untagged
@@ -14844,6 +14929,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7717966693295531193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6251251104573688772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5259786697549098183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &5295868761506529512
 GameObject:
   m_ObjectHideFlags: 0
@@ -21432,6 +21530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3558387249029437786}
+  - component: {fileID: 6161665808090890473}
   m_Layer: 0
   m_Name: FoodDisplaySlotSeven
   m_TagString: Untagged
@@ -21454,6 +21553,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7717966693295531193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6161665808090890473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750258073691336709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &7773736218093177436
 GameObject:
   m_ObjectHideFlags: 0
