@@ -1,4 +1,4 @@
-using FoodDisplay;
+using System;
 using UnityEngine;
 using FoodSystem;
 
@@ -9,6 +9,9 @@ public class BeanInteraction : MonoBehaviour
     [SerializeField] private Transform hand;
     [SerializeField] private GameObject trayPrefab;
 
+
+    public event Action<FoodItem> OnFoodAddToTray;
+    
     private void Update()
     {
         if (Input.GetMouseButtonDown(0)) // Left-click
@@ -195,11 +198,15 @@ public class BeanInteraction : MonoBehaviour
 
         DishBehavior dish = dishObject.GetComponent<DishBehavior>();
         if (dish == null || !dish.TryServe(out GameObject serving)) return;
-        
-        if (layout.TryPlaceOnTray(serving))
-        {
-            Debug.Log($"Served 1 portion from {dish.name}. Remaining: {dish.GetRemainingQuantity()}");
-        }
+
+        if (!layout.TryPlaceOnTray(serving)) return;
+
+        Debug.Log($"Served 1 portion from {dish.name}. Remaining: {dish.GetRemainingQuantity()}");
+
+        FoodItem item = dishObject.GetComponent<DishReference>().foodItem;
+        if (item) OnFoodAddToTray?.Invoke(item);
+
+
     }
 
     // private void TryServeRiceToTray(GameObject riceCookerObject)
