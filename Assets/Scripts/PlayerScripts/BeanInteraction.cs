@@ -13,6 +13,7 @@ public class BeanInteraction : MonoBehaviour
 
 
     public event Action<FoodItem> OnFoodAddToTray;
+    public static event Action OnTrayPlacedInPaymentSection;
 
     private void Awake()
     {
@@ -39,6 +40,14 @@ public class BeanInteraction : MonoBehaviour
                     {
                         // TryPickUpTray(clicked);
                         TryPickUpTray();
+                    }
+                    else if (clicked.CompareTag("PaymentSection"))
+                    {
+                        TryPickUpTray();
+                    }
+                    else if (clicked.CompareTag("RiceCooker"))
+                    {
+                        // TryServeRiceToTray(clicked);
                     }
                 }
                 else if (heldDish != null)
@@ -240,6 +249,7 @@ public class BeanInteraction : MonoBehaviour
             return;
         }
 
+        OnTrayPlacedInPaymentSection?.Invoke();
         Transform paymentSection = paymentSectionTransform.transform;
         heldTray.transform.SetParent(paymentSection); 
         heldTray.transform.position = paymentSection.position;  

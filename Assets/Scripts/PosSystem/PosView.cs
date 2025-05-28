@@ -6,17 +6,24 @@ namespace PosSystem
 {
     public class PosView : MonoBehaviour
     {
+        [Header("POS")]
         [SerializeField] public List<PosButton> mealButtons;
         [SerializeField] public List<PosButton> transactionButtons;
         [SerializeField] public List<PosButton> changeButtons;
         [SerializeField] private TextMeshProUGUI priceText;
         [SerializeField] private TextMeshProUGUI totalPriceText;
-        [SerializeField] private TextMeshProUGUI currentChangeSystemText;
-        [SerializeField] private TextMeshProUGUI changeSystemText;
-        [SerializeField] private GameObject cashRegisterOpen;
         [SerializeField] private GameObject gcashPaymentReceipt;
+
+        [Header("Change System")]
+        [SerializeField] private TextMeshProUGUI cashPaidText;
+        [SerializeField] private TextMeshProUGUI calculatedChangeText;
+        [SerializeField] private GameObject cashRegisterOpen;
         [SerializeField] private GameObject changeSystemScreen;
         [SerializeField] public PosButton resetButton;
+
+
+        //private float change;
+        private float calculatedChange;
 
 
 
@@ -100,11 +107,32 @@ namespace PosSystem
             changeSystemScreen.SetActive(false);
             Debug.Log("Change System Screen Closed");
         }
-        
-        public void UpdateCurrentChangeSystemText(string text)
+
+        // public void UpdateCurrentChangeSystemText(string text)
+        // {
+        //     currentChangeSystemText.text = text;
+        //     Debug.Log($"Current Change System Text Updated: {text}");
+        // }
+
+        public void UpdateCashPaidText(string text)
         {
-            currentChangeSystemText.text = text;
-            Debug.Log($"Current Change System Text Updated: {text}");
+            cashPaidText.text = text;
+            Debug.Log($"Cash Paid Text Updated: {text}");
+        }
+
+        public void UpdateCalculatedChangeText(string text)
+        {
+            calculatedChangeText.text = text;
+            Debug.Log($"Calculated Change Text Updated: {text}");
+        }
+
+        public void SetCalculatedChange(float change)
+        {
+            calculatedChange = change;
+        }
+        public float GetCalculatedChange()
+        {
+            return calculatedChange;
         }
     }
 }

@@ -12,7 +12,9 @@ namespace ChangeSystem
         private Transform _moneySpawnPoint;
         private readonly Stack<GameObject> _moneyStack = new();
         private float currentChangeValue = 0f;
-
+        private float calculatedChange = 0f;
+        public PosController posController;
+        
 
         public void OnMoneyAdded(GameObject money)
         {
@@ -62,6 +64,12 @@ namespace ChangeSystem
 
         public void OnMoneyReleased()
         {
+            calculatedChange = posView.GetCalculatedChange();
+            if (calculatedChange > currentChangeValue)
+            {
+                Debug.LogWarning("Not enough money to release change.");
+                return;
+            }
             Debug.Log("Releasing money...");
             playerStatistics.Money -= currentChangeValue;
             OnMoneyRemoved();
@@ -69,6 +77,10 @@ namespace ChangeSystem
             posView.ClearPriceText();
             posView.UpdateTotalPriceText(0f);
             posView.CloseCashRegister();
+            //update pos view
+            posView.UpdateCalculatedChangeText("");
+            posView.UpdateCashPaidText("");
+            //PosController.cashPaid = 0f;
             //close change system
         }
     }

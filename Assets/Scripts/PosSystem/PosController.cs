@@ -11,18 +11,22 @@ namespace PosSystem
         private readonly PosModel _posModel;
         private readonly PosView _posView;
         private PlayerStatistics _playerStatistics;
+        private PaymentGenerator _paymentGenerator;
         private float totalPrice;
+        public float change;
+        public float cashPaid;
 
         private List<FoodItem> foodItems;
         private bool isOrderCorrect;
 
         public event Action<bool> OnOrderChecked;
         
-        public PosController(PosModel posModel, PosView posView, PlayerStatistics playerStatistics)
+        public PosController(PosModel posModel, PosView posView, PlayerStatistics playerStatistics, PaymentGenerator paymentGenerator)
         {
             _posModel = posModel;
             _posView = posView;
             _playerStatistics = playerStatistics;
+            _paymentGenerator = paymentGenerator;
 
             foodItems = new List<FoodItem>();
 
@@ -105,6 +109,15 @@ namespace PosSystem
                         _posView.OpenChangeSystemSreen();
                         _posView.OpenCashRegister();
                         _playerStatistics.Money += totalPrice;
+                        //add cash paid
+                        cashPaid = _paymentGenerator.GetPayment(totalPrice);
+                        _posView.UpdateCashPaidText(cashPaid.ToString("F2"));
+                        //calculate change
+                        change = cashPaid - totalPrice;
+                        _posView.SetCalculatedChange(change);
+                        _posView.UpdateCalculatedChangeText(change.ToString("F2"));
+
+
 
                     }
                     else if (index == 1)
@@ -167,9 +180,9 @@ namespace PosSystem
         {
             private readonly PosModel _posModel = new();
 
-            public PosController Build(PosView posView, PlayerStatistics playerStatistics)
+            public PosController Build(PosView posView, PlayerStatistics playerStatistics, PaymentGenerator paymentGenerator)
             {
-                return new PosController(_posModel, posView, playerStatistics);
+                return new PosController(_posModel, posView, playerStatistics, paymentGenerator);
             }
             
             public Builder WithFoodItemSlots(List<FoodItemSlot> foodItemSlots)

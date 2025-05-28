@@ -8,6 +8,7 @@ namespace PosSystem
         [SerializeField] private PosView posView;
         [SerializeField] private List<FoodItemSlot> foodItemSlots;
         [SerializeField] private PlayerStatistics playerStatistics;
+        [SerializeField] private PaymentGenerator paymentGenerator;
 
         PosController _posController;
 
@@ -15,7 +16,7 @@ namespace PosSystem
         {
             _posController = new PosController.Builder()
                 .WithFoodItemSlots(foodItemSlots)
-                .Build(posView, playerStatistics);
+                .Build(posView, playerStatistics, paymentGenerator);
         }
     }
 }

@@ -18,6 +18,9 @@ namespace NPCSystem
         public Order.Order order;
         public TextMeshProUGUI orderText;
 
+        public bool mustGoToPaymentSection = false;
+        public bool isBeingAccommodated = false;
+
         public void OnEnable()
         {
             _aiDestinationSetter = GetComponent<AIDestinationSetter>();
@@ -70,7 +73,10 @@ namespace NPCSystem
         {
             Action action = () =>
             {
-                SetDestination(exitTransform);
+                SetDestination(exitTransform, () =>
+                {
+                    Destroy(gameObject);
+                });
             };
             
             SetDestination(targetBeforeExit, action);
