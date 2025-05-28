@@ -9,7 +9,7 @@ namespace PosSystem
         [Header("POS")]
         [SerializeField] public List<PosButton> mealButtons;
         [SerializeField] public List<PosButton> transactionButtons;
-        [SerializeField] public List<PosButton> changeButtons;
+        // [SerializeField] public List<PosButton> changeButtons;
         [SerializeField] private TextMeshProUGUI priceText;
         [SerializeField] private TextMeshProUGUI totalPriceText;
         [SerializeField] private GameObject gcashPaymentReceipt;
@@ -47,10 +47,10 @@ namespace PosSystem
                 transactionButtons[i].SetInteractable(false); // Initially set transaction buttons to not interactable
             }
 
-            for (int i = 0; i < changeButtons.Count; i++)
-            {
-                changeButtons[i].Initialize(i);
-            }
+            // for (int i = 0; i < changeButtons.Count; i++)
+            // {
+            //     changeButtons[i].Initialize(i);
+            // }
 
         }
 
