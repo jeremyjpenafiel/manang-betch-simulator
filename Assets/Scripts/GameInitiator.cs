@@ -20,6 +20,7 @@ public class GameInitiator : MonoBehaviour
     [Required, SerializeField] private NpcSystem npcSystem;
     [Required, SerializeField] private OrderCreator orderCreator;
     [Required, SerializeField] private GameManager gameManager;
+    // [Required, SerializeField] private TimeManager timeManager;
     [Required, SerializeField] private OrderChecker orderChecker;
     [Required, SerializeField] private OrderSystem orderSystem;
     [SerializeField] private GameObject testUtils;
@@ -43,8 +44,19 @@ public class GameInitiator : MonoBehaviour
         cubPrefab = Instantiate(cubPrefab, Vector3.zero, Quaternion.identity);
         player = Instantiate(player, new Vector3(-9190, 1033, 2221), Quaternion.identity);
         gameManager = Instantiate(gameManager, Vector3.zero, Quaternion.identity);
+        // timeManager = Instantiate(timeManager, Vector3.zero, Quaternion.identity);
         npcSystem = Instantiate(npcSystem);
         testUtils = Instantiate(testUtils);
+
+        TimeManager timeManager = FindObjectOfType<TimeManager>();
+        if (timeManager != null)
+        {
+            gameManager.GetComponent<GameManager>().SetTimeManager(timeManager);
+        }
+        else
+        {
+            Debug.LogError("TimeManager not found in scene!");
+        }
     }
 
     private void Initialize()

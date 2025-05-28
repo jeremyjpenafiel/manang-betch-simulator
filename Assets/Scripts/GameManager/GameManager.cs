@@ -1,69 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Order;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-    [SerializeField] private TimeManager timeManager;
-    [SerializeField] private Canvas menuCanvas;
-    [SerializeField] private Canvas letterCanvas;
-
-
-    private void Awake()
+    [SerializeField]private TimeManager timeManager;
+    public void SetTimeManager(TimeManager manager)
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-    public void SetTimeManager(TimeManager tm)
-    {
-        timeManager = tm;
-    }
-
-    public void Play()
-    {
-        menuCanvas.gameObject.SetActive(false);
-        letterCanvas.gameObject.SetActive(true);
-    }
-
-    public void StartPhaseOne()
-    {
-        Debug.Log("Phase One Started!");
-        timeManager.PauseTimer();
-        SceneManager.LoadScene("Game");
-        // timeManager.SetTimerUI(null); // Assuming you want to hide the timer UI at the start of phase one
-
+        timeManager = manager;
     }
 
     public void StartPhaseTwo()
     {
-        Debug.Log("Phase Two Started!");
-        timeManager.ResetTimer();
-        timeManager.ResumeTimer();
-        //unhide the timer UI if it was hidden
+        if (OrderCreator.instance == null)
+        {
+            Debug.LogError("OrderCreator instance not found.");
+            return;
+        }
+        if (OrderCreator.instance.AvailableMealsOnDisplay.Count > 1)
+        {
+            Debug.Log("Transitioning to Phase Two!");
+            timeManager.StartTimer();
+        }
+        else
+        {
+            Debug.Log("Cannot transition to Phase Two: No meals available on display.");
+        }
     }
+
     public void StartPhaseThree()
     {
-        Debug.Log("Phase Three Started!");
+        Debug.Log("Transitioning to Phase Three!");
+        timeManager.StopTimer();
+
     }
 
-    public void GameOver()
+    public void ShowSummary()
+    {
+        if (OrderCreator.instance == null)
+        {
+            Debug.LogError("OrderCreator instance not found.");
+            return;
+        }
+
+        if (OrderCreator.instance.AvailableMealsOnDisplay.Count > 1)
+        {
+            Debug.Log("You must clear the display!");
+            Debug.Log(OrderCreator.instance.AvailableMealsOnDisplay.Count + " meals available on display.");
+            return;
+        }
+        else
+        {
+            Debug.Log("Showing summary of the day!");
+            //show nouse cursor
+            SceneController.Instance?.LoadSummary();
+        }
+    }
+
+
+
+    void GameOver()
     {
         Debug.Log("Game Over!");
-        timeManager.PauseTimer();
     }
-
-    // public void GameOver()
-    // {
-    //     Debug.Log("Game Over. Returning to Main Menu...");
-    //     SceneManager.LoadScene("MainMenu");
-    // }
-
 }

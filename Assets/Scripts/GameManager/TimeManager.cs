@@ -5,29 +5,43 @@ using TMPro;
 
 public class TimeManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI timerText; 
     [SerializeField] private GameManager gameManager;
 
-    [SerializeField] private float totalGameSeconds = 420f; // 7 minutes in seconds
+    [Header("Game Time Settings")]
+    [SerializeField] private float totalGameSeconds = 420f;
+    [SerializeField] private bool isTesting = false; 
     private float currentTime = 0f;
     private int startHour = 8;
     private int endHour = 17;
     private float totalSimulatedMinutes = 540f; // From 08:00 to 17:00
     private bool isTimerRunning = true;
 
-    public void SetTimerUI(TextMeshProUGUI timer)
-    {
-        timerText = timer;
+    void Awake()
+    {   
+        if (isTesting)
+        {
+            totalGameSeconds = 30f; // For testing set to 1 minute
+            totalSimulatedMinutes = 30f; // Simulate 30 minutes
+        }
+        else
+        {
+            totalGameSeconds = 420f; // Default to 7 minutes (420 seconds)
+            totalSimulatedMinutes = 540f; // Simulate from 08:00 to 17:00 (9 hours)
+        }
+        StopTimer();
     }
 
-    public void SetGameManager(GameManager gm)
+    public void StartTimer()
     {
-        gameManager = gm;
+        isTimerRunning = true;
+        timerText.gameObject.SetActive(true); 
     }
 
-    void Start()
+    public void StopTimer()
     {
-        timerText.gameObject.SetActive(false);
+        isTimerRunning = false;
+        // timerText.gameObject.SetActive(false);
     }
 
     void Update()
@@ -41,29 +55,16 @@ public class TimeManager : MonoBehaviour
 
         int currentHour = startHour + Mathf.FloorToInt(inGameMinutesPassed / 60);
         int CurrentMinute = Mathf.FloorToInt(inGameMinutesPassed % 60);
-//        Debug.Log("Current Time: " + currentHour + ":" + CurrentMinute);
+        //Debug.Log("Current Time: " + currentHour + ":" + CurrentMinute);
         timerText.text = $"{currentHour:00}:{CurrentMinute:00}";
 
         if (currentTime >= totalGameSeconds)
         {
             isTimerRunning = false;
+            gameManager?.StartPhaseThree();
             timerText.text = "17:00";
             Debug.Log("Game day ended!");
-            gameManager?.GameOver();
         }
-    }
-
-    public void ResetTimer() => currentTime = 0f;
-    public void PauseTimer()
-    {
-        isTimerRunning = false;
-        Debug.Log("Timer paused at: " + timerText.text);
-        timerText.gameObject.SetActive(false);
-    }
-    public void ResumeTimer()
-    {
-        isTimerRunning = true;
-        timerText.gameObject.SetActive(true);
-        Debug.Log("Timer resumed at: " + timerText.text);
+        
     }
 }
