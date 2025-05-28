@@ -164,6 +164,7 @@ MonoBehaviour:
   orderChecker: {fileID: 2147685254154457122, guid: cf912c726c8d2db4c8eb8560170edb90, type: 3}
   orderSystem: {fileID: 5799246701329714438, guid: c26c574f400353f48a208855700f2755, type: 3}
   testUtils: {fileID: 8903013981318560251, guid: b4eaea4825f7e2640a054561f5b22eae, type: 3}
+  soundManager: {fileID: 6661571255222151502, guid: b5b0138d6cadde64e9b4b3a26dfa59a5, type: 3}
 --- !u!4 &1274995140
 Transform:
   m_ObjectHideFlags: 0

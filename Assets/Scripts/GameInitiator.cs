@@ -24,6 +24,7 @@ public class GameInitiator : MonoBehaviour
     [Required, SerializeField] private OrderChecker orderChecker;
     [Required, SerializeField] private OrderSystem orderSystem;
     [SerializeField] private GameObject testUtils;
+    [Required, SerializeField] private GameObject soundManager;
     
     private async void Start()
     {
@@ -47,6 +48,7 @@ public class GameInitiator : MonoBehaviour
         // timeManager = Instantiate(timeManager, Vector3.zero, Quaternion.identity);
         npcSystem = Instantiate(npcSystem);
         testUtils = Instantiate(testUtils);
+        soundManager = Instantiate(soundManager, Vector3.zero, Quaternion.identity);
 
         TimeManager timeManager = FindObjectOfType<TimeManager>();
         if (timeManager != null)
