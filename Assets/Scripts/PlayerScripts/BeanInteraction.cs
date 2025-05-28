@@ -30,82 +30,77 @@ public class BeanInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Left-click
+        if (!Input.GetMouseButtonDown(0)) return; // Left-click
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            
+        if (!Physics.Raycast(ray, out RaycastHit hit)) return;
+            
+        GameObject clicked = hit.collider.gameObject;
+
+        if (!TryGetComponent(out IInteractable interactable)) return;
+
+        if (heldDish == null && heldTray == null)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (clicked.CompareTag("Dish"))
             {
-                GameObject clicked = hit.collider.gameObject;
+                // Check if this is the rice cooker by name
+                if (clicked.name.Equals("RiceCooker", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Optionally handle rice cooker dish click here
+                    Debug.Log("RiceCooker dish clicked.");
+                    // You can call a method here if needed, e.g. TryServeRiceToTray(clicked);
+                }
+                else
+                {
+                    TryPickUpDish(clicked);
+                }
+            }
 
-                if (heldDish == null && heldTray == null)
-                {
-                    if (clicked.CompareTag("Dish"))
-                    {
-                        if (clicked.CompareTag("Dish"))
-                        {
-                            // Check if this is the rice cooker by name
-                            if (clicked.name.Equals("RiceCooker", StringComparison.OrdinalIgnoreCase))
-                            {
-                                // Optionally handle rice cooker dish click here
-                                Debug.Log("RiceCooker dish clicked.");
-                                // You can call a method here if needed, e.g. TryServeRiceToTray(clicked);
-                            }
-                            else
-                            {
-                                TryPickUpDish(clicked);
-                            }
-                        }
-
-                    }
-                    else if (clicked.CompareTag("TrayPlate"))
-                    {
-                        // TryPickUpTray(clicked);
-                        TryPickUpTray();
-                    }
-                    else if (clicked.CompareTag("PaymentSection"))
-                    {
-                        TryPickUpTray();
-                    }
-                    else if (clicked.CompareTag("RiceCooker"))
-                    {
-                        // TryServeRiceToTray(clicked);
-                    }
-                }
-                else if (heldDish != null)
-                {
-                    if (clicked.CompareTag("Table"))
-                    {
-                        TryPlaceDishOnTable(clicked);
-                    }
-                    else if (clicked.CompareTag("FoodDisplay"))
-                    {
-                        TryPlaceDishInFoodDisplay(clicked);
-                    }
-                }
-                else if (heldTray != null && (clicked.CompareTag("Dish")))
-                {
-                    TryServeDishToTray(clicked);
-                }
-                else if (heldTray != null && clicked.CompareTag("PaymentSection"))
-                {
-                    // Handle payment section interaction
-                    Debug.Log("Interacted with payment section while holding a tray.");
-                    // Chheck order agen 
-                    if (OrderChecker.Instance.CheckOrder(tray.Dish, tray.Rice))
-                    {
-                        //place order
-                        TryPlaceDishOnPaymentSection(clicked);
-                        Debug.Log("Order placed successfully.");
-                    }
-                }
-                else if (heldTray != null && clicked.CompareTag("RiceCooker"))
-                {
-                    // TryServeRiceToTray(clicked);
-                }
-
-
+            else if (clicked.CompareTag("TrayPlate"))
+            {
+                // TryPickUpTray(clicked);
+                TryPickUpTray();
+            }
+            else if (clicked.CompareTag("PaymentSection"))
+            {
+                TryPickUpTray();
+            }
+            else if (clicked.CompareTag("RiceCooker"))
+            {
+                // TryServeRiceToTray(clicked);
             }
         }
+        else if (heldDish != null)
+        {
+            if (clicked.CompareTag("Table"))
+            {
+                TryPlaceDishOnTable(clicked);
+            }
+            else if (clicked.CompareTag("FoodDisplay"))
+            {
+                TryPlaceDishInFoodDisplay(clicked);
+            }
+        }
+        else if (heldTray != null && (clicked.CompareTag("Dish")))
+        {
+            TryServeDishToTray(clicked);
+        }
+        else if (heldTray != null && clicked.CompareTag("PaymentSection"))
+        {
+            // Handle payment section interaction
+            Debug.Log("Interacted with payment section while holding a tray.");
+            // Chheck order agen 
+            if (OrderChecker.Instance.CheckOrder(tray.Dish, tray.Rice))
+            {
+                //place order
+                TryPlaceDishOnPaymentSection(clicked);
+                Debug.Log("Order placed successfully.");
+            }
+        }
+        // else if (heldTray != null && clicked.CompareTag("RiceCooker"))
+        // {
+        //     // TryServeRiceToTray(clicked);
+        // }
     }
 
 
