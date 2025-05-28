@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 529647324}
   - component: {fileID: 529647323}
   - component: {fileID: 529647322}
+  - component: {fileID: 529647326}
   m_Layer: 5
   m_Name: EndOfDaySummaryCanvas
   m_TagString: Untagged
@@ -321,6 +322,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &529647326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529647321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3b73d86dc6fe0f4cb2945988fb69d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStatistics: {fileID: 11400000, guid: a0e03bdde5b72994ca239cc8a682fc0b, type: 2}
+  totalIncomeText: {fileID: 723421029}
+  successfulTransactionsText: {fileID: 975714803}
+  missedOrdersText: {fileID: 1951293241}
+  foodThrownText: {fileID: 1426609608}
 --- !u!1 &723421027
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +351,7 @@ GameObject:
   - component: {fileID: 723421030}
   - component: {fileID: 723421029}
   m_Layer: 5
-  m_Name: Earnings
+  m_Name: TotalIncomeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,7 +396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Earnings: P5000.00'
+  m_text: 'Total Income:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 73f0ef2eaaf95f24bab510cad5d82f03, type: 2}
   m_sharedMaterial: {fileID: -200649084991866180, guid: 73f0ef2eaaf95f24bab510cad5d82f03, type: 2}
@@ -601,7 +619,7 @@ GameObject:
   - component: {fileID: 975714804}
   - component: {fileID: 975714803}
   m_Layer: 5
-  m_Name: Earnings (1)
+  m_Name: SuccesfulTransactionsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -646,7 +664,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Target: P5000.00/50000.00'
+  m_text: 'Successful Transactions:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 73f0ef2eaaf95f24bab510cad5d82f03, type: 2}
   m_sharedMaterial: {fileID: -200649084991866180, guid: 73f0ef2eaaf95f24bab510cad5d82f03, type: 2}
@@ -735,7 +753,7 @@ GameObject:
   - component: {fileID: 1009729958}
   - component: {fileID: 1009729957}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: DaySummaryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1162,7 +1180,7 @@ GameObject:
   - component: {fileID: 1426609609}
   - component: {fileID: 1426609608}
   m_Layer: 5
-  m_Name: Earnings (3)
+  m_Name: FoodThrownText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1207,7 +1225,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Loss: P300.00'
+  m_text: 'Food Thrown:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 73f0ef2eaaf95f24bab510cad5d82f03, type: 2}
   m_sharedMaterial: {fileID: -200649084991866180, guid: 73f0ef2eaaf95f24bab510cad5d82f03, type: 2}
@@ -1364,7 +1382,7 @@ GameObject:
   - component: {fileID: 1951293242}
   - component: {fileID: 1951293241}
   m_Layer: 5
-  m_Name: Earnings (2)
+  m_Name: MissedOrdersText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1409,7 +1427,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thrown Dish: 1'
+  m_text: 'Missed Orders:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 73f0ef2eaaf95f24bab510cad5d82f03, type: 2}
   m_sharedMaterial: {fileID: -200649084991866180, guid: 73f0ef2eaaf95f24bab510cad5d82f03, type: 2}
