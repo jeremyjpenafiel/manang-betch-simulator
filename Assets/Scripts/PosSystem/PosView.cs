@@ -21,6 +21,9 @@ namespace PosSystem
         [SerializeField] private GameObject changeSystemScreen;
         [SerializeField] public PosButton resetButton;
 
+        [Header("Order")]
+        private GameObject trayInPaymentSection;
+
 
         //private float change;
         private float calculatedChange;
@@ -87,6 +90,8 @@ namespace PosSystem
             // Implement logic to show Gcash payment receipt
             gcashPaymentReceipt.SetActive(true);
             Debug.Log("Gcash Payment Receipt Shown");
+
+            DestroyTrayInPaymentSection();
             Invoke(nameof(HideGcashPaymentReceipt), 1f);
         }
 
@@ -134,5 +139,22 @@ namespace PosSystem
         {
             return calculatedChange;
         }
+
+        public void SetTrayInPaymentSection(GameObject tray)
+        {
+            trayInPaymentSection = tray;
+            Debug.Log("Tray set in payment section.");
+        }
+
+        public void DestroyTrayInPaymentSection()
+        {
+            if (trayInPaymentSection != null)
+            {
+                Destroy(trayInPaymentSection);
+                Debug.Log("Tray in payment section destroyed.");
+                trayInPaymentSection = null;
+            }
+        }
+
     }
 }

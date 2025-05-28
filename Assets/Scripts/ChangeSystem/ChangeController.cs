@@ -18,7 +18,7 @@ namespace ChangeSystem
 
         private void ConnectView()
         {
-            _changeView.UpdateChangeAmount(_changeAmount);
+            _changeView.UpdateChangeAmount(_changeAmount, Color.red);
         }
 
         public class Builder

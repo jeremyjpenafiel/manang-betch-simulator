@@ -116,6 +116,7 @@ namespace PosSystem
                         change = cashPaid - totalPrice;
                         _posView.SetCalculatedChange(change);
                         _posView.UpdateCalculatedChangeText(change.ToString("F2"));
+                        totalPrice = 0f;
 
 
 

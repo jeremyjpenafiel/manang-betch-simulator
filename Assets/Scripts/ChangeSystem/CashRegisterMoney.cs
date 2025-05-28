@@ -11,7 +11,6 @@ namespace ChangeSystem
         public event Action<GameObject> OnMoneyRemoved;
         private void OnMouseOver()
         {
-            Debug.Log("asdasd");
             if (Input.GetMouseButtonDown(0))
             {
                 OnMoneyAdded?.Invoke(gameObject);
