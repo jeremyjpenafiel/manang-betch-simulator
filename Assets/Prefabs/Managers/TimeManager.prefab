@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00:00
+  m_text: 08:00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -182,3 +182,4 @@ MonoBehaviour:
   timerText: {fileID: 341423836791779212}
   gameManager: {fileID: 4017038041607411979, guid: a8cd012707d8b0741b70f2472d64cef0, type: 3}
   totalGameSeconds: 420
+  isTesting: 1

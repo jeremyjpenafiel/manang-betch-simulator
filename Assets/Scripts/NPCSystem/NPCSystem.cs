@@ -9,7 +9,7 @@ namespace NPCSystem
     public class NpcSystem: MonoBehaviour
     {
         [Required, SerializeField] private QueueManager queueManager;
-        [Required, SerializeField] private NpcSpawner npcSpawner;
+        [Required, SerializeField] public NpcSpawner npcSpawner;
         [Sirenix.OdinInspector.ReadOnly, SerializeField] private OrderSystem orderSystem;
 
 
@@ -25,7 +25,7 @@ namespace NPCSystem
             queueManager.Initialize();
             queueManager.RegisterNPCEnterListener(orderSystem.OnNewCustomer);
             queueManager.RegisterNPCExitListener(orderSystem.ResetOrder);
-            npcSpawner.DoSpawn().Forget();
+            // npcSpawner.DoSpawn().Forget();
         }
 
         public void Start()
