@@ -41,7 +41,21 @@ public class BeanInteraction : MonoBehaviour
                 {
                     if (clicked.CompareTag("Dish"))
                     {
-                        TryPickUpDish(clicked);
+                        if (clicked.CompareTag("Dish"))
+                        {
+                            // Check if this is the rice cooker by name
+                            if (clicked.name.Equals("RiceCooker", StringComparison.OrdinalIgnoreCase))
+                            {
+                                // Optionally handle rice cooker dish click here
+                                Debug.Log("RiceCooker dish clicked.");
+                                // You can call a method here if needed, e.g. TryServeRiceToTray(clicked);
+                            }
+                            else
+                            {
+                                TryPickUpDish(clicked);
+                            }
+                        }
+
                     }
                     else if (clicked.CompareTag("TrayPlate"))
                     {
@@ -260,7 +274,7 @@ public class BeanInteraction : MonoBehaviour
         Transform paymentSection = paymentSectionTransform.transform;
         heldTray.transform.SetParent(paymentSection);
         heldTray.transform.position = paymentSection.position;  
-        
+        tray.ResetOrder();
         posView.SetTrayInPaymentSection(heldTray); // Register it
         heldTray = null;
     }
