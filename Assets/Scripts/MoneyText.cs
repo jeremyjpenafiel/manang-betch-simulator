@@ -14,7 +14,7 @@ public class MoneyText: MonoBehaviour
         
     }
 
-    public void Initialize()
+    public void Start()
     {
         UpdateMoneyText();
     }
