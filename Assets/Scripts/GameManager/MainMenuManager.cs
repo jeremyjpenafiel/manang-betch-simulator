@@ -8,11 +8,19 @@ public class MainMenuManager : MonoBehaviour
     // private static GameManager instance;
     [SerializeField] private GameObject menuCanvas;
     [SerializeField] private GameObject letterCanvas;
+    [SerializeField] private GameObject howToPlayCanvas;
     void Start()
+    {
+        MainMenu();
+    }
+
+    public void MainMenu()
     {
         menuCanvas.gameObject.SetActive(true);
         letterCanvas.gameObject.SetActive(false);
+        howToPlayCanvas.gameObject.SetActive(false);
     }
+
     public void Play()
     {
         menuCanvas.gameObject.SetActive(false);
@@ -27,7 +35,9 @@ public class MainMenuManager : MonoBehaviour
     public void showHowToPlay()
     {
 
-        // Logic to show the instructions 
+        menuCanvas.gameObject.SetActive(false);
+        letterCanvas.gameObject.SetActive(false);
+        howToPlayCanvas.gameObject.SetActive(true);
     }
 
     public void QuitGame()
