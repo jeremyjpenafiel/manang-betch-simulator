@@ -260,7 +260,7 @@ public class BeanInteraction : MonoBehaviour
         Transform paymentSection = paymentSectionTransform.transform;
         heldTray.transform.SetParent(paymentSection);
         heldTray.transform.position = paymentSection.position;  
-        
+        tray.ResetOrder();
         posView.SetTrayInPaymentSection(heldTray); // Register it
         heldTray = null;
     }
