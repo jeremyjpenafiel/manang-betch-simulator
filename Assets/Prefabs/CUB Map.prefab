@@ -1626,6 +1626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &202982229696089166
 GameObject:
   m_ObjectHideFlags: 0
@@ -7181,6 +7182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &883796020701381453
 GameObject:
   m_ObjectHideFlags: 0
@@ -12855,6 +12857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &1707854045229211497
 GameObject:
   m_ObjectHideFlags: 0
@@ -13650,6 +13653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &1828724168245821074
 GameObject:
   m_ObjectHideFlags: 0
@@ -13777,6 +13781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &1847816340318231290
 GameObject:
   m_ObjectHideFlags: 0
@@ -14844,6 +14849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &1966173363197329783
 GameObject:
   m_ObjectHideFlags: 0
@@ -27318,6 +27324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &3682521012140144596
 GameObject:
   m_ObjectHideFlags: 0
@@ -33997,6 +34004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &4517275424556411054
 GameObject:
   m_ObjectHideFlags: 0
@@ -39438,6 +39446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &5278321771462145144
 GameObject:
   m_ObjectHideFlags: 0
@@ -58331,6 +58340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &7760490198430025525
 GameObject:
   m_ObjectHideFlags: 0
@@ -59953,6 +59963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodItem: {fileID: 0}
 --- !u!1 &8018407879755871879
 GameObject:
   m_ObjectHideFlags: 0
@@ -71364,6 +71375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foodItem: {fileID: 11400000, guid: c3cfe0fc1b0c8224caee161669954fb0, type: 2}
 --- !u!4 &960122195239329096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8e8bfd5b975a08245adcc872aad447a5, type: 3}
@@ -72874,7 +72886,7 @@ PrefabInstance:
     - target: {fileID: 2215519066571973759, guid: 81851030e50d904458fae95ed9c20d1b, type: 3}
       propertyPath: foodItemSlots.Array.data[10]
       value: 
-      objectReference: {fileID: 3357554167907366453}
+      objectReference: {fileID: 5446355052540307626}
     - target: {fileID: 2480557504605049477, guid: 81851030e50d904458fae95ed9c20d1b, type: 3}
       propertyPath: m_Name
       value: POS System (80%)
@@ -72889,11 +72901,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3039624691463346346, guid: 81851030e50d904458fae95ed9c20d1b, type: 3}
       propertyPath: m_Size
-      value: 1
+      value: 0.99998635
       objectReference: {fileID: 0}
     - target: {fileID: 3857219704545818871, guid: 81851030e50d904458fae95ed9c20d1b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0007241648
+      value: 0.00047634396
       objectReference: {fileID: 0}
     - target: {fileID: 4497664151216139203, guid: 81851030e50d904458fae95ed9c20d1b, type: 3}
       propertyPath: m_AnchorMax.y
