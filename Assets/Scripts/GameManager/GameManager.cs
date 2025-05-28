@@ -14,8 +14,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private NpcSystem npcSystem;
 
 
-    private void OnEnable()
+    private void Start()
     {
+        if (timeManager == null)
+        {
+            Debug.LogError("TimeManager is not assigned in GameManager.");
+            return;
+        }
         timeManager.OnTimerEnd += StartPhaseThree;
     }
 
@@ -49,12 +54,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartPhaseThree()
+    private void StartPhaseThree()
     {
         Debug.Log("Transitioning to Phase Three!");
-        npcSystem.npcSpawner.PauseSpawn();
-        timeManager.StopTimer();
-
+        npcSystem.npcSpawner.isPaused = true;
+        // timeManager.StopTimer();
     }
 
     public void ShowSummary()

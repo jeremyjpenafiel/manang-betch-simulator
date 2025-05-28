@@ -10,8 +10,8 @@ namespace NPCSystem
     public class NpcSpawner : MonoBehaviour
     {
         [Button]
-        public void PauseSpawn()
-        {
+        private void PauseSpawn()
+        {   
             isPaused = true;
         }
 
@@ -28,7 +28,7 @@ namespace NPCSystem
         [SerializeField] private Npc npcPrefab;
         [SerializeField] private float spawnFrequency = 100f;
 
-        public bool isPaused = false;
+        public bool isPaused;
 
 
         public void Spawn()
