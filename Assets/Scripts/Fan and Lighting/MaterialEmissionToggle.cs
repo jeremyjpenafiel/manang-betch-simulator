@@ -30,6 +30,15 @@ public class MaterialEmissionToggle : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        // Optional: You can add a key input to toggle emission for testing
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ToggleEmission();
+        }
+    }
+
 
     public void ToggleEmission()
     {

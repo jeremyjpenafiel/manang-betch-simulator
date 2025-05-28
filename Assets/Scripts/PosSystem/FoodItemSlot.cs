@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FoodItemSlot : MonoBehaviour
 {
-   [CanBeNull] private FoodItem foodItem;
+   [CanBeNull, SerializeField] private FoodItem foodItem;
    public string FoodItemName => foodItem != null ? foodItem.FoodItemName : "No Food Item";
 
 

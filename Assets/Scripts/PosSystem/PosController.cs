@@ -9,11 +9,14 @@ namespace PosSystem
     {
         private readonly PosModel _posModel;
         private readonly PosView _posView;
+        private PlayerStatistics _playerStatistics;
+        private float totalPrice;
         
-        public PosController(PosModel posModel, PosView posView)
+        public PosController(PosModel posModel, PosView posView, PlayerStatistics playerStatistics)
         {
             _posModel = posModel;
             _posView = posView;
+            _playerStatistics = playerStatistics;
 
             ConnectModel();
             ConnectView();
@@ -32,7 +35,8 @@ namespace PosSystem
                     { 
                         mealButton.RegisterListener(() => { 
                             if (foodItemSlot.FoodItem == null) return; 
-                            _posView.UpdatePriceText(foodItemSlot.FoodItemName + foodItemSlot.FoodItem.UserPrice); }); 
+                            //_posView.UpdatePriceText(foodItemSlot.FoodItemName + foodItemSlot.FoodItem.UserPrice); 
+                            }); 
                     };
 
                     foodItemSlot.OnFoodItemChanged += () =>
@@ -62,7 +66,9 @@ namespace PosSystem
                     mealButton.RegisterListener(() =>
                     {
                         if (foodItemSlot.FoodItem == null) return;
-                        _posView.UpdatePriceText(foodItemSlot.FoodItemName + foodItemSlot.FoodItem.UserPrice);
+                        totalPrice += foodItemSlot.FoodItem.UserPrice;
+                        _posView.UpdateTotalPriceText(totalPrice);
+                        _posView.UpdatePriceText(foodItemSlot.FoodItemName + "  -   " + foodItemSlot.FoodItem.UserPrice);
                         
                     });
 
@@ -83,15 +89,29 @@ namespace PosSystem
                 {
                     if (index == 0)
                     {
+                        _posView.OpenChangeSystemSreen();
                         _posView.OpenCashRegister();
+                        _playerStatistics.Money += totalPrice;
+                        
                     }
                     else if (index == 1)
                     {
                         // Call a different method for transactionButton(1)
                         _posView.ShowGcashPaymentReceipt();
+                        _playerStatistics.Money += totalPrice;
+                        _posView.ClearPriceText();
+                        totalPrice = 0;
+                        _posView.UpdateTotalPriceText(totalPrice);
                     }
                 });
             }
+
+            _posView.resetButton.RegisterListener(() =>
+            {
+                _posView.ClearPriceText();
+                totalPrice = 0;
+                _posView.UpdateTotalPriceText(totalPrice);
+            });
 
         }
         
@@ -100,9 +120,9 @@ namespace PosSystem
         {
             private readonly PosModel _posModel = new();
 
-            public PosController Build(PosView posView)
+            public PosController Build(PosView posView, PlayerStatistics playerStatistics)
             {
-                return new PosController(_posModel, posView);
+                return new PosController(_posModel, posView, playerStatistics);
             }
             
             public Builder WithFoodItemSlots(List<FoodItemSlot> foodItemSlots)
