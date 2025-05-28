@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace;
 using FoodSystem;
 using Order;
 using PosSystem;
@@ -10,6 +11,7 @@ namespace PlayerScripts
     {
         HoldingDish,
         HoldingTray,
+        HandsFree,
     }
 
     public class BeanInteraction : MonoBehaviour
@@ -34,26 +36,47 @@ namespace PlayerScripts
             {
                 Debug.LogError("PosView not found in the scene.");
             }
+
+            state = PlayerStates.HoldingTray;
         }
 
 
         private void Update()
         {
+            Debug.LogWarning("ara");
             if (!Input.GetMouseButtonDown(0)) return; // Left-click
+            Debug.Log("1");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            
+            Debug.Log("2");
             if (!Physics.Raycast(ray, out RaycastHit hit)) return;
-            
+            Debug.Log("3");
             GameObject clicked = hit.collider.gameObject;
+            Debug.Log("hit");
 
-            if (!TryGetComponent(out IInteractable interactable)) return;
-        
-            interactable.Interact();
+            // if (!TryGetComponent(out IInteractable interactable)) return;
+            //
+            // interactable.Interact();
 
-            if (state == PlayerStates.HoldingDish)
+            if (clicked.TryGetComponent(out IHandsFreeInteractable handsFreeInteractable) && state == PlayerStates.HandsFree)
             {
-                
+                handsFreeInteractable.Interact(this);
+            }else if (clicked.TryGetComponent(out IDishInteractable dishInteractable) && state == PlayerStates.HoldingDish)
+            {
+                dishInteractable.Interact(this, heldDish);
+            }else if (clicked.TryGetComponent(out ITrayInteractable trayInteractable) && state == PlayerStates.HoldingTray)
+            {
+                trayInteractable.Interact(this, heldTray);
             }
+
+
+
+            // if (state == PlayerStates.HoldingDish)
+            // {
+            //     if (TryGetComponent(out IDishInteractable dishInteractable))
+            //     {
+            //         dishInteractable.Interact(this, heldDish);
+            //     }
+            // }
             if (heldDish == null && heldTray == null)
             {
                 if (clicked.CompareTag("Dish"))
