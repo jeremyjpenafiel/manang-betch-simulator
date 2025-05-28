@@ -35,7 +35,8 @@ namespace PosSystem
                     { 
                         mealButton.RegisterListener(() => { 
                             if (foodItemSlot.FoodItem == null) return; 
-                            _posView.UpdatePriceText(foodItemSlot.FoodItemName + foodItemSlot.FoodItem.UserPrice); }); 
+                            //_posView.UpdatePriceText(foodItemSlot.FoodItemName + foodItemSlot.FoodItem.UserPrice); 
+                            }); 
                     };
 
                     foodItemSlot.OnFoodItemChanged += () =>

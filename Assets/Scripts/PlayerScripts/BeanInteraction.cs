@@ -1,17 +1,25 @@
 using System;
 using UnityEngine;
 using FoodSystem;
+using Order;
 
 public class BeanInteraction : MonoBehaviour
 {
     private GameObject heldDish = null;
     private GameObject heldTray = null;
+    private Tray tray;
     [SerializeField] private Transform hand;
     [SerializeField] private GameObject trayPrefab;
 
 
     public event Action<FoodItem> OnFoodAddToTray;
-    
+
+    private void Awake()
+    {
+        tray = GetComponent<Tray>();
+    }
+
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0)) // Left-click
@@ -48,15 +56,29 @@ public class BeanInteraction : MonoBehaviour
                 {
                     TryServeDishToTray(clicked);
                 }
+                else if (heldTray != null && clicked.CompareTag("PaymentSection"))
+                {
+                    // Handle payment section interaction
+                    Debug.Log("Interacted with payment section while holding a tray.");
+                    // Chheck order agen 
+                    if (OrderChecker.Instance.CheckOrder(tray.Dish, tray.Rice))
+                    {
+                        //place order
+                        TryPlaceDishOnPaymentSection(clicked);
+                        Debug.Log("Order placed successfully.");
+                    }
+                }
                 else if (heldTray != null && clicked.CompareTag("RiceCooker"))
                 {
                     // TryServeRiceToTray(clicked);
                 }
-                
+
 
             }
         }
     }
+
+
 
     private void TryPickUpDish(GameObject dish)
     {
@@ -170,7 +192,7 @@ public class BeanInteraction : MonoBehaviour
         }
 
         FoodItemSlot foodItemSlot = emptySlot.GetComponent<FoodItemSlot>();
-        
+
         if (foodItemSlot != null)
         {
             foodItemSlot.FoodItem = reference.foodItem;
@@ -209,6 +231,20 @@ public class BeanInteraction : MonoBehaviour
 
 
     }
+
+    private void TryPlaceDishOnPaymentSection(GameObject paymentSectionTransform)
+    {
+        if (heldTray == null)
+        {
+            Debug.Log("You need to pick up a dish first.");
+            return;
+        }
+
+        Transform paymentSection = paymentSectionTransform.transform;
+        heldTray.transform.SetParent(paymentSection); 
+        heldTray.transform.position = paymentSection.position;  
+    }
+
 
     // private void TryServeRiceToTray(GameObject riceCookerObject)
     // {

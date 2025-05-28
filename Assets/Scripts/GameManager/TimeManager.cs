@@ -41,7 +41,7 @@ public class TimeManager : MonoBehaviour
 
         int currentHour = startHour + Mathf.FloorToInt(inGameMinutesPassed / 60);
         int CurrentMinute = Mathf.FloorToInt(inGameMinutesPassed % 60);
-        Debug.Log("Current Time: " + currentHour + ":" + CurrentMinute);
+//        Debug.Log("Current Time: " + currentHour + ":" + CurrentMinute);
         timerText.text = $"{currentHour:00}:{CurrentMinute:00}";
 
         if (currentTime >= totalGameSeconds)

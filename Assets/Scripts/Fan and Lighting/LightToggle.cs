@@ -8,7 +8,14 @@ public class LightToggle : MonoBehaviour
 
     private bool lightsOn = true;
 
-
+    private void Update()
+    {
+        // Optional: You can add a key input to toggle lights for testing
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            ToggleLights();
+        }
+    }
 
     public void ToggleLights()
     {

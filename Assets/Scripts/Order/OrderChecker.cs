@@ -7,6 +7,7 @@ namespace Order
     public class OrderChecker: MonoBehaviour
     {
         public static OrderChecker Instance;
+        public bool IsOrderCorrect;
         [SerializeField] private OrderSystem _orderSystem;
 
         public void SetOrderSystem(OrderSystem system)
@@ -24,10 +25,13 @@ namespace Order
             var order = (Order)_orderSystem.CurrentOrder;
             if (order.meal == meal && order.rice == rice)
             {
+                // allow 
+                IsOrderCorrect = true;
                 Debug.Log("Order is correct.");
                 return true;
             }
                 
+            IsOrderCorrect = false;
             Debug.Log("Order is incorrect.");
             return false;
 

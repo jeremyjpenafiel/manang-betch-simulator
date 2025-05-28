@@ -11,6 +11,8 @@ TagManager:
   - FoodDisplay
   - TrayPlate
   - RiceCooker
+  - PhaseSwitch
+  - PaymentSection
   layers:
   - Default
   - TransparentFX
