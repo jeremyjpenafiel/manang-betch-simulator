@@ -83,7 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 11400000, guid: 5a79648e807611746931b067bf33e639, type: 2}
 --- !u!1 &931364597053344946
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,8 +364,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4867000686790668883}
   m_HandleRect: {fileID: 8849702325362342373}
   m_Direction: 0
-  m_Value: 2.0357144
-  m_Size: 0.999999
+  m_Value: 1
+  m_Size: 0.99999905
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -415,7 +414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2098d561748df4a922c246c8a2319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodItem: {fileID: 11400000, guid: 198c54a5e5e65f64998730d4a18866c4, type: 2}
 --- !u!1 &2480557504605049477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,7 +1450,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00072911795, y: 0.09955727}
+  m_AnchoredPosition: {x: -0.00072911795, y: 0.00011631}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!23 &7158420526569893519
@@ -1756,7 +1754,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2896513221645581626}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9996037
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2195,6 +2193,10 @@ PrefabInstance:
     - target: {fileID: 6298381713207154126, guid: bdffd6d7ee9938b4d8cef4d8b786945a, type: 3}
       propertyPath: cashRegisterBills.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346060438951015042, guid: bdffd6d7ee9938b4d8cef4d8b786945a, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 8593166703983032891, guid: bdffd6d7ee9938b4d8cef4d8b786945a, type: 3}
       propertyPath: m_IsActive
