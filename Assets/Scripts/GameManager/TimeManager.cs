@@ -10,7 +10,7 @@ public class TimeManager : MonoBehaviour
 
     [Header("Game Time Settings")]
     [SerializeField] private float totalGameSeconds = 420f;
-    [SerializeField] private bool isTesting = false; 
+    [SerializeField] private bool isTesting = true; 
     private float currentTime = 0f;
     private int startHour = 8;
     private int endHour = 17;
@@ -21,13 +21,13 @@ public class TimeManager : MonoBehaviour
     {   
         if (isTesting)
         {
-            totalGameSeconds = 30f; // For testing set to 1 minute
-            totalSimulatedMinutes = 30f; // Simulate 30 minutes
+            totalGameSeconds = 10f; // For testing set to 1 minute
+            totalSimulatedMinutes = 10f; // Simulate 30 minutes
         }
         else
         {
-            totalGameSeconds = 420f; // Default to 7 minutes (420 seconds)
-            totalSimulatedMinutes = 540f; // Simulate from 08:00 to 17:00 (9 hours)
+            totalGameSeconds = 10f; // Default to 7 minutes (420 seconds)
+            totalSimulatedMinutes = 10f; // Simulate from 08:00 to 17:00 (9 hours)
         }
         StopTimer();
     }
@@ -43,6 +43,8 @@ public class TimeManager : MonoBehaviour
         isTimerRunning = false;
         // timerText.gameObject.SetActive(false);
     }
+
+    public bool IsDayOver => currentTime >= totalGameSeconds;
 
     void Update()
     {
@@ -61,9 +63,9 @@ public class TimeManager : MonoBehaviour
         if (currentTime >= totalGameSeconds)
         {
             isTimerRunning = false;
-            gameManager?.StartPhaseThree();
             timerText.text = "17:00";
             Debug.Log("Game day ended!");
+            gameManager?.StartPhaseThree();
         }
         
     }
