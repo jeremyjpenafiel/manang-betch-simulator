@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
-public class GlassFoodDisplay : MonoBehaviour
+using PlayerScripts;
+
+public class GlassFoodDisplay : MonoBehaviour, IDishInteractable
 {
     [Header("Food Display Slots")]
     [SerializeField] private List<Transform> foodDisplaySlots;
@@ -19,5 +21,11 @@ public class GlassFoodDisplay : MonoBehaviour
 
         Debug.Log("No empty display slot available.");
         return null;
+    }
+
+    public void Interact(BeanInteraction beanInteraction, GameObject dish)
+    {
+        beanInteraction.state = PlayerStates.HandsFree;
+        gameObject
     }
 }
