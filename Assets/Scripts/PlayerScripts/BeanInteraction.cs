@@ -43,15 +43,10 @@ namespace PlayerScripts
 
         private void Update()
         {
-            Debug.LogWarning("ara");
             if (!Input.GetMouseButtonDown(0)) return; // Left-click
-            Debug.Log("1");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.Log("2");
             if (!Physics.Raycast(ray, out RaycastHit hit)) return;
-            Debug.Log("3");
             GameObject clicked = hit.collider.gameObject;
-            Debug.Log("hit");
 
             // if (!TryGetComponent(out IInteractable interactable)) return;
             //
