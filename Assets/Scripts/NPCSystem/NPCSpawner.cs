@@ -10,7 +10,7 @@ namespace NPCSystem
     public class NpcSpawner : MonoBehaviour
     {
         [Button]
-        private void PauseSpawn()
+        public void PauseSpawn()
         {
             isPaused = true;
         }

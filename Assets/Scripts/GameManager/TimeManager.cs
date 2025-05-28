@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class TimeManager : MonoBehaviour
     // private int endHour = 17;
     private float totalSimulatedMinutes = 540f; // From 08:00 to 17:00
     private bool isTimerRunning = true;
+
+    public event Action OnTimerEnd;
 
     void Awake()
     {   
@@ -65,7 +68,8 @@ public class TimeManager : MonoBehaviour
             isTimerRunning = false;
             timerText.text = "17:00";
             Debug.Log("Game day ended!");
-            gameManager.StartPhaseThree();
+            OnTimerEnd?.Invoke();
+            
         }
         
     }

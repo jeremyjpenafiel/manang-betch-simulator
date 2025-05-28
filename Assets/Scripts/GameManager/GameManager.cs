@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,12 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     [SerializeField] private TimeManager timeManager;
     [SerializeField] private NpcSystem npcSystem;
+
+
+    private void OnEnable()
+    {
+        timeManager.OnTimerEnd += StartPhaseThree;
+    }
 
     public void SetTimeManager(TimeManager manager)
     {
@@ -45,7 +52,7 @@ public class GameManager : MonoBehaviour
     public void StartPhaseThree()
     {
         Debug.Log("Transitioning to Phase Three!");
-        // npcSystem.npcSpawner.PauseSpawn();
+        npcSystem.npcSpawner.PauseSpawn();
         timeManager.StopTimer();
 
     }
