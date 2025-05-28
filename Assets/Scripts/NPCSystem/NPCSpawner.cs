@@ -28,7 +28,7 @@ namespace NPCSystem
         [SerializeField] private Npc npcPrefab;
         [SerializeField] private float spawnFrequency = 100f;
 
-        public bool isPaused = true;
+        public bool isPaused = false;
 
 
         public void Spawn()
@@ -39,7 +39,7 @@ namespace NPCSystem
  
 
         public async UniTaskVoid DoSpawn()
-        {
+        {   Debug.Log("NPC Spawner started");
             while (true)
             {
                 if (queueStartPosition.IsOccupied || isPaused)

@@ -48,21 +48,23 @@ public class GameInitiator : MonoBehaviour
         npcSystem = Instantiate(npcSystem);
         testUtils = Instantiate(testUtils);
 
-        TimeManager timeManager = FindObjectOfType<TimeManager>();
-        if (timeManager != null)
-        {
-            gameManager.GetComponent<GameManager>().SetTimeManager(timeManager);
-        }
-        else
-        {
-            Debug.LogError("TimeManager not found in scene!");
-        }
+        // TimeManager timeManager = FindObjectOfType<TimeManager>();
+        // if (timeManager != null)
+        // {
+        //     gameManager.GetComponent<GameManager>().SetTimeManager(timeManager);
+        // }
+        // else
+        // {
+        //     Debug.LogError("TimeManager not found in scene!");
+        // }
     }
 
     private void Initialize()
     {
         npcSystem.SetOrderSystem(orderSystem);
         orderChecker.SetOrderSystem(orderSystem);
+        gameManager.SetNpcSystem(npcSystem);
+        gameManager.SetTimeManager(FindObjectOfType<TimeManager>());
     }
 
     // private async UniTask LoadScene()

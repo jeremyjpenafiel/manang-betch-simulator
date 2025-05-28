@@ -441,7 +441,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3458924494159958989, guid: 44ae3e3f58187a74ba2b5755be7bf29a, type: 3}
       propertyPath: isPaused
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3458924494159958989, guid: 44ae3e3f58187a74ba2b5755be7bf29a, type: 3}
       propertyPath: queueStartPosition

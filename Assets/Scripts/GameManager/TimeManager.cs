@@ -13,7 +13,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private bool isTesting = true; 
     private float currentTime = 0f;
     private int startHour = 8;
-    private int endHour = 17;
+    // private int endHour = 17;
     private float totalSimulatedMinutes = 540f; // From 08:00 to 17:00
     private bool isTimerRunning = true;
 
@@ -26,8 +26,8 @@ public class TimeManager : MonoBehaviour
         }
         else
         {
-            totalGameSeconds = 10f; // Default to 7 minutes (420 seconds)
-            totalSimulatedMinutes = 10f; // Simulate from 08:00 to 17:00 (9 hours)
+            totalGameSeconds = 420f; // Default to 7 minutes (420 seconds)
+            totalSimulatedMinutes = 540f; // Simulate from 08:00 to 17:00 (9 hours)
         }
         StopTimer();
     }
@@ -65,7 +65,7 @@ public class TimeManager : MonoBehaviour
             isTimerRunning = false;
             timerText.text = "17:00";
             Debug.Log("Game day ended!");
-            gameManager?.StartPhaseThree();
+            gameManager.StartPhaseThree();
         }
         
     }

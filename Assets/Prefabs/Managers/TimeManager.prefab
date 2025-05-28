@@ -182,3 +182,4 @@ MonoBehaviour:
   timerText: {fileID: 341423836791779212}
   gameManager: {fileID: 4017038041607411979, guid: a8cd012707d8b0741b70f2472d64cef0, type: 3}
   totalGameSeconds: 420
+  isTesting: 1

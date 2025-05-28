@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Order;
 using UnityEngine.SceneManagement;
+using NPCSystem;
+
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-    [SerializeField]private TimeManager timeManager;
+    [SerializeField] private TimeManager timeManager;
+    [SerializeField] private NpcSystem npcSystem;
+
     public void SetTimeManager(TimeManager manager)
     {
         timeManager = manager;
+    }
+
+    public void SetNpcSystem(NpcSystem system)
+    {
+        npcSystem = system;
     }
 
     public void StartPhaseTwo()
@@ -24,6 +33,8 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Transitioning to Phase Two!");
             timeManager.StartTimer();
+            npcSystem.npcSpawner.DoSpawn().Forget();
+
         }
         else
         {
@@ -34,6 +45,7 @@ public class GameManager : MonoBehaviour
     public void StartPhaseThree()
     {
         Debug.Log("Transitioning to Phase Three!");
+        // npcSystem.npcSpawner.PauseSpawn();
         timeManager.StopTimer();
 
     }
@@ -51,7 +63,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if (OrderCreator.instance.AvailableMealsOnDisplay.Count > 1)
+        if (OrderCreator.instance.AvailableMealsOnDisplay.Count > 0)
         {
             Debug.Log("You must clear the display!");
             Debug.Log(OrderCreator.instance.AvailableMealsOnDisplay.Count + " meals available on display.");
