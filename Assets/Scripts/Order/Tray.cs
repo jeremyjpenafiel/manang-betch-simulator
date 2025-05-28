@@ -1,3 +1,4 @@
+using System;
 using FoodSystem;
 using UnityEngine;
 
@@ -16,6 +17,12 @@ namespace Order
         public void SetRice(FoodItem item)
         {
             Rice = item;
+        }
+
+        public void ResetOrder()
+        {
+            Rice = null;
+            Dish = null;
         }
 
         public Order PlayerAssembledOrder => new Order(Dish, Rice);
