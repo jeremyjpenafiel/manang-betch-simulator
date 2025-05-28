@@ -42,6 +42,10 @@ namespace Order
             foreach (var slot in foodItemSlots)
             {
                 if (slot.FoodItem == null) continue;
+                if(slot.FoodItem.FoodItemName == "Rice")
+                {
+                    continue; // Skip adding rice to possible meals
+                }
                 possibleMeals.Add(slot.FoodItem);
             }
         }

@@ -6,17 +6,27 @@ namespace PosSystem
 {
     public class PosView : MonoBehaviour
     {
+        [Header("POS")]
         [SerializeField] public List<PosButton> mealButtons;
         [SerializeField] public List<PosButton> transactionButtons;
         [SerializeField] public List<PosButton> changeButtons;
         [SerializeField] private TextMeshProUGUI priceText;
         [SerializeField] private TextMeshProUGUI totalPriceText;
-        [SerializeField] private TextMeshProUGUI currentChangeSystemText;
-        [SerializeField] private TextMeshProUGUI changeSystemText;
-        [SerializeField] private GameObject cashRegisterOpen;
         [SerializeField] private GameObject gcashPaymentReceipt;
+
+        [Header("Change System")]
+        [SerializeField] private TextMeshProUGUI cashPaidText;
+        [SerializeField] private TextMeshProUGUI calculatedChangeText;
+        [SerializeField] private GameObject cashRegisterOpen;
         [SerializeField] private GameObject changeSystemScreen;
         [SerializeField] public PosButton resetButton;
+
+        [Header("Order")]
+        private GameObject trayInPaymentSection;
+
+
+        //private float change;
+        private float calculatedChange;
 
 
 
@@ -34,6 +44,7 @@ namespace PosSystem
             for (int i = 0; i < transactionButtons.Count; i++)
             {
                 transactionButtons[i].Initialize(i);
+                transactionButtons[i].SetInteractable(false); // Initially set transaction buttons to not interactable
             }
 
             for (int i = 0; i < changeButtons.Count; i++)
@@ -79,6 +90,8 @@ namespace PosSystem
             // Implement logic to show Gcash payment receipt
             gcashPaymentReceipt.SetActive(true);
             Debug.Log("Gcash Payment Receipt Shown");
+
+            DestroyTrayInPaymentSection();
             Invoke(nameof(HideGcashPaymentReceipt), 1f);
         }
 
@@ -99,11 +112,49 @@ namespace PosSystem
             changeSystemScreen.SetActive(false);
             Debug.Log("Change System Screen Closed");
         }
-        
-        public void UpdateCurrentChangeSystemText(string text)
+
+        // public void UpdateCurrentChangeSystemText(string text)
+        // {
+        //     currentChangeSystemText.text = text;
+        //     Debug.Log($"Current Change System Text Updated: {text}");
+        // }
+
+        public void UpdateCashPaidText(string text)
         {
-            currentChangeSystemText.text = text;
-            Debug.Log($"Current Change System Text Updated: {text}");
+            cashPaidText.text = text;
+            Debug.Log($"Cash Paid Text Updated: {text}");
         }
+
+        public void UpdateCalculatedChangeText(string text)
+        {
+            calculatedChangeText.text = text;
+            Debug.Log($"Calculated Change Text Updated: {text}");
+        }
+
+        public void SetCalculatedChange(float change)
+        {
+            calculatedChange = change;
+        }
+        public float GetCalculatedChange()
+        {
+            return calculatedChange;
+        }
+
+        public void SetTrayInPaymentSection(GameObject tray)
+        {
+            trayInPaymentSection = tray;
+            Debug.Log("Tray set in payment section.");
+        }
+
+        public void DestroyTrayInPaymentSection()
+        {
+            if (trayInPaymentSection != null)
+            {
+                Destroy(trayInPaymentSection);
+                Debug.Log("Tray in payment section destroyed.");
+                trayInPaymentSection = null;
+            }
+        }
+
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Order
 {
-    public class OrderSystem: MonoBehaviour
+    public class OrderSystem : MonoBehaviour
     {
         [SerializeField] List<FoodItem> possibleMeals;
         public Order? CurrentOrder { get; set; }
@@ -18,7 +18,11 @@ namespace Order
         {
             CurrentOrder = OrderCreator.instance.CreateOrder();
             Debug.Log($"New order created for NPC: {npc.name} - {CurrentOrder}");
-            if (CurrentOrder == null) return;
+            if (CurrentOrder == null)
+            {
+                Debug.LogError("CurrentOrder is null, cannot assign to NPC.");
+                return;
+            }
             npc.order = (Order)CurrentOrder;
             npc.orderText.text = $"Order: {npc.order.meal.FoodItemName} with Rice";
             Debug.Log($"Order assigned to NPC: {npc.name} - {npc.order}");
@@ -28,5 +32,7 @@ namespace Order
         {
             CurrentOrder = null;
         }
+        
+
     }
 }

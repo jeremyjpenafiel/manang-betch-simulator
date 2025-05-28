@@ -12,7 +12,15 @@ namespace ChangeSystem
         private Transform _moneySpawnPoint;
         private readonly Stack<GameObject> _moneyStack = new();
         private float currentChangeValue = 0f;
+        private float calculatedChange = 0f;
+        public PosController posController;
 
+        private void Start()
+        {
+            // calculatedChange = posView.GetCalculatedChange();
+            // Debug.Log($"Calculated change on start: {calculatedChange}");
+        }
+        
 
         public void OnMoneyAdded(GameObject money)
         {
@@ -38,7 +46,19 @@ namespace ChangeSystem
 
                 currentChangeValue += cashRegisterMoney.value;
                 Debug.Log($"Money value: {cashRegisterMoney.value}");
-                changeView.UpdateChangeAmount(currentChangeValue);
+                Debug.Log($"Current change value on instantiate change: {currentChangeValue}");
+
+                
+                calculatedChange = posView.GetCalculatedChange();
+                if (calculatedChange > currentChangeValue)
+                {
+                    changeView.UpdateChangeAmount(currentChangeValue, Color.red);
+                }
+                else
+                {
+                    changeView.UpdateChangeAmount(currentChangeValue, Color.green);
+                }
+                
 
             }
             else
@@ -57,18 +77,32 @@ namespace ChangeSystem
             }
 
             currentChangeValue = 0f;
-            changeView.UpdateChangeAmount(currentChangeValue);
+            changeView.UpdateChangeAmount(currentChangeValue, Color.red);
         }
 
         public void OnMoneyReleased()
         {
+            
+            if (calculatedChange > currentChangeValue)
+            {
+                Debug.LogWarning("Not enough money to release change.");
+                return;
+            }
+
             Debug.Log("Releasing money...");
             playerStatistics.Money -= currentChangeValue;
             OnMoneyRemoved();
+
+            posView.DestroyTrayInPaymentSection();
+
             posView.CloseChangeSystemScreen();
             posView.ClearPriceText();
             posView.UpdateTotalPriceText(0f);
             posView.CloseCashRegister();
+            //update pos view
+            posView.UpdateCalculatedChangeText("");
+            posView.UpdateCashPaidText("");
+            //PosController.cashPaid = 0f;
             //close change system
         }
     }
