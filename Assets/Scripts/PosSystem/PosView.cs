@@ -34,6 +34,7 @@ namespace PosSystem
             for (int i = 0; i < transactionButtons.Count; i++)
             {
                 transactionButtons[i].Initialize(i);
+                transactionButtons[i].SetInteractable(false); // Initially set transaction buttons to not interactable
             }
 
             for (int i = 0; i < changeButtons.Count; i++)
