@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("OrderCreator instance not found.");
             return;
         }
-        if (OrderCreator.instance.AvailableMealsOnDisplay.Count > 1)
+        if (OrderCreator.instance.AvailableMealsOnDisplay.Count > 0)
         {
             Debug.Log("Transitioning to Phase Two!");
             timeManager.StartTimer();
@@ -40,6 +40,11 @@ public class GameManager : MonoBehaviour
 
     public void ShowSummary()
     {
+        if (!timeManager.IsDayOver)
+        {
+            Debug.Log("Cannot show summary: Day is not over yet.");
+            return;
+        }
         if (OrderCreator.instance == null)
         {
             Debug.LogError("OrderCreator instance not found.");
@@ -55,7 +60,6 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Showing summary of the day!");
-            //show nouse cursor
             SceneController.Instance?.LoadSummary();
         }
     }
