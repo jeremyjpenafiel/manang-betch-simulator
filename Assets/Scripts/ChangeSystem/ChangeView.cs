@@ -57,9 +57,10 @@ namespace ChangeSystem
 
         }
 
-        public void UpdateChangeAmount(float text)
+        public void UpdateChangeAmount(float amount, Color color)
         {
-            changeAmountText.text = text.ToString("F2");
+            changeAmountText.text = amount.ToString("F2");
+            changeAmountText.color = color; // This sets the color for TextMeshProUGUI
         }
     }
 }

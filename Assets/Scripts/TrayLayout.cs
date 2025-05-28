@@ -45,6 +45,6 @@ public class TrayLayout : MonoBehaviour
     }
      public bool HasAvailableSlot()
     {
-        return !isServingonTray;
+        return !isServingonTray || !isRiceOnTray;
     }
 }

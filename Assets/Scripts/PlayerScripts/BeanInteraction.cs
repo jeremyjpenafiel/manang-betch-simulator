@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using FoodSystem;
 using Order;
+using PosSystem;
 
 public class BeanInteraction : MonoBehaviour
 {
@@ -10,13 +11,20 @@ public class BeanInteraction : MonoBehaviour
     private Tray tray;
     [SerializeField] private Transform hand;
     [SerializeField] private GameObject trayPrefab;
+    [SerializeField] private PosView posView;
 
 
     public event Action<FoodItem> OnFoodAddToTray;
+    public static event Action OnTrayPlacedInPaymentSection;
 
     private void Awake()
     {
         tray = GetComponent<Tray>();
+        posView = FindObjectOfType<PosView>();
+        if (posView == null)
+        {
+            Debug.LogError("PosView not found in the scene.");
+        }
     }
 
 
@@ -39,6 +47,14 @@ public class BeanInteraction : MonoBehaviour
                     {
                         // TryPickUpTray(clicked);
                         TryPickUpTray();
+                    }
+                    else if (clicked.CompareTag("PaymentSection"))
+                    {
+                        TryPickUpTray();
+                    }
+                    else if (clicked.CompareTag("RiceCooker"))
+                    {
+                        // TryServeRiceToTray(clicked);
                     }
                 }
                 else if (heldDish != null)
@@ -240,9 +256,13 @@ public class BeanInteraction : MonoBehaviour
             return;
         }
 
+        OnTrayPlacedInPaymentSection?.Invoke();
         Transform paymentSection = paymentSectionTransform.transform;
-        heldTray.transform.SetParent(paymentSection); 
+        heldTray.transform.SetParent(paymentSection);
         heldTray.transform.position = paymentSection.position;  
+        
+        posView.SetTrayInPaymentSection(heldTray); // Register it
+        heldTray = null;
     }
 
 
