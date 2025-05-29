@@ -83,6 +83,7 @@ namespace PosSystem
             // Implement logic to show Gcash payment receipt
             gcashPaymentReceipt.SetActive(true);
             Debug.Log("Gcash Payment Receipt Shown");
+            SoundManager.Instance.Play("kaching");
 
             DestroyTrayInPaymentSection();
             Invoke(nameof(HideGcashPaymentReceipt), 1f);

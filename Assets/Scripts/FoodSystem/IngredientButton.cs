@@ -14,7 +14,7 @@ public class IngredientButton : MonoBehaviour
         _button = GetComponent<Button>();
         _button.onClick.AddListener(()=>OnButtonPressed(_index));
     }
-    
+
     public void RegisterListener(Action<int> listener)
     {
         OnButtonPressed += listener;

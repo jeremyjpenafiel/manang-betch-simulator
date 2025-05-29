@@ -82,7 +82,7 @@ namespace ChangeSystem
 
         public void OnMoneyReleased()
         {
-            
+
             if (calculatedChange > currentChangeValue)
             {
                 Debug.LogWarning("Not enough money to release change.");
@@ -102,6 +102,7 @@ namespace ChangeSystem
             //update pos view
             posView.UpdateCalculatedChangeText("");
             posView.UpdateCashPaidText("");
+            SoundManager.Instance.Play("kaching");
             //PosController.cashPaid = 0f;
             //close change system
         }

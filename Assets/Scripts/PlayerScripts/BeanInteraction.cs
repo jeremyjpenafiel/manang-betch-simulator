@@ -41,19 +41,17 @@ public class BeanInteraction : MonoBehaviour
                 {
                     if (clicked.CompareTag("Dish"))
                     {
-                        if (clicked.CompareTag("Dish"))
+                        // Check if this is the rice cooker by name
+                        if (clicked.name.Equals("RiceCooker", StringComparison.OrdinalIgnoreCase))
                         {
-                            // Check if this is the rice cooker by name
-                            if (clicked.name.Equals("RiceCooker", StringComparison.OrdinalIgnoreCase))
-                            {
-                                // Optionally handle rice cooker dish click here
-                                Debug.Log("RiceCooker dish clicked.");
-                                // You can call a method here if needed, e.g. TryServeRiceToTray(clicked);
-                            }
-                            else
-                            {
-                                TryPickUpDish(clicked);
-                            }
+                            // Optionally handle rice cooker dish click here
+                            Debug.Log("RiceCooker dish clicked.");
+                            // You can call a method here if needed, e.g. TryServeRiceToTray(clicked);
+                        }
+                        else
+                        {
+                            TryPickUpDish(clicked);
+                            SoundManager.Instance.Play("pickup");
                         }
 
                     }
@@ -61,10 +59,12 @@ public class BeanInteraction : MonoBehaviour
                     {
                         // TryPickUpTray(clicked);
                         TryPickUpTray();
+                        SoundManager.Instance.Play("pickup");
                     }
                     else if (clicked.CompareTag("PaymentSection"))
                     {
                         TryPickUpTray();
+                        SoundManager.Instance.Play("pickup");
                     }
                     else if (clicked.CompareTag("RiceCooker"))
                     {
@@ -76,15 +76,18 @@ public class BeanInteraction : MonoBehaviour
                     if (clicked.CompareTag("Table"))
                     {
                         TryPlaceDishOnTable(clicked);
+                        SoundManager.Instance.Play("drop");
                     }
                     else if (clicked.CompareTag("FoodDisplay"))
                     {
                         TryPlaceDishInFoodDisplay(clicked);
+                        SoundManager.Instance.Play("drop");
                     }
                 }
                 else if (heldTray != null && (clicked.CompareTag("Dish")))
                 {
                     TryServeDishToTray(clicked);
+                    SoundManager.Instance.Play("drop");
                 }
                 else if (heldTray != null && clicked.CompareTag("PaymentSection"))
                 {
@@ -96,6 +99,7 @@ public class BeanInteraction : MonoBehaviour
                         //place order
                         TryPlaceDishOnPaymentSection(clicked);
                         Debug.Log("Order placed successfully.");
+                        SoundManager.Instance.Play("drop");
                     }
                 }
                 else if (heldTray != null && clicked.CompareTag("RiceCooker"))
