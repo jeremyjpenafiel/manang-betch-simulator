@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeManager: {fileID: -1998710578269408960, guid: 1efe4a8d19224f941a2b7c21ad0f0d62, type: 3}
+  npcSpawner: {fileID: 3458924494159958989, guid: 44ae3e3f58187a74ba2b5755be7bf29a, type: 3}
