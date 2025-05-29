@@ -9,12 +9,15 @@ using UnityEngine.Serialization;
 public class PlayerStatistics : ScriptableObject
 {
     [SerializeField] private float money;
+    [SerializeField] private float capital;
 
     [SerializeField, ReadOnly] private float dailyIncome;
 
     [SerializeField, ReadOnly] private int missedOrders;
 
     [SerializeField, ReadOnly] private int thrownFoodTimes;
+
+    public int SuccessfulTransactions;
     
 
     public event Action OnMoneyChanged; 
@@ -35,6 +38,8 @@ public class PlayerStatistics : ScriptableObject
     }
 
     public float DailyIncome => dailyIncome;
+
+    public float IncomeThusFar => capital - money;
     public float MissedOrders => missedOrders;
 }
 

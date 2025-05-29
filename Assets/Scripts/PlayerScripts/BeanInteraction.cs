@@ -1,22 +1,26 @@
 using System;
+using System.ComponentModel;
 using ChangeSystem;
 using UnityEngine;
 using FoodSystem;
 using Order;
 using PosSystem;
+using Sirenix.OdinInspector;
 
 public class BeanInteraction : MonoBehaviour
 {
-    private GameObject heldDish = null;
-    private GameObject heldTray = null;
+    [SerializeField, Sirenix.OdinInspector.ReadOnly]private GameObject heldDish = null;
+    [SerializeField, Sirenix.OdinInspector.ReadOnly]private GameObject heldTray = null;
     private Tray tray;
     [SerializeField] private Transform hand;
     [SerializeField] private GameObject trayPrefab;
     [SerializeField] private PosView posView;
 
+    [SerializeField] private PlayerStatistics _playerStatistics;
 
     public event Action<FoodItem> OnFoodAddToTray;
     public static event Action OnTrayPlacedInPaymentSection;
+    public static event Action OnFoodThrown;
 
     private void Awake()
     {
@@ -39,6 +43,21 @@ public class BeanInteraction : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 GameObject clicked = hit.collider.gameObject;
+
+                if (heldDish || heldTray)
+                {
+                    Debug.Log("Asd");
+                    if (clicked.CompareTag("TrashBin"))
+                    {
+                        Debug.Log("asdasdasd");
+                        var interactable = clicked.GetComponent<IInteractable>();
+                        interactable.Interact();
+                        if (heldDish) Destroy(heldDish);
+                        if (heldTray) Destroy(heldTray);
+                        heldTray = null;
+                    }
+                }
+                
 
                 if (heldDish == null && heldTray == null)
                 {

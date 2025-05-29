@@ -107,7 +107,8 @@ namespace ChangeSystem
             posView.UpdateCashPaidText("");
             SoundManager.Instance.Play("kaching");
             OnTransactionDone?.Invoke();
-            
+            playerStatistics.SuccessfulTransactions++;
+
             //PosController.cashPaid = 0f;
             //close change system
         }
