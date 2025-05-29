@@ -49,10 +49,7 @@ public class SoundManager : MonoBehaviour {
         }
     }
 
-    public void StopMusic() {
-        musicSource.Stop();
-    }
-
+    public void StopMusic() => musicSource.Stop();
     public void SetMasterVolume(float value) => masterVolume = Mathf.Clamp01(value);
     public void SetMusicVolume(float value) => musicVolume = Mathf.Clamp01(value);
     public void SetSFXVolume(float value) => sfxVolume = Mathf.Clamp01(value);

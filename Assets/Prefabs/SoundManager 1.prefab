@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4891518443714474806
+--- !u!1 &194174583813417573
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6868176186030156663}
-  - component: {fileID: 5584367320059556903}
+  - component: {fileID: 2757493937105583281}
+  - component: {fileID: 4508456578750967446}
   m_Layer: 0
   m_Name: SFXSource
   m_TagString: Untagged
@@ -17,28 +17,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6868176186030156663
+--- !u!4 &2757493937105583281
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4891518443714474806}
+  m_GameObject: {fileID: 194174583813417573}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 820740192580295182}
+  m_Father: {fileID: 7487451669352347829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &5584367320059556903
+--- !u!82 &4508456578750967446
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4891518443714474806}
+  m_GameObject: {fileID: 194174583813417573}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -128,7 +128,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &5435113940449375772
+--- !u!1 &5733766134400854947
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,8 +136,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3304102546573751903}
-  - component: {fileID: 4434494749168061953}
+  - component: {fileID: 6171698598149431050}
+  - component: {fileID: 1699622691637086300}
   m_Layer: 0
   m_Name: MusicSource
   m_TagString: Untagged
@@ -145,28 +145,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3304102546573751903
+--- !u!4 &6171698598149431050
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5435113940449375772}
+  m_GameObject: {fileID: 5733766134400854947}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 820740192580295182}
+  m_Father: {fileID: 7487451669352347829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &4434494749168061953
+--- !u!82 &1699622691637086300
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5435113940449375772}
+  m_GameObject: {fileID: 5733766134400854947}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -256,7 +256,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &6661571255222151502
+--- !u!1 &9150132272635472251
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,54 +264,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 820740192580295182}
-  - component: {fileID: 443499587295894357}
+  - component: {fileID: 7487451669352347829}
+  - component: {fileID: 9112075445852726225}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: SoundManager 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &820740192580295182
+--- !u!4 &7487451669352347829
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6661571255222151502}
+  m_GameObject: {fileID: 9150132272635472251}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1630.0232, y: 295.58377, z: 108.497635}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3304102546573751903}
-  - {fileID: 6868176186030156663}
+  - {fileID: 2757493937105583281}
+  - {fileID: 6171698598149431050}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &443499587295894357
+--- !u!114 &9112075445852726225
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6661571255222151502}
+  m_GameObject: {fileID: 9150132272635472251}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b83a6a0b3a870064f90b2ad2fe66747a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSource: {fileID: 4434494749168061953}
-  sfxSource: {fileID: 5584367320059556903}
+  musicSource: {fileID: 1699622691637086300}
+  sfxSource: {fileID: 4508456578750967446}
   masterVolume: 1
   musicVolume: 1
   sfxVolume: 1
   audioClips:
-  - name: pickup
-    clip: {fileID: 8300000, guid: 2e40fe67401cd9d40a6e3ccf4c2712ec, type: 3}
-    type: 0
-    volume: 1
   - name: bell
     clip: {fileID: 8300000, guid: 02332f82f27709e479ec07f8ad09632c, type: 3}
     type: 0
@@ -324,11 +320,15 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6faa6981239a30d4e98325d71485f3e9, type: 3}
     type: 0
     volume: 1
-  - name: bgmusic
+  - name: bg music
     clip: {fileID: 8300000, guid: ec64f1e1bd73d244ba780731bc410f8c, type: 3}
     type: 1
     volume: 1
   - name: kaching
     clip: {fileID: 8300000, guid: fe1a2f30368e8c641b8af87bbea3ac64, type: 3}
+    type: 0
+    volume: 1
+  - name: pickup
+    clip: {fileID: 8300000, guid: 2e40fe67401cd9d40a6e3ccf4c2712ec, type: 3}
     type: 0
     volume: 1

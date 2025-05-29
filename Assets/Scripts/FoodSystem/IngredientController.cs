@@ -146,6 +146,7 @@ namespace FoodSystem
                 foodItem.Quantity++;
                 foodItem.Purchase();
             }
+            SoundManager.Instance.Play("chalk");
         }
 
         // buttonIndex is the index of the ingredient in the list

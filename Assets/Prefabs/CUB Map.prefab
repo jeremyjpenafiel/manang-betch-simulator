@@ -1342,7 +1342,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3352457299793831029}
+      - m_Target: {fileID: 2222216900485452099}
         m_TargetAssemblyTypeName: FoodPriceEditor, Assembly-CSharp
         m_MethodName: OnPriceTagClicked
         m_Mode: 1
@@ -23587,7 +23587,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3352457299793831029}
+      - m_Target: {fileID: 7750754912546181684}
         m_TargetAssemblyTypeName: FoodPriceEditor, Assembly-CSharp
         m_MethodName: OnPriceTagClicked
         m_Mode: 1
@@ -24981,7 +24981,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3352457299793831029}
+      - m_Target: {fileID: 6668076610637902808}
         m_TargetAssemblyTypeName: FoodPriceEditor, Assembly-CSharp
         m_MethodName: OnPriceTagClicked
         m_Mode: 1
@@ -25991,7 +25991,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3352457299793831029}
+      - m_Target: {fileID: 3642590163343887970}
         m_TargetAssemblyTypeName: FoodPriceEditor, Assembly-CSharp
         m_MethodName: OnPriceTagClicked
         m_Mode: 1
@@ -43411,7 +43411,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3352457299793831029}
+      - m_Target: {fileID: 4293425458792148276}
         m_TargetAssemblyTypeName: FoodPriceEditor, Assembly-CSharp
         m_MethodName: OnPriceTagClicked
         m_Mode: 1
@@ -57001,7 +57001,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3352457299793831029}
+      - m_Target: {fileID: 13892601818049695}
         m_TargetAssemblyTypeName: FoodPriceEditor, Assembly-CSharp
         m_MethodName: OnPriceTagClicked
         m_Mode: 1
@@ -65532,7 +65532,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3352457299793831029}
+      - m_Target: {fileID: 7859537708914258106}
         m_TargetAssemblyTypeName: FoodPriceEditor, Assembly-CSharp
         m_MethodName: OnPriceTagClicked
         m_Mode: 1
