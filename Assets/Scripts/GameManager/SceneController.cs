@@ -4,10 +4,14 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     public static SceneController Instance;
+    private int currentDay = 0;
+    private const int maxDays = 4;
+
+    public int CurrentDay => currentDay;
+    public bool IsGameOver => currentDay >= maxDays;
 
     private void Awake()
     {
-        // Singleton pattern
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -37,7 +41,17 @@ public class SceneController : MonoBehaviour
 
     public void LoadGame()
     {
-        LoadScene("Game");
+        if (currentDay <= maxDays)
+        {
+            currentDay++;
+            Debug.Log($"Loading Day {currentDay}");
+            LoadScene("Game");
+        } else
+        {
+            Debug.Log("Game Over! No more days to play.");
+            currentDay = 0; // Reset for next game session
+            LoadMainMenu();
+        }
     }
 
     public void LoadSummary()
