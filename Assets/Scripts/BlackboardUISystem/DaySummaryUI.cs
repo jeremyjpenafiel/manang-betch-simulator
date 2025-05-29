@@ -20,7 +20,7 @@ public class DaySummaryUI : MonoBehaviour
     public void DisplaySummary()
     {
         totalIncomeText.text = $"Total Income: ₱{playerStatistics.IncomeThusFar:F2}";
-        successfulTransactionsText.text = $"Successful Transactions: {playerStatistics.Money / 50:F0}"; // Example logic
+        successfulTransactionsText.text = $"Successful Transactions: {playerStatistics.SuccessfulTransactions}"; // Example logic
         missedOrdersText.text = $"Missed Orders: {playerStatistics.MissedOrders}";
         foodThrownText.text = $"Food Thrown: {playerStatistics.ThrownFoodTimes}";
     }
