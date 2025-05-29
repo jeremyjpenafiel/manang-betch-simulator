@@ -26,6 +26,15 @@ public class GlassFoodDisplay : MonoBehaviour, IDishInteractable
     public void Interact(BeanInteraction beanInteraction, GameObject dish)
     {
         beanInteraction.state = PlayerStates.HandsFree;
-        gameObject
+        Transform t = GetFirstEmptySlot();
+        dish.transform.SetParent(t);
+        dish.transform.position = t.position;
+        dish.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+
+        var foodItemSlot = t.GetComponent<FoodItemSlot>();
+        var dishReference = dish.GetComponent<DishReference>();
+
+        foodItemSlot.FoodItem = dishReference.foodItem;
+
     }
 }
