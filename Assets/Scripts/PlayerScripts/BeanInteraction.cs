@@ -1,4 +1,5 @@
 using System;
+using ChangeSystem;
 using UnityEngine;
 using FoodSystem;
 using Order;
@@ -25,6 +26,8 @@ public class BeanInteraction : MonoBehaviour
         {
             Debug.LogError("PosView not found in the scene.");
         }
+
+        MoneySpawner.OnTransactionDone += tray.ResetOrder;
     }
 
 
@@ -278,7 +281,6 @@ public class BeanInteraction : MonoBehaviour
         Transform paymentSection = paymentSectionTransform.transform;
         heldTray.transform.SetParent(paymentSection);
         heldTray.transform.position = paymentSection.position;  
-        tray.ResetOrder();
         posView.SetTrayInPaymentSection(heldTray); // Register it
         heldTray = null;
     }

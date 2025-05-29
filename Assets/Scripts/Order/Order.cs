@@ -3,8 +3,7 @@ using FoodSystem;
 
 namespace Order
 {
-    [Serializable]  
-    public struct Order
+    public class Order
     {
         public FoodItem meal;
         public FoodItem rice;
