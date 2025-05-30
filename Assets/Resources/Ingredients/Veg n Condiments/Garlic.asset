@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Garlic
   m_EditorClassIdentifier: 
   ingredientName: Garlic
-  quantity: 15
-  price: 15
+  quantity: 0
+  price: 5

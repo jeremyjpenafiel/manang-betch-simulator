@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Showing summary of the day!");
-            SceneController.Instance?.LoadSummary();
+            SceneController.Instance.LoadSummary();
         }
     }
 

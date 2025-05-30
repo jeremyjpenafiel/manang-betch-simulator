@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientName: Ginamos
   quantity: 0
-  price: 0
+  price: 5

@@ -13,6 +13,7 @@ TagManager:
   - RiceCooker
   - PhaseSwitch
   - PaymentSection
+  - TrashBin
   layers:
   - Default
   - TransparentFX

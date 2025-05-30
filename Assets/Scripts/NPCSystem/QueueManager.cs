@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ChangeSystem;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -25,6 +26,7 @@ namespace NPCSystem
             BeanInteraction.OnTrayPlacedInPaymentSection += MoveNpcToPaymentSection;
             paymentSectionSlot.OnNpcExited += RemoveNpcFromQueue;
             queue[^1].OnNpcEntered += NpcAddToQueue;
+            MoneySpawner.OnTransactionDone += MoveNpcToExit;
         }
 
         private void NpcAddToQueue(Npc npc)
@@ -89,18 +91,20 @@ namespace NPCSystem
 
         public void RegisterNPCExitListener(Action listener)
         {
-            queue[0].OnNpcExited += listener;
+            paymentSectionSlot.OnNpcExited += listener;
         }
 
         public void MoveNpcToPaymentSection()
         {
             _npcQueue.TryPeek(out Npc npc);
             npc.mustGoToPaymentSection = true;
-            npc.SetDestination(paymentSectionSlot.transform, () =>
-            {
-                npc.Exit();
-            });
+            npc.SetDestination(paymentSectionSlot.transform);
+        }
 
+        public void MoveNpcToExit()
+        {
+            _npcQueue.TryPeek(out Npc npc);
+            npc.Exit();
         }
     }
 }

@@ -1,21 +1,26 @@
 using System;
+using System.ComponentModel;
+using ChangeSystem;
 using UnityEngine;
 using FoodSystem;
 using Order;
 using PosSystem;
+using Sirenix.OdinInspector;
 
 public class BeanInteraction : MonoBehaviour
 {
-    private GameObject heldDish = null;
-    private GameObject heldTray = null;
+    [SerializeField, Sirenix.OdinInspector.ReadOnly]private GameObject heldDish = null;
+    [SerializeField, Sirenix.OdinInspector.ReadOnly]private GameObject heldTray = null;
     private Tray tray;
     [SerializeField] private Transform hand;
     [SerializeField] private GameObject trayPrefab;
     [SerializeField] private PosView posView;
 
+    [SerializeField] private PlayerStatistics _playerStatistics;
 
     public event Action<FoodItem> OnFoodAddToTray;
     public static event Action OnTrayPlacedInPaymentSection;
+    public static event Action OnFoodThrown;
 
     private void Awake()
     {
@@ -25,6 +30,8 @@ public class BeanInteraction : MonoBehaviour
         {
             Debug.LogError("PosView not found in the scene.");
         }
+
+        MoneySpawner.OnTransactionDone += tray.ResetOrder;
     }
 
 
@@ -36,6 +43,21 @@ public class BeanInteraction : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 GameObject clicked = hit.collider.gameObject;
+
+                if (heldDish || heldTray)
+                {
+                    Debug.Log("Asd");
+                    if (clicked.CompareTag("TrashBin"))
+                    {
+                        Debug.Log("asdasdasd");
+                        var interactable = clicked.GetComponent<IInteractable>();
+                        interactable.Interact();
+                        if (heldDish) Destroy(heldDish);
+                        if (heldTray) Destroy(heldTray);
+                        heldTray = null;
+                    }
+                }
+                
 
                 if (heldDish == null && heldTray == null)
                 {
@@ -278,7 +300,6 @@ public class BeanInteraction : MonoBehaviour
         Transform paymentSection = paymentSectionTransform.transform;
         heldTray.transform.SetParent(paymentSection);
         heldTray.transform.position = paymentSection.position;  
-        tray.ResetOrder();
         posView.SetTrayInPaymentSection(heldTray); // Register it
         heldTray = null;
     }

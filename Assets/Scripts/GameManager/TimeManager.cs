@@ -24,8 +24,8 @@ public class TimeManager : MonoBehaviour
     {   
         if (isTesting)
         {
-            totalGameSeconds = 10f; // For testing set to 1 minute
-            totalSimulatedMinutes = 10f; // Simulate 30 minutes
+            totalGameSeconds = 60f; // For testing set to 1 minute
+            totalSimulatedMinutes = 60f; // Simulate 30 minutes
         }
         else
         {

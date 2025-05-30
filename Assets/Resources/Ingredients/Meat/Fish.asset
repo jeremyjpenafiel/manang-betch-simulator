@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Fish
   m_EditorClassIdentifier: 
   ingredientName: Fish
-  quantity: 1
-  price: 123
+  quantity: 0
+  price: 100

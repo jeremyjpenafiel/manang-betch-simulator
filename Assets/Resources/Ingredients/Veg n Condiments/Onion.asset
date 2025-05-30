@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Onion
   m_EditorClassIdentifier: 
   ingredientName: Onion
-  quantity: 1
-  price: 34
+  quantity: 0
+  price: 5

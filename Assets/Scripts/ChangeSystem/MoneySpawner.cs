@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using PosSystem;
@@ -15,6 +16,8 @@ namespace ChangeSystem
         private float calculatedChange = 0f;
         public PosController posController;
 
+
+        public static event Action OnTransactionDone;
         private void Start()
         {
             // calculatedChange = posView.GetCalculatedChange();
@@ -103,6 +106,9 @@ namespace ChangeSystem
             posView.UpdateCalculatedChangeText("");
             posView.UpdateCashPaidText("");
             SoundManager.Instance.Play("kaching");
+            OnTransactionDone?.Invoke();
+            playerStatistics.SuccessfulTransactions++;
+
             //PosController.cashPaid = 0f;
             //close change system
         }

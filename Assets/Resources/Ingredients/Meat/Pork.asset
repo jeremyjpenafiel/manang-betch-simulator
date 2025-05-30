@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Pork
   m_EditorClassIdentifier: 
   ingredientName: Pork
-  quantity: 1
+  quantity: 0
   price: 345
