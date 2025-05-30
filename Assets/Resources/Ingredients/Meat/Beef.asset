@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Beef
   m_EditorClassIdentifier: 
   ingredientName: Beef
-  quantity: 99
-  price: 10
+  quantity: 0
+  price: 400
